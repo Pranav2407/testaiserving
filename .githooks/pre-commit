@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#
+# Blocks commits that contain likely secrets. Scans only the staged additions.
+# To bypass intentionally (rare): git commit --no-verify
+#
+set -euo pipefail
+
+# Patterns of real secret material we never want committed.
+# (Variable NAMES like BASECAMP_CLIENT_SECRET are fine; actual values are not.)
+patterns=(
+  'figd_[A-Za-z0-9_-]{20,}'              # Figma personal access token
+  'ghp_[A-Za-z0-9]{30,}'                 # GitHub personal access token
+  'github_pat_[A-Za-z0-9_]{50,}'         # GitHub fine-grained PAT
+  'gho_[A-Za-z0-9]{30,}'                 # GitHub OAuth token
+  'sk-[A-Za-z0-9]{20,}'                  # OpenAI / generic secret key
+  'AKIA[0-9A-Z]{16}'                     # AWS access key id
+  'xox[baprs]-[A-Za-z0-9-]{10,}'         # Slack token
+  '-----BEGIN [A-Z ]*PRIVATE KEY-----'   # Private key blocks
+)
+
+# Build a single alternation regex.
+regex="$(IFS='|'; echo "${patterns[*]}")"
+
+# Get staged diff (added lines only) across all staged files.
+staged="$(git diff --cached --no-color --unified=0 --diff-filter=ACM)"
+
+# Only look at added lines (start with '+', excluding the '+++' file header).
+hits="$(printf '%s\n' "$staged" \
+  | grep -E '^\+' \
+  | grep -Ev '^\+\+\+ ' \
+  | grep -EnH "$regex" || true)"
+
+if [ -n "$hits" ]; then
+  echo "ERROR: pre-commit blocked. Possible secret(s) detected in staged changes:" >&2
+  echo "$hits" >&2
+  echo >&2
+  echo "Remove the secret (use an env var / placeholder) and re-stage." >&2
+  echo "If this is a false positive, bypass with: git commit --no-verify" >&2
+  exit 1
+fi
+
+exit 0
