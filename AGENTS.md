@@ -94,14 +94,27 @@ git add <path> && git commit -m "feat: <create|modify> <path> (BC#<BC_ID>)"
 
 ### 6. Push and open the PR
 
-Push the branch and open a pull request into `main`. In Cloud Agents the GitHub
-integration handles auth and PR creation — push the branch and create/raise the PR
-targeting `main`, then **report the PR URL** in the final summary (tap it on mobile).
+Push the branch and open a pull request into `main`. In Cloud Agents the Cursor GitHub
+App handles auth (clone, push, signed commits) — never read a token or use macOS `open`.
+Use the pre-authenticated `gh` CLI to create the PR, then **report the PR URL** in the
+final summary (tap it on mobile).
 
 ```bash
 git push -u origin "$BRANCH"
-# Then create the PR into main (title: "feat: <summary> (BC#<BC_ID>)") and return its URL.
+
+PR_URL=$(gh pr create \
+  --base main \
+  --head "$BRANCH" \
+  --title "feat: <product> <variant> (BC#<BC_ID>)" \
+  --body "Implements Basecamp task BC#<BC_ID> (<scope>).
+
+Basecamp: <the full basecamp link>")
+
+echo "PR: $PR_URL"
 ```
+
+If `gh` is unavailable in the environment, fall back to the GitHub REST API using the
+token from `gh auth token` (do not hardcode or echo it). Report the resulting PR URL.
 
 ### 7. Report back
 
