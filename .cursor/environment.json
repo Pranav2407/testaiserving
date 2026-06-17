@@ -1,4 +1,4 @@
 {
   "name": "aiserving cloud agent",
-  "install": "python3 --version && curl --version | head -1 && git --version && gh --version | head -1"
+  "install": "npm install"
 }

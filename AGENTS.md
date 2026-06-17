@@ -119,3 +119,39 @@ token from `gh auth token` (do not hardcode or echo it). Report the resulting PR
 ### 7. Report back
 
 Summarize: parsed task fields, files changed, branch name, and the **PR URL**.
+
+---
+
+## Cursor Cloud specific instructions
+
+This repo is a **static marketing landing-page project** (project name `tron`). There is
+no backend server, database, or long-running service to run locally — all dynamic
+behavior (downloads, analytics beacons, GTM/Hotjar) is handled by **already-deployed
+external endpoints** (`api.aibrowserapps.com`, `l.<domain>/ld`, etc.). "Running" the
+product means building the JS bundles and serving the static HTML.
+
+### Build / lint / test (see `package.json` scripts)
+- **Install:** `npm install` (already run on startup by `.cursor/environment.json`).
+- **Dev build:** `npm start` (webpack `--mode=development`, one-shot compile — despite the
+  name it is NOT a server). Production build is `npm run build`.
+- **BTF web component:** `npm run btf-build` regenerates
+  `tron/component/lander-btf-element.js` from `tron/component/lander_btf.html`
+  (base64-embedded). Use `npm run btf-watch` to rebuild on change.
+- **No lint config and no test suite exist.** `npm test` intentionally exits 1
+  ("no test specified"). Don't treat that as a failure to fix.
+
+### Gotchas
+- Webpack output bundles are **git-ignored** (see `.gitignore`), so a fresh clone has no
+  JS until you run `npm start`/`npm run build`. Pages load but are non-interactive
+  without a build.
+- `routes/web.php` is an empty leftover and `worker/*.js` are Cloudflare Worker scripts
+  deployed externally — neither runs locally.
+- Build-time values (`LANDER_DOMAIN`, `PAGE_TYPE`) are injected via webpack
+  `DefinePlugin` per product in `webpack.config.js`, not via runtime env vars.
+
+### Previewing pages
+There is no dev-server npm script. Serve the repo root with any static server, e.g.
+`python3 -m http.server 8000`, then open paths like
+`http://localhost:8000/tron/index.html` or
+`http://localhost:8000/input_based_landers/<product>/index.html`. Use the repo root as
+the server root so relative asset paths resolve.
