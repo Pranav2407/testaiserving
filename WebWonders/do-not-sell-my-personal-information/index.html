@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do Not Share My Personal Information</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/ccpa.css">
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
+</head>
+<body>
+    <header>
+        <section>
+       <div class="logo">
+            <div class="logoImg">
+                <img src="../images/logoBrand.svg" alt="Logo" />
+            </div>
+            <!-- <div class="logoText">
+                WebWondersCreation
+            </div> -->
+        </div>
+    </section>
+    </header>
+    
+    <main>
+        <h1>Do not share my personal information</h1>
+        <div class="line"></div>
+        <p>Hello!</p>
+        <p>
+            If you are a USA Resident, you have certain rights regarding your personal information. 
+            You can exercise your rights by submitting a request using this web form or 
+            by emailing us at <a href="mailto:contact@webwonderscreation.com">contact@webwonderscreation.com</a>.
+        </p>
+        
+        <form id="privacyForm">
+            <div class="form-group">
+                <label for="firstName">Name *</label>
+                <div class="name-field">
+                    <input type="text" id="firstName" placeholder="First" required>
+                    <input type="text" id="lastName" placeholder="Last" required>
+                </div>
+            </div>
+            <div class="form-group name-field">
+                <div class="mail">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="request">
+                    <label for="requestType">Request type *</label>
+                    <select id="requestType" required>
+                        <option value="">Select</option>
+                        <option value="Access to personal data">Access to personal data</option>
+                        <option value="Deletion of personal data">Deletion of personal data</option>
+                        <option value="Opt-out from the sharing of personal data">Opt-out from the sharing of personal data</option>
+                        <option value="Correction of personal data">Correction of personal data</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="requestDetails">Request Details *</label>
+                <textarea id="requestDetails" required></textarea>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="agreement" required>
+                <label for="agreement">
+                    I agree that (i) I am a resident of USA and (ii) the information provided 
+                    in this form is true and accurate.
+                </label>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <p class="disclaimer">
+            Please note that we may request additional information to verify your identity. 
+            Any information shared by you as a part of your request will only be used to verify your identity.
+        </p>
+    </main>
+
+    <footer class="footer">
+        <a href="/privacy-policy">Privacy Policy</a><a href="/terms-of-service">Terms of Service</a>
+    </footer>
+
+    <script src="../js/ccpa.js"></script>
+</body>
+</html>

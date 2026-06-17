@@ -1,0 +1,215 @@
+/* Sections Styles */
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Hero Section */
+.hero {
+  padding: var(--space-6) 0;
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  color: var(--color-white);
+}
+
+.hero h2 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: var(--space-2);
+  color: var(--color-gray-100);
+}
+
+.hero h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: var(--space-4);
+  color: var(--color-white);
+}
+
+.hero .btn {
+  margin-bottom: var(--space-2);
+}
+
+.disclaimer {
+  font-size: 0.75rem;
+  color: var(--color-gray-200);
+  max-width: 465px;
+  line-height: 1.2;
+  margin-top: var(--space-2);
+}
+
+.disclaimer a {
+  color: var(--color-white);
+}
+
+.hero-image {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--border-radius-lg);
+  transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.hero-img:hover {
+  transform: scale(1.02);
+}
+
+/* Features Section */
+.features {
+  background-color: var(--color-gray-100);
+}
+
+/* How It Works Section */
+.how-it-works {
+  background-color: var(--color-white);
+}
+
+/* FAQ Section */
+.benefits {
+  background-color: var(--color-gray-100);
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background-color: var(--color-white);
+  padding: var(--space-4);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--space-3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition-speed) var(--transition-timing),
+              box-shadow var(--transition-speed) var(--transition-timing);
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-question h3 {
+  color: var(--color-gray-900);
+  margin-bottom: 0;
+  font-size: 1.125rem;
+  flex: 1;
+}
+
+.faq-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  margin-left: var(--space-2);
+}
+
+.plus-icon {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.plus-icon::before,
+.plus-icon::after {
+  content: '';
+  position: absolute;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+  transition: transform var(--transition-speed) var(--transition-timing);
+}
+
+.plus-icon::before {
+  width: 2px;
+  height: 16px;
+  top: 4px;
+  left: 11px;
+}
+
+.plus-icon::after {
+  width: 16px;
+  height: 2px;
+  top: 11px;
+  left: 4px;
+}
+
+.faq-item.active .plus-icon::before {
+  transform: rotate(90deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-speed) var(--transition-timing),
+              padding-top var(--transition-speed) var(--transition-timing);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px;
+  padding-top: var(--space-3);
+}
+
+.faq-answer p {
+  color: var(--color-gray-700);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--color-gray-900);
+  color: var(--color-gray-300);
+  padding: var(--space-6) 0 var(--space-3);
+}
+
+.footer p {
+  margin-bottom: var(--space-2);
+}
+
+.footer-description p {
+  color: var(--color-gray-400);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--color-gray-800);
+  padding-top: var(--space-3);
+  margin-top: var(--space-4);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+}

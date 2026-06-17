@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Package Tracker</title>
+<link rel="icon" type="image/png" href="../../images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="../../css/styles.css">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WJSQRB3D');</script>
+
+<style>
+:where([class^="ri-"])::before {
+content: "\f3c2";
+}
+body {
+font-family: 'Inter', sans-serif;
+}
+*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.-right-12{right:-3rem}.-top-4{top:-1rem}.left-4{left:1rem}.right-4{right:1rem}.top-8{top:2rem}.z-10{z-index:10}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:0.25rem}.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}.mt-16{margin-top:4rem}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-12{height:3rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-72{height:18rem}.h-8{height:2rem}.h-auto{height:auto}.h-full{height:100%}.w-12{width:3rem}.w-5{width:1.25rem}.w-8{width:2rem}.w-full sm:w-96{width:24rem}.w-full{width:100%}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-7xl{max-width:80rem}.max-w-lg{max-width:32rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-16{gap:4rem}.gap-2{gap:0.5rem}.gap-20{gap:5rem}.gap-4{gap:1rem}.gap-8{gap:2rem}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.whitespace-nowrap{white-space:nowrap}.rounded-button{border-radius:8px}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:16px}.rounded-xl{border-radius:20px}.border{border-width:1px}.border-t{border-top-width:1px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-800{--tw-border-opacity:1;border-color:rgb(31 41 55 / var(--tw-border-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.bg-primary{--tw-bg-opacity:1;background-color:rgb(0 0 77 / var(--tw-bg-opacity, 1))}.bg-primary\/10{background-color:rgb(0 0 77 / 0.1)}.bg-secondary\/10{background-color:rgb(65 105 225 / 0.1)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-\[\#000080\]\/5{--tw-gradient-from:rgb(0 0 128 / 0.05) var(--tw-gradient-from-position);--tw-gradient-to:rgb(0 0 128 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-white{--tw-gradient-to:#fff var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.object-left{object-position:left}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-4{padding-bottom:1rem}.pt-8{padding-top:2rem}.text-left{text-align:left}.text-center{text-align:center}.font-inter{font-family:Inter, sans-serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6 / var(--tw-text-opacity, 1))}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-cyan-600{--tw-text-opacity:1;color:rgb(8 145 178 / var(--tw-text-opacity, 1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74 / var(--tw-text-opacity, 1))}.text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}.text-lime-600{--tw-text-opacity:1;color:rgb(101 163 13 / var(--tw-text-opacity, 1))}.text-orange-500{--tw-text-opacity:1;color:rgb(249 115 22 / var(--tw-text-opacity, 1))}.text-pink-600{--tw-text-opacity:1;color:rgb(219 39 119 / var(--tw-text-opacity, 1))}.text-primary{--tw-text-opacity:1;color:rgb(0 0 77 / var(--tw-text-opacity, 1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.text-rose-600{--tw-text-opacity:1;color:rgb(225 29 72 / var(--tw-text-opacity, 1))}.text-secondary{--tw-text-opacity:1;color:rgb(65 105 225 / var(--tw-text-opacity, 1))}.text-teal-600{--tw-text-opacity:1;color:rgb(13 148 136 / var(--tw-text-opacity, 1))}.text-violet-600{--tw-text-opacity:1;color:rgb(124 58 237 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-600{--tw-text-opacity:1;color:rgb(202 138 4 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-shadow{transition-property:box-shadow;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-gray-50:hover{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.hover\:bg-primary\/90:hover{background-color:rgb(0 0 77 / 0.9)}.hover\:text-primary:hover{--tw-text-opacity:1;color:rgb(0 0 77 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}@media (min-width: 640px){.sm\:-left-4{left:-1rem}.sm\:-right-4{right:-1rem}.sm\:h-16{height:4rem}.sm\:flex-row{flex-direction:row}.sm\:flex-row-reverse{flex-direction:row-reverse}.sm\:justify-between{justify-content:space-between}.sm\:py-0{padding-top:0px;padding-bottom:0px}}@media (min-width: 768px){.md\:absolute{position:absolute}.md\:mt-0{margin-top:0px}.md\:w-1\/2{width:50%}.md\:max-w-\[45\%\]{max-width:45%}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:px-12{padding-left:3rem;padding-right:3rem}.md\:py-32{padding-top:8rem;padding-bottom:8rem}.md\:text-left{text-align:left}}@media (min-width: 1024px){.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:grid-cols-6{grid-template-columns:repeat(6, minmax(0, 1fr))}.lg\:items-start{align-items:flex-start}.lg\:px-8{padding-left:2rem;padding-right:2rem}.lg\:text-left{text-align:left}.lg\:text-4xl{font-size:2.25rem;line-height:2.5rem}}
+</style>
+</head>
+<body class="bg-white font-inter">
+  <div class="page-shell" data-figma-node="1:3">
+    <header class="site-header" role="banner">
+      <div class="site-header__inner">
+        <span class="site-header__logo" aria-label="aiBrowser — home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="168" height="27" viewBox="0 0 168 27" fill="none">
+            <g clip-path="url(#clip0_1_525)">
+              <g filter="url(#filter0_n_1_525)">
+                <path d="M95.5777 18.9424C94.6077 18.9424 93.7728 18.7459 93.0729 18.353C92.3771 17.956 91.841 17.3953 91.4645 16.6709C91.0879 15.9424 90.8997 15.0809 90.8997 14.0863C90.8997 13.1163 91.0879 12.265 91.4645 11.5324C91.841 10.7998 92.371 10.2289 93.0545 9.81963C93.7421 9.41036 94.5483 9.20572 95.4733 9.20572C96.0954 9.20572 96.6745 9.30599 97.2107 9.50654C97.7509 9.70299 98.2216 9.99971 98.6227 10.3967C99.0279 10.7937 99.343 11.293 99.5681 11.8947C99.7932 12.4922 99.9057 13.1921 99.9057 13.9942V14.7125H91.9433V13.0918H97.444C97.444 12.7152 97.3621 12.3817 97.1984 12.0911C97.0347 11.8005 96.8075 11.5734 96.517 11.4097C96.2305 11.2419 95.8969 11.158 95.5163 11.158C95.1193 11.158 94.7673 11.25 94.4604 11.4342C94.1575 11.6143 93.9201 11.8578 93.7482 12.1648C93.5763 12.4676 93.4883 12.8053 93.4842 13.1777V14.7186C93.4842 15.1852 93.5702 15.5884 93.7421 15.9281C93.9181 16.2678 94.1657 16.5297 94.4849 16.7139C94.8041 16.898 95.1827 16.9901 95.6206 16.9901C95.9112 16.9901 96.1773 16.9492 96.4187 16.8673C96.6602 16.7855 96.8669 16.6627 97.0388 16.499C97.2107 16.3353 97.3416 16.1347 97.4317 15.8974L99.8505 16.057C99.7277 16.6381 99.476 17.1456 99.0954 17.5795C98.7188 18.0092 98.2318 18.3448 97.6343 18.5863C97.0408 18.8237 96.3553 18.9424 95.5777 18.9424Z" fill="#1A2A38"/>
+                <path d="M84.5887 22.4908C83.7415 22.4908 83.015 22.3741 82.4093 22.1409C81.8077 21.9117 81.3288 21.5986 80.9727 21.2016C80.6167 20.8046 80.3854 20.3585 80.279 19.8632L82.6978 19.5379C82.7715 19.7261 82.8881 19.9021 83.0478 20.0658C83.2074 20.2295 83.4182 20.3605 83.6801 20.4587C83.9461 20.5611 84.2694 20.6122 84.6501 20.6122C85.219 20.6122 85.6876 20.4731 86.0559 20.1948C86.4284 19.9205 86.6146 19.4601 86.6146 18.8135V17.0884H86.5041C86.3895 17.3503 86.2176 17.5979 85.9884 17.8312C85.7592 18.0645 85.4645 18.2548 85.1044 18.4021C84.7442 18.5495 84.3145 18.6231 83.8152 18.6231C83.1071 18.6231 82.4625 18.4594 81.8813 18.132C81.3043 17.8005 80.8438 17.295 80.5 16.6157C80.1603 15.9322 79.9905 15.0686 79.9905 14.0249C79.9905 12.9567 80.1644 12.0645 80.5123 11.3483C80.8602 10.6321 81.3227 10.0959 81.8997 9.73984C82.4809 9.38377 83.1173 9.20574 83.809 9.20574C84.337 9.20574 84.779 9.29578 85.1351 9.47586C85.4911 9.65184 85.7776 9.87285 85.9945 10.1389C86.2155 10.4008 86.3854 10.6587 86.5041 10.9124H86.6023V9.32852H89.1992V18.8503C89.1992 19.6525 89.0027 20.3237 88.6098 20.8639C88.2169 21.4042 87.6726 21.8093 86.9768 22.0795C86.2851 22.3537 85.4891 22.4908 84.5887 22.4908ZM84.6439 16.6586C85.0655 16.6586 85.4216 16.5543 85.7121 16.3455C86.0068 16.1327 86.2319 15.8298 86.3874 15.4369C86.5471 15.0399 86.6269 14.5652 86.6269 14.0127C86.6269 13.4601 86.5491 12.9813 86.3936 12.5761C86.2381 12.1668 86.013 11.8496 85.7183 11.6245C85.4236 11.3994 85.0655 11.2869 84.6439 11.2869C84.2142 11.2869 83.852 11.4035 83.5573 11.6368C83.2626 11.866 83.0396 12.1853 82.8881 12.5945C82.7367 13.0038 82.661 13.4765 82.661 14.0127C82.661 14.557 82.7367 15.0277 82.8881 15.4247C83.0437 15.8176 83.2667 16.1225 83.5573 16.3394C83.852 16.5522 84.2142 16.6586 84.6439 16.6586Z" fill="#1A2A38"/>
+                <path d="M73.0011 18.9362C72.3994 18.9362 71.8633 18.8319 71.3926 18.6231C70.922 18.4103 70.5495 18.0972 70.2753 17.6839C70.0052 17.2664 69.8701 16.7466 69.8701 16.1245C69.8701 15.6007 69.9663 15.1607 70.1587 14.8046C70.351 14.4485 70.6129 14.1621 70.9445 13.9451C71.276 13.7282 71.6525 13.5645 72.0741 13.454C72.4997 13.3435 72.9458 13.2657 73.4124 13.2207C73.9608 13.1634 74.4028 13.1102 74.7384 13.0611C75.074 13.0079 75.3176 12.9301 75.469 12.8278C75.6204 12.7255 75.6961 12.5741 75.6961 12.3735V12.3367C75.6961 11.9479 75.5734 11.6471 75.3278 11.4342C75.0863 11.2214 74.7425 11.115 74.2964 11.115C73.8258 11.115 73.4513 11.2194 73.173 11.4281C72.8947 11.6327 72.7105 11.8906 72.6204 12.2016L70.2016 12.0052C70.3244 11.4322 70.5659 10.937 70.926 10.5195C71.2862 10.098 71.7507 9.77463 72.3196 9.54953C72.8926 9.32033 73.5556 9.20574 74.3087 9.20574C74.8326 9.20574 75.3339 9.26713 75.8128 9.38991C76.2957 9.51269 76.7234 9.703 77.0959 9.96085C77.4724 10.2187 77.7691 10.5502 77.986 10.9554C78.2029 11.3565 78.3114 11.8374 78.3114 12.3981V18.7582H75.8312V17.4506H75.7575C75.6061 17.7452 75.4035 18.0051 75.1498 18.2302C74.896 18.4512 74.5911 18.6252 74.235 18.7521C73.879 18.8748 73.4676 18.9362 73.0011 18.9362ZM73.75 17.1313C74.1348 17.1313 74.4745 17.0556 74.7691 16.9042C75.0638 16.7487 75.2951 16.5399 75.4629 16.278C75.6307 16.0161 75.7146 15.7193 75.7146 15.3878V14.3872C75.6327 14.4404 75.5202 14.4895 75.3769 14.5345C75.2378 14.5754 75.0802 14.6143 74.9042 14.6511C74.7282 14.6839 74.5522 14.7146 74.3762 14.7432C74.2002 14.7678 74.0406 14.7903 73.8974 14.8108C73.5904 14.8558 73.3223 14.9274 73.0932 15.0256C72.864 15.1238 72.6859 15.2569 72.5591 15.4247C72.4322 15.5884 72.3687 15.793 72.3687 16.0386C72.3687 16.3946 72.4977 16.6668 72.7555 16.8551C73.0174 17.0393 73.349 17.1313 73.75 17.1313Z" fill="#1A2A38"/>
+                <path d="M62.6199 16.0447L62.6261 12.9076H63.0067L66.0272 9.32851H69.0292L64.9712 14.0679H64.3512L62.6199 16.0447ZM60.2502 18.7582V6.18528H62.8655V18.7582H60.2502ZM66.1438 18.7582L63.3689 14.6511L65.1124 12.8033L69.2072 18.7582H66.1438Z" fill="#1A2A38"/>
+                <path d="M54.3643 18.9424C53.3984 18.9424 52.5676 18.7377 51.8718 18.3285C51.1802 17.9151 50.6481 17.3421 50.2757 16.6095C49.9073 15.8769 49.7231 15.0338 49.7231 14.0802C49.7231 13.1143 49.9094 12.2671 50.2818 11.5386C50.6583 10.806 51.1924 10.2351 51.8841 9.82579C52.5758 9.41242 53.3984 9.20574 54.352 9.20574C55.1747 9.20574 55.895 9.35512 56.513 9.65389C57.131 9.95266 57.6201 10.3722 57.9803 10.9124C58.3404 11.4527 58.5389 12.087 58.5758 12.8155H56.1078C56.0383 12.3449 55.8541 11.9663 55.5553 11.6798C55.2606 11.3892 54.8739 11.2439 54.395 11.2439C53.9898 11.2439 53.6358 11.3544 53.3329 11.5754C53.0342 11.7924 52.8009 12.1095 52.6331 12.527C52.4653 12.9445 52.3814 13.4499 52.3814 14.0434C52.3814 14.645 52.4632 15.1566 52.6269 15.5781C52.7948 15.9997 53.0301 16.321 53.3329 16.542C53.6358 16.763 53.9898 16.8735 54.395 16.8735C54.6938 16.8735 54.9619 16.8121 55.1992 16.6893C55.4407 16.5665 55.6392 16.3885 55.7947 16.1552C55.9543 15.9178 56.0587 15.6334 56.1078 15.3019H58.5758C58.5348 16.0222 58.3384 16.6566 57.9864 17.205C57.6385 17.7493 57.1576 18.175 56.5437 18.4819C55.9298 18.7889 55.2033 18.9424 54.3643 18.9424Z" fill="#1A2A38"/>
+                <path d="M42.7645 18.9362C42.1629 18.9362 41.6267 18.8319 41.156 18.6231C40.6854 18.4103 40.3129 18.0972 40.0387 17.6839C39.7686 17.2664 39.6335 16.7466 39.6335 16.1245C39.6335 15.6007 39.7297 15.1607 39.9221 14.8046C40.1144 14.4485 40.3764 14.1621 40.7079 13.9451C41.0394 13.7282 41.4159 13.5645 41.8375 13.454C42.2631 13.3435 42.7092 13.2657 43.1758 13.2207C43.7242 13.1634 44.1663 13.1102 44.5019 13.0611C44.8375 13.0079 45.081 12.9301 45.2324 12.8278C45.3839 12.7255 45.4596 12.5741 45.4596 12.3735V12.3367C45.4596 11.9479 45.3368 11.6471 45.0912 11.4342C44.8498 11.2214 44.506 11.115 44.0599 11.115C43.5892 11.115 43.2147 11.2194 42.9364 11.4281C42.6581 11.6327 42.4739 11.8906 42.3839 12.2016L39.9651 12.0052C40.0878 11.4322 40.3293 10.937 40.6895 10.5195C41.0496 10.098 41.5142 9.77463 42.0831 9.54953C42.656 9.32033 43.3191 9.20574 44.0721 9.20574C44.596 9.20574 45.0974 9.26713 45.5762 9.38991C46.0592 9.51269 46.4868 9.703 46.8593 9.96085C47.2358 10.2187 47.5325 10.5502 47.7495 10.9554C47.9664 11.3565 48.0748 11.8374 48.0748 12.3981V18.7582H45.5946V17.4506H45.521C45.3695 17.7452 45.1669 18.0051 44.9132 18.2302C44.6594 18.4512 44.3545 18.6252 43.9985 18.7521C43.6424 18.8748 43.2311 18.9362 42.7645 18.9362ZM43.5135 17.1313C43.8982 17.1313 44.2379 17.0556 44.5326 16.9042C44.8272 16.7487 45.0585 16.5399 45.2263 16.278C45.3941 16.0161 45.478 15.7193 45.478 15.3878V14.3872C45.3961 14.4404 45.2836 14.4895 45.1403 14.5345C45.0012 14.5754 44.8436 14.6143 44.6676 14.6511C44.4916 14.6839 44.3156 14.7146 44.1397 14.7432C43.9637 14.7678 43.8041 14.7903 43.6608 14.8108C43.3539 14.8558 43.0858 14.9274 42.8566 15.0256C42.6274 15.1238 42.4494 15.2569 42.3225 15.4247C42.1956 15.5884 42.1322 15.793 42.1322 16.0386C42.1322 16.3946 42.2611 16.6668 42.5189 16.8551C42.7809 17.0393 43.1124 17.1313 43.5135 17.1313Z" fill="#1A2A38"/>
+                <path d="M29.1846 18.7582V6.18529H34.145C35.0986 6.18529 35.911 6.36742 36.5822 6.73168C37.2534 7.09184 37.765 7.5932 38.117 8.23576C38.4731 8.87423 38.6511 9.61092 38.6511 10.4458C38.6511 11.2808 38.471 12.0175 38.1109 12.6559C37.7507 13.2944 37.2289 13.7917 36.5454 14.1477C35.866 14.5038 35.0433 14.6818 34.0774 14.6818H30.9158V12.5516H33.6477C34.1593 12.5516 34.5809 12.4636 34.9124 12.2876C35.248 12.1075 35.4976 11.8599 35.6613 11.5447C35.8291 11.2255 35.913 10.8592 35.913 10.4458C35.913 10.0284 35.8291 9.66413 35.6613 9.35308C35.4976 9.03794 35.248 8.79442 34.9124 8.62252C34.5768 8.44654 34.1511 8.35854 33.6354 8.35854H31.8428V18.7582H29.1846Z" fill="#1A2A38"/>
+              </g>
+              <g filter="url(#filter1_n_1_525)">
+                <path d="M161.286 18.7582V9.32851H163.821V10.9738H163.919C164.091 10.3885 164.38 9.94652 164.785 9.64775C165.19 9.34489 165.657 9.19345 166.185 9.19345C166.316 9.19345 166.457 9.20164 166.608 9.21801C166.76 9.23438 166.893 9.25689 167.007 9.28554V11.6061C166.885 11.5693 166.715 11.5366 166.498 11.5079C166.281 11.4793 166.082 11.4649 165.902 11.4649C165.518 11.4649 165.174 11.5488 164.871 11.7166C164.572 11.8803 164.335 12.1095 164.159 12.4042C163.987 12.6989 163.901 13.0386 163.901 13.4233V18.7582H161.286Z" fill="#259AFB"/>
+                <path d="M155.251 18.9424C154.281 18.9424 153.446 18.7459 152.746 18.353C152.05 17.956 151.514 17.3953 151.138 16.6709C150.761 15.9424 150.573 15.0809 150.573 14.0863C150.573 13.1164 150.761 12.2651 151.138 11.5325C151.514 10.7999 152.044 10.2289 152.728 9.81965C153.415 9.41037 154.222 9.20574 155.147 9.20574C155.769 9.20574 156.348 9.30601 156.884 9.50655C157.424 9.703 157.895 9.99973 158.296 10.3967C158.701 10.7937 159.016 11.293 159.241 11.8947C159.467 12.4922 159.579 13.1921 159.579 13.9942V14.7125H151.617V13.0918H157.117C157.117 12.7153 157.035 12.3817 156.872 12.0911C156.708 11.8005 156.481 11.5734 156.19 11.4097C155.904 11.2419 155.57 11.158 155.19 11.158C154.793 11.158 154.441 11.2501 154.134 11.4342C153.831 11.6143 153.593 11.8578 153.422 12.1648C153.25 12.4677 153.162 12.8053 153.158 13.1777V14.7187C153.158 15.1852 153.244 15.5884 153.415 15.9281C153.591 16.2678 153.839 16.5297 154.158 16.7139C154.477 16.8981 154.856 16.9901 155.294 16.9901C155.585 16.9901 155.851 16.9492 156.092 16.8674C156.334 16.7855 156.54 16.6627 156.712 16.499C156.884 16.3353 157.015 16.1348 157.105 15.8974L159.524 16.057C159.401 16.6382 159.149 17.1457 158.769 17.5795C158.392 18.0092 157.905 18.3448 157.308 18.5863C156.714 18.8237 156.029 18.9424 155.251 18.9424Z" fill="#259AFB"/>
+                <path d="M143.65 16.0447L143.656 12.9076H144.036L147.057 9.32851H150.059L146.001 14.0679H145.381L143.65 16.0447ZM141.28 18.7582V6.18528H143.895V18.7582H141.28ZM147.174 18.7582L144.399 14.6511L146.142 12.8033L150.237 18.7582H147.174Z" fill="#259AFB"/>
+                <path d="M135.394 18.9424C134.428 18.9424 133.597 18.7377 132.902 18.3285C132.21 17.9151 131.678 17.3421 131.305 16.6095C130.937 15.8769 130.753 15.0338 130.753 14.0802C130.753 13.1143 130.939 12.2671 131.312 11.5386C131.688 10.806 132.222 10.2351 132.914 9.82579C133.606 9.41242 134.428 9.20574 135.382 9.20574C136.204 9.20574 136.925 9.35512 137.543 9.65389C138.161 9.95266 138.65 10.3722 139.01 10.9124C139.37 11.4527 139.569 12.087 139.606 12.8155H137.138C137.068 12.3449 136.884 11.9663 136.585 11.6798C136.29 11.3892 135.904 11.2439 135.425 11.2439C135.02 11.2439 134.666 11.3544 134.363 11.5754C134.064 11.7924 133.831 12.1095 133.663 12.527C133.495 12.9445 133.411 13.4499 133.411 14.0434C133.411 14.645 133.493 15.1566 133.657 15.5781C133.825 15.9997 134.06 16.321 134.363 16.542C134.666 16.763 135.02 16.8735 135.425 16.8735C135.724 16.8735 135.992 16.8121 136.229 16.6893C136.47 16.5665 136.669 16.3885 136.825 16.1552C136.984 15.9178 137.089 15.6334 137.138 15.3019H139.606C139.565 16.0222 139.368 16.6566 139.016 17.205C138.668 17.7493 138.187 18.175 137.573 18.4819C136.96 18.7889 136.233 18.9424 135.394 18.9424Z" fill="#259AFB"/>
+                <path d="M123.794 18.9362C123.192 18.9362 122.656 18.8319 122.186 18.6231C121.715 18.4103 121.342 18.0972 121.068 17.6839C120.798 17.2664 120.663 16.7466 120.663 16.1245C120.663 15.6007 120.759 15.1607 120.952 14.8046C121.144 14.4485 121.406 14.1621 121.737 13.9451C122.069 13.7282 122.445 13.5645 122.867 13.454C123.293 13.3435 123.739 13.2657 124.205 13.2207C124.754 13.1634 125.196 13.1102 125.531 13.0611C125.867 13.0079 126.111 12.9301 126.262 12.8278C126.413 12.7255 126.489 12.5741 126.489 12.3735V12.3367C126.489 11.9479 126.366 11.6471 126.121 11.4342C125.879 11.2214 125.536 11.115 125.089 11.115C124.619 11.115 124.244 11.2194 123.966 11.4281C123.688 11.6327 123.503 11.8906 123.413 12.2016L120.995 12.0052C121.117 11.4322 121.359 10.937 121.719 10.5195C122.079 10.098 122.544 9.77463 123.113 9.54953C123.686 9.32033 124.349 9.20574 125.102 9.20574C125.626 9.20574 126.127 9.26713 126.606 9.38991C127.089 9.51269 127.516 9.703 127.889 9.96085C128.265 10.2187 128.562 10.5502 128.779 10.9554C128.996 11.3565 129.104 11.8374 129.104 12.3981V18.7582H126.624V17.4506H126.551C126.399 17.7452 126.196 18.0051 125.943 18.2302C125.689 18.4512 125.384 18.6252 125.028 18.7521C124.672 18.8748 124.261 18.9362 123.794 18.9362ZM124.543 17.1313C124.928 17.1313 125.267 17.0556 125.562 16.9042C125.857 16.7487 126.088 16.5399 126.256 16.278C126.424 16.0161 126.508 15.7193 126.508 15.3878V14.3872C126.426 14.4404 126.313 14.4895 126.17 14.5345C126.031 14.5754 125.873 14.6143 125.697 14.6511C125.521 14.6839 125.345 14.7146 125.169 14.7432C124.993 14.7678 124.834 14.7903 124.69 14.8108C124.383 14.8558 124.115 14.9274 123.886 15.0256C123.657 15.1238 123.479 15.2569 123.352 15.4247C123.225 15.5884 123.162 15.793 123.162 16.0386C123.162 16.3946 123.291 16.6668 123.548 16.8551C123.81 17.0393 124.142 17.1313 124.543 17.1313Z" fill="#259AFB"/>
+                <path d="M114.302 18.7582V9.32851H116.837V10.9738H116.935C117.107 10.3885 117.396 9.94652 117.801 9.64775C118.206 9.34489 118.673 9.19345 119.201 9.19345C119.331 9.19345 119.473 9.20164 119.624 9.21801C119.776 9.23438 119.909 9.25689 120.023 9.28554V11.6061C119.9 11.5693 119.731 11.5366 119.514 11.5079C119.297 11.4793 119.098 11.4649 118.918 11.4649C118.533 11.4649 118.19 11.5488 117.887 11.7166C117.588 11.8803 117.351 12.1095 117.175 12.4042C117.003 12.6989 116.917 13.0386 116.917 13.4233V18.7582H114.302Z" fill="#259AFB"/>
+                <path d="M103.303 8.37696V6.18529H113.629V8.37696H109.78V18.7582H107.152V8.37696H103.303Z" fill="#259AFB"/>
+              </g>
+              <rect x="1.19769" y="2.83417" width="21.6962" height="21.6962" rx="3.31306" fill="url(#paint0_radial_1_525)" stroke="#090C21" stroke-width="0.213746"/>
+              <g filter="url(#filter2_f_1_525)">
+                <path d="M11.3511 5.55968C12.9388 5.55972 14.3737 5.84539 15.4097 6.30577C15.9277 6.53603 16.3437 6.80927 16.6294 7.10948C16.9149 7.40944 17.0688 7.73464 17.0688 8.0714C17.0687 8.40798 16.9147 8.73252 16.6294 9.03233C16.3437 9.33255 15.9277 9.60579 15.4097 9.83605C14.3737 10.2964 12.9388 10.5821 11.3511 10.5821C9.76311 10.5821 8.32758 10.2965 7.2915 9.83605C6.7734 9.60578 6.3575 9.33257 6.07178 9.03233C5.78651 8.73255 5.63345 8.40795 5.6333 8.0714C5.6333 7.73467 5.78637 7.40941 6.07178 7.10948C6.3575 6.80925 6.7734 6.53604 7.2915 6.30577C8.32758 5.8453 9.76311 5.55968 11.3511 5.55968Z" stroke="#105CEF" stroke-width="0.106873"/>
+              </g>
+              <g filter="url(#filter3_f_1_525)">
+                <path d="M11.3511 5.55968C12.5247 5.55974 13.5845 5.79758 14.3491 6.1798C15.117 6.56376 15.5718 7.08456 15.5718 7.64366C15.5716 8.20267 15.1169 8.72264 14.3491 9.10655C13.5845 9.48883 12.5248 9.72758 11.3511 9.72765C10.1771 9.72765 9.11677 9.48889 8.35205 9.10655C7.58423 8.72264 7.12952 8.20267 7.12939 7.64366C7.12939 7.08456 7.58412 6.56376 8.35205 6.1798C9.11676 5.79752 10.1772 5.55968 11.3511 5.55968Z" stroke="#105CEF" stroke-width="0.106873"/>
+              </g>
+              <path opacity="0.66" d="M11.5619 10.6182L6.60376 12.607L11.5899 14.5679L16.5201 12.6071L11.5619 10.6182Z" fill="url(#paint1_linear_1_525)"/>
+              <path d="M11.4102 3.93925C12.2217 3.93925 13.0004 4.29048 13.5742 4.91484C14.1478 5.53912 14.4707 6.38559 14.4707 7.26836C14.4707 8.9238 12.0523 11.8118 11.6338 12.2986V13.2742H11.1875V12.2986C10.7694 11.8131 8.35059 8.93106 8.35059 7.26836C8.35063 6.3855 8.67335 5.53914 9.24707 4.91484C9.82083 4.29055 10.5987 3.93934 11.4102 3.93925ZM11.4102 4.44609C10.7226 4.44751 10.0633 4.74525 9.57715 5.27421C9.09108 5.80319 8.81768 6.52034 8.81641 7.26836C8.81641 8.492 10.5531 10.8153 11.4102 11.8289C12.2671 10.8154 14.0049 8.49972 14.0049 7.26836C14.0036 6.52025 13.7293 5.80321 13.2432 5.27421C12.757 4.74524 12.0977 4.44743 11.4102 4.44609Z" fill="url(#paint2_linear_1_525)"/>
+              <g filter="url(#filter4_f_1_525)">
+                <ellipse cx="11.3676" cy="20.3704" rx="9.54483" ry="2.58968" fill="url(#paint3_radial_1_525)"/>
+              </g>
+              <g filter="url(#filter5_d_1_525)">
+                <path d="M17.0866 12.5895V12.5888C17.086 12.583 17.0846 12.5769 17.0832 12.5711C17.0829 12.5694 17.0822 12.5677 17.0819 12.5656C17.0809 12.5612 17.0795 12.5571 17.0778 12.5527C17.0771 12.5507 17.0764 12.549 17.0757 12.5469C17.074 12.5425 17.072 12.5381 17.0696 12.5337C17.0689 12.5323 17.0686 12.5313 17.0679 12.5299C17.0649 12.5245 17.0618 12.519 17.0581 12.5139C17.0574 12.5129 17.0567 12.5122 17.056 12.5112C17.053 12.5071 17.0499 12.503 17.0465 12.499C17.0455 12.4976 17.0441 12.4962 17.0431 12.4952C17.0397 12.4918 17.0363 12.4884 17.0329 12.485C17.0315 12.484 17.0305 12.4826 17.0291 12.4816C17.0251 12.4779 17.0206 12.4745 17.0159 12.4714C17.0152 12.4711 17.0149 12.4704 17.0142 12.47C17.0142 12.47 17.0142 12.47 17.0138 12.47C17.0084 12.4663 17.0029 12.4632 16.9972 12.4602C16.9958 12.4595 16.9944 12.4588 16.9927 12.4581C16.9893 12.4564 16.9859 12.4547 16.9825 12.4534L11.6222 10.3097C11.5821 10.2937 11.5372 10.2937 11.4967 10.3097L6.13739 12.4534C6.13399 12.4547 6.13059 12.4564 6.12719 12.4581C6.12583 12.4588 6.12413 12.4595 6.12277 12.4602C6.11698 12.4632 6.1112 12.4666 6.1061 12.47C6.1061 12.47 6.1061 12.47 6.10576 12.47C6.10508 12.4704 6.10473 12.4711 6.10405 12.4714C6.09963 12.4745 6.09521 12.4779 6.09079 12.4816C6.08943 12.4826 6.08806 12.484 6.08704 12.485C6.08364 12.4881 6.08024 12.4915 6.07684 12.4952C6.07548 12.4966 6.07446 12.4979 6.0731 12.4993C6.06969 12.5034 6.06663 12.5071 6.06357 12.5115C6.06289 12.5126 6.06221 12.5133 6.06153 12.5143C6.05813 12.5194 6.05472 12.5248 6.05166 12.5303C6.05098 12.5316 6.0503 12.533 6.04962 12.534C6.04758 12.5384 6.04554 12.5425 6.0435 12.5469C6.04282 12.549 6.04214 12.5507 6.04146 12.5527C6.0401 12.5568 6.03873 12.5612 6.03737 12.5653C6.03703 12.567 6.03635 12.569 6.03601 12.5707C6.03465 12.5765 6.03363 12.5823 6.03261 12.5881C6.03261 12.5881 6.03261 12.5888 6.03261 12.5891C6.03193 12.5956 6.03159 12.6024 6.03125 12.6088V12.6095V19.0408C6.03125 19.1099 6.07344 19.1718 6.13739 19.1976L11.497 21.3416C11.5008 21.343 11.5045 21.3444 11.5086 21.3457C11.5096 21.3457 11.5103 21.3464 11.5113 21.3467C11.5185 21.3488 11.5256 21.3505 11.5327 21.3515C11.5344 21.3515 11.5361 21.3518 11.5378 21.3522C11.5453 21.3532 11.5525 21.3539 11.56 21.3539C11.5674 21.3539 11.5746 21.3532 11.5821 21.3522C11.5838 21.3522 11.5855 21.3518 11.5872 21.3515C11.5943 21.3505 11.6015 21.3488 11.6086 21.3467C11.6096 21.3467 11.6103 21.3461 11.6113 21.3457C11.6151 21.3444 11.6192 21.3433 11.6229 21.3416L16.9825 19.1976C17.0465 19.1721 17.0887 19.1099 17.0887 19.0408V12.6102V12.6095C17.0887 12.6027 17.0883 12.5963 17.0873 12.5898L17.0866 12.5895ZM11.5596 10.6482L16.4647 12.6102L11.5596 14.5722L6.65451 12.6102L11.5596 10.6482ZM6.36874 12.8596L11.3905 14.8685V20.9364L6.36874 18.9272V12.8596ZM16.7502 18.9272L11.7284 20.9361V14.8682L16.7502 12.8592V18.9272Z" fill="url(#paint4_linear_1_525)"/>
+              </g>
+              <path opacity="0.54" d="M16.8088 12.8534L11.6318 14.915L11.6777 20.9624L16.8088 18.9008V12.8534Z" fill="#1286F5"/>
+              <path d="M14.4738 13.6733L14.4737 16.587L13.1692 17.9959L12.543 18.4655L12.5239 20.3699" stroke="url(#paint5_linear_1_525)" stroke-width="0.277869"/>
+              <path d="M12.6504 18.6944L13.513 18.1455L13.5914 18.812L15.5127 16.8907L15.4735 15.4792L15.8656 15.4008L15.8264 14.9303" stroke="url(#paint6_linear_1_525)" stroke-width="0.213746"/>
+              <path d="M13.6699 19.4394L14.0228 19.361L14.1797 19.0473L15.1599 19.0081L15.9441 18.4199L15.8265 17.7926L16.2578 17.7142L16.2186 17.0476" stroke="url(#paint7_linear_1_525)" stroke-width="0.213746"/>
+              <path opacity="0.54" d="M11.3984 14.8672L6.35799 12.8395L6.35449 18.9319L11.4042 20.9491L11.3984 14.8672Z" fill="#1286F5"/>
+              <path opacity="0.1" d="M11.1844 7.45978C10.0597 7.45978 9.14795 7.72225 9.14795 8.04612C9.14795 8.36999 10.0597 8.63246 11.1844 8.63246C12.3092 8.63246 13.2208 8.36999 13.2208 8.04612C13.2208 7.72225 12.309 7.45978 11.1844 7.45978ZM11.1844 8.46769C10.2746 8.46769 9.53705 8.25527 9.53705 7.9933C9.53705 7.73133 10.2747 7.51891 11.1844 7.51891C12.0942 7.51891 12.8319 7.73133 12.8319 7.9933C12.8319 8.25527 12.0942 8.46769 11.1844 8.46769Z" fill="url(#paint8_linear_1_525)"/>
+              <path d="M11.4104 4.44597C10.7228 4.44731 10.0637 4.74512 9.57745 5.27415C9.09123 5.80319 8.81753 6.52034 8.8163 7.26851C8.8163 8.49229 10.5535 10.8157 11.4104 11.8292C12.2673 10.8157 14.0045 8.49989 14.0045 7.26851C14.0033 6.52034 13.7296 5.80319 13.2433 5.27415C12.7571 4.74512 12.098 4.44731 11.4104 4.44597Z" fill="url(#paint9_linear_1_525)"/>
+              <circle cx="11.3507" cy="7.21593" r="1.28247" fill="#081545" stroke="url(#paint10_linear_1_525)" stroke-width="0.427492"/>
+              <g filter="url(#filter6_df_1_525)">
+                <path d="M10.9947 12.864C10.8681 12.9128 10.4606 13.0529 10.4304 13.2206C10.5131 13.3752 10.8531 13.4257 10.9988 13.4503C11.303 13.4912 11.613 13.4914 11.9176 13.45C12.0686 13.4277 12.2218 13.396 12.3574 13.3306C12.4061 13.3037 12.4597 13.2778 12.4858 13.2207C12.4872 13.2171 12.4867 13.2076 12.4803 13.1938C12.453 13.14 12.4076 13.1047 12.3624 13.0719C12.2281 12.9789 12.0745 12.9207 11.9219 12.8641C12.1067 12.8556 12.7478 12.9206 12.5876 13.3466C12.4594 13.5853 12.1397 13.6577 11.9405 13.7052C11.54 13.7799 11.1304 13.7707 10.7363 13.6396C10.576 13.5856 10.1767 13.4047 10.3413 13.0903C10.487 12.8853 10.7983 12.8673 10.9947 12.864Z" fill="#58F5FF"/>
+              </g>
+              <path d="M6.97485 17.0467L7.67733 17.4522V18.0126H7.94083V18.5328" stroke="url(#paint11_linear_1_525)" stroke-width="0.301923"/>
+              <path d="M8.47854 19.9605L8.48599 17.0962L7.07418 15.5358V14.6317L6.9707 14.243L6.97071 13.6426" stroke="url(#paint12_linear_1_525)" stroke-width="0.301923"/>
+              <path d="M8.40951 13.4609L8.29028 15.965L9.06536 16.442L10.0587 17.5544" stroke="url(#paint13_linear_1_525)" stroke-width="0.301923"/>
+              <circle cx="10.2613" cy="17.7274" r="0.289234" stroke="#58F5FF" stroke-width="0.241538"/>
+            </g>
+            <defs>
+              <filter id="filter0_n_1_525" x="29.1846" y="6.18528" width="70.7212" height="16.3055" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feTurbulence type="fractalNoise" baseFrequency="2.0341110229492188 2.0341110229492188" stitchTiles="stitch" numOctaves="3" result="noise" seed="9851"/>
+                <feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise"/>
+                <feComponentTransfer in="alphaNoise" result="coloredNoise1">
+                  <feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+                </feComponentTransfer>
+                <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped"/>
+                <feFlood flood-color="rgba(0, 0, 0, 0.12)" result="color1Flood"/>
+                <feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1"/>
+                <feMerge result="effect1_noise_1_525">
+                  <feMergeNode in="shape"/>
+                  <feMergeNode in="color1"/>
+                </feMerge>
+              </filter>
+              <filter id="filter1_n_1_525" x="103.303" y="6.18528" width="63.7041" height="12.7571" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feTurbulence type="fractalNoise" baseFrequency="2.0341110229492188 2.0341110229492188" stitchTiles="stitch" numOctaves="3" result="noise" seed="9851"/>
+                <feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise"/>
+                <feComponentTransfer in="alphaNoise" result="coloredNoise1">
+                  <feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+                </feComponentTransfer>
+                <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped"/>
+                <feFlood flood-color="rgba(0, 0, 0, 0.12)" result="color1Flood"/>
+                <feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1"/>
+                <feMerge result="effect1_noise_1_525">
+                  <feMergeNode in="shape"/>
+                  <feMergeNode in="color1"/>
+                </feMerge>
+              </filter>
+              <filter id="filter2_f_1_525" x="5.25897" y="5.18535" width="12.1835" height="5.77114" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="0.160309" result="effect1_foregroundBlur_1_525"/>
+              </filter>
+              <filter id="filter3_f_1_525" x="6.75506" y="5.18535" width="9.19104" height="4.91615" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="0.160309" result="effect1_foregroundBlur_1_525"/>
+              </filter>
+              <filter id="filter4_f_1_525" x="-0.870443" y="15.0875" width="24.476" height="10.5658" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="1.3466" result="effect1_foregroundBlur_1_525"/>
+              </filter>
+              <filter id="filter5_d_1_525" x="4.40678" y="9.52825" width="14.3063" height="14.3051" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dy="0.854983"/>
+                <feGaussianBlur stdDeviation="0.812234"/>
+                <feComposite in2="hardAlpha" operator="out"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_525"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_525" result="shape"/>
+              </filter>
+              <filter id="filter6_df_1_525" x="9.92896" y="12.4901" width="3.05736" height="1.63535" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset/>
+                <feGaussianBlur stdDeviation="0.186641"/>
+                <feComposite in2="hardAlpha" operator="out"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0.346267 0 0 0 0 0.962336 0 0 0 0 1 0 0 0 1 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_525"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_525" result="shape"/>
+                <feGaussianBlur stdDeviation="0.124428" result="effect2_foregroundBlur_1_525"/>
+              </filter>
+              <radialGradient id="paint0_radial_1_525" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12.0458 13.6823) rotate(90) scale(10.955)">
+                <stop stop-color="#0F2971"/>
+                <stop offset="1" stop-color="#071340"/>
+              </radialGradient>
+              <linearGradient id="paint1_linear_1_525" x1="11.5144" y1="10.615" x2="11.5144" y2="14.6026" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00D0FF"/>
+                <stop offset="1" stop-color="#2F8EFF"/>
+              </linearGradient>
+              <linearGradient id="paint2_linear_1_525" x1="10.002" y1="4.70266" x2="11.1416" y2="13.3184" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#D3F5FF"/>
+                <stop offset="0.676751" stop-color="#58F5FF"/>
+                <stop offset="1" stop-color="#58F5FF" stop-opacity="0.2"/>
+              </linearGradient>
+              <radialGradient id="paint3_radial_1_525" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11.3676 20.3704) scale(9.54483 2.58968)">
+                <stop stop-color="#0DA6FF"/>
+                <stop offset="1" stop-color="#004990" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="paint4_linear_1_525" x1="11.5596" y1="21.3304" x2="11.5596" y2="10.3145" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#01B4FF"/>
+                <stop offset="1" stop-color="#58F5FF"/>
+              </linearGradient>
+              <linearGradient id="paint5_linear_1_525" x1="13.5083" y1="13.8735" x2="13.2215" y2="20.6982" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#40E3FF"/>
+                <stop offset="0.665712" stop-color="#1286F5"/>
+                <stop offset="1" stop-color="#1286F5" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="paint6_linear_1_525" x1="14.258" y1="14.9303" x2="14.258" y2="18.812" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#40E3FF"/>
+                <stop offset="1" stop-color="#1286F5"/>
+              </linearGradient>
+              <linearGradient id="paint7_linear_1_525" x1="14.9639" y1="17.0476" x2="14.9639" y2="19.4394" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0DA6FF"/>
+                <stop offset="1" stop-color="#1286F5"/>
+              </linearGradient>
+              <linearGradient id="paint8_linear_1_525" x1="11.1844" y1="7.45978" x2="11.1844" y2="8.63246" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0DA6FF"/>
+                <stop offset="1" stop-color="#0DA6FF"/>
+              </linearGradient>
+              <linearGradient id="paint9_linear_1_525" x1="14.4702" y1="8.44541" x2="8.35057" y2="8.44541" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#3793F5"/>
+                <stop offset="1" stop-color="#74B2FA"/>
+              </linearGradient>
+              <linearGradient id="paint10_linear_1_525" x1="12.8469" y1="7.21593" x2="9.85449" y2="7.21593" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#4DB8FF"/>
+                <stop offset="1" stop-color="#DAFFFF"/>
+              </linearGradient>
+              <linearGradient id="paint11_linear_1_525" x1="7.45784" y1="17.0467" x2="7.45784" y2="18.5328" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#58F5FF"/>
+                <stop offset="1" stop-color="#1286F5"/>
+              </linearGradient>
+              <linearGradient id="paint12_linear_1_525" x1="7.74293" y1="13.6286" x2="7.74293" y2="19.5111" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#58F5FF"/>
+                <stop offset="0.912885" stop-color="#1890F6"/>
+                <stop offset="1" stop-color="#0CBBFF"/>
+              </linearGradient>
+              <linearGradient id="paint13_linear_1_525" x1="9.14419" y1="13.6698" x2="9.12498" y2="17.4556" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#3FE2FF"/>
+                <stop offset="0.43998" stop-color="#1F9BF7"/>
+                <stop offset="1" stop-color="#58F5FF"/>
+              </linearGradient>
+              <clipPath id="clip0_1_525">
+                <rect width="168" height="27" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+        </span>
+        <p class="site-header__legal" id="header-consent">
+          <span>By clicking the button below, you agree to download aiBrowser from aibrowserapps.com, which includes Package Tracker and other productivity tools, and you accept our </span>
+          <a href="https://packagetracker.ai/legal/terms-of-service" target="_blank" class="site-header__link">Terms of Service</a>
+          <span> and </span>
+          <a href="https://packagetracker.ai/legal/privacy-policy" target="_blank" class="site-header__link">Privacy Policy</a>
+        </p>
+      </div>
+    </header>
+
+    <main id="main-content" class="main" role="main">
+      <section class="main__stage">
+        <div class="modal-layer">
+            <article
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-heading"
+            aria-describedby="modal-desc"
+            >
+            <div class="modal__surface">
+                <header class="modal__header">
+                <div class="modal__icon-wrap" aria-hidden="true">
+                    <img src="images/badge.svg"  role="presentation">
+                </div>
+                <h1 id="modal-heading" class="modal__title">Track All Your Packages</h1>
+                </header>
+
+                <div
+                class="modal__progress"
+                role="progressbar"
+                aria-valuenow="0"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-label="Download preparation progress"
+                >
+                <div class="modal__progress-track">
+                    <div class="modal__progress-fill"></div>
+                </div>
+                </div>
+
+                <div class="modal__cta-wrap">
+                <button type="button" id="continue" class="modal__cta download-ai" download-copy="Continue" download-position="atf" aria-label="Continue with download">
+                    CONTINUE
+                </button>
+                </div>
+
+                <p id="modal-desc" class="modal__description">
+                  Effortlessly monitor all your packages in one place for free using Package Tracker with aiBrowser.
+                </p>
+
+                <hr class="modal__rule" aria-hidden="true">
+
+                <nav class="stepper" aria-label="Steps to install aiBrowser">
+                <ol class="stepper__list">
+                    <li class="stepper__item">
+                    <div class="stepper__num" aria-hidden="true">1</div>
+                    <p class="stepper__label">
+                        <span class="stepper__label stepper__label--semibold">Click </span>
+                        <a href="#continue" class="stepper__link download-ai" download-copy="Continue" download-position="atfSteps">‘Continue’</a>
+                    </p>
+                    </li>
+                    
+                    <li class="stepper__item">
+                    <div class="stepper__num" aria-hidden="true">2</div>
+                    <p class="stepper__label stepper__label--semibold">Install the <br> browser</p>
+                    </li>
+                    
+                    <li class="stepper__item">
+                    <div class="stepper__num" aria-hidden="true">3</div>
+                    <p class="stepper__label stepper__label--semibold">Track Packages</p>
+                    </li>
+                </ol>
+                </nav>
+            </div>
+            </article>
+        </div>
+      </section>
+    </main>
+  </div>
+<!-- Features Section -->
+<section class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">
+Powerful Tracking Features
+</h2>
+<p class="text-xl text-gray-600">
+Everything you need to stay on top of your deliveries
+</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+<i class="ri-radar-line text-secondary text-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">
+Auto-Detect Carriers
+</h3>
+<p class="text-gray-600">
+Simply enter your tracking number and we will automatically identify the carrier and fetch your package status.
+</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+<i class="ri-route-line text-secondary text-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Track Every Step
+</h3>
+<p class="text-gray-600">
+Follow your package journey from pickup to delivery with detailed status updates and location information.
+</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+<i class="ri-global-line text-secondary text-xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">
+Global Carrier Coverage
+</h3>
+<p class="text-gray-600">
+Track packages from over 100 carriers worldwide including UPS ®, FedEx, DHL, USPS ®, and local postal services.
+</p>
+</div>
+</div>
+<div class="text-center mt-12">
+<a href="#" class="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-primary hover:bg-primary/90 transition-colors rounded-button download-ai" download-copy="Download Now" download-position="btf">
+Download Now
+</a>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">
+How It Works
+</h2>
+<p class="text-xl text-gray-600">
+Track your package in three simple steps
+</p>
+</div>
+<div class="grid grid-cols-1 gap-12 max-w-3xl mx-auto">
+<div class="flex flex-col gap-20">
+<div class="flex items-center gap-16 flex-col sm:flex-row">
+<div class="relative">
+<div class="w-full sm:w-96 h-72 rounded-xl overflow-hidden shadow-lg">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img1.png" alt="Track Package Step 1" class="lazy-img w-full h-full object-cover">
+</div>
+<div class="absolute -top-4 left-4 sm:-left-4 w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg">
+<span class="text-xl font-bold">1</span>
+</div>
+</div>
+<div class="space-y-4 flex-1">
+<h3 class="text-2xl font-semibold text-gray-900">Enter Tracking Number</h3>
+<p class="text-lg text-gray-600">
+Enter your tracking number into the search bar to start tracking your package.
+</p>
+</div>
+</div>
+<div class="flex items-center gap-16 flex-col sm:flex-row-reverse">
+<div class="relative">
+<div class="w-full sm:w-96 h-72 rounded-xl overflow-hidden shadow-lg">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img2.png" alt="Track Package Step 2" class="lazy-img w-full h-full object-cover">
+</div>
+<div class="absolute -top-4 right-4 sm:-right-4 w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg">
+<span class="text-xl font-bold">2</span>
+</div>
+</div>
+<div class="space-y-4 flex-1">
+<h3 class="text-2xl font-semibold text-gray-900">
+Choose Your Carrier
+</h3>
+<p class="text-lg text-gray-600">
+We'll automatically detect the right carrier for you to ensure accurate tracking.
+</p>
+</div>
+</div>
+<div class="flex items-center gap-16 flex-col sm:flex-row">
+<div class="relative">
+<div class="w-full sm:w-96 h-72 rounded-xl overflow-hidden shadow-lg">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img3.png" alt="Track Package Step 3" class="lazy-img w-full h-full object-cover">
+</div>
+<div class="absolute -top-4 left-4 sm:-left-4 w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg">
+<span class="text-xl font-bold">3</span>
+</div>
+</div>
+<div class="space-y-4 flex-1">
+<h3 class="text-2xl font-semibold text-gray-900">
+Get Instant Updates
+</h3>
+<p class="text-lg text-gray-600">
+Track your package status with live updates at every stage of its journey, from dispatch to delivery
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mt-16">
+<a href="#" class="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-primary hover:bg-primary/90 transition-colors rounded-button whitespace-nowrap download-ai" download-copy="Download Now" download-position="btf2">
+Download Now
+</a>
+</div>
+</div>
+</section>
+<!-- Why Choose Us Section -->
+<section class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">
+Why Choose Our Tracker?
+</h2>
+<p class="text-xl text-gray-600">
+Built with simplicity and security in mind
+</p>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="flex space-x-4">
+<div class="w-12 h-12 flex items-center justify-center bg-secondary/10 rounded-lg flex-shrink-0">
+<i class="ri-shield-check-line text-secondary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">
+Track Major Carriers
+</h3>
+<p class="text-gray-600">Monitor shipments from over 100 carriers, all in one place. Stay updated on your deliveries, whether from global carriers like FedEx and UPS®, or regional services like CouriersPlease and Sendle.
+</p>
+</div>
+</div>
+<div class="flex space-x-4">
+<div class="w-12 h-12 flex items-center justify-center bg-secondary/10 rounded-lg flex-shrink-0">
+<i class="ri-user-line text-secondary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">
+No Account Required
+</h3>
+<p class="text-gray-600">
+Start tracking immediately without the need for creating an account or providing personal information. Simply enter your tracking number and get instant access to your shipment's status.
+</p>
+</div>
+</div>
+<div class="flex space-x-4">
+<div class="w-12 h-12 flex items-center justify-center bg-secondary/10 rounded-lg flex-shrink-0">
+<i class="ri-layout-line text-secondary text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">
+User-Friendly Interface
+</h3>
+<p class="text-gray-600">
+Our intuitive, seamless design makes tracking effortless. With clear navigation and easy-to-read updates, you can quickly check the status of your packages without any hassle.
+</p>
+</div>
+</div>
+</div>
+<div class="text-center mt-12">
+<a href="#" class="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-primary hover:bg-primary/90 transition-colors rounded-button whitespace-nowrap download-ai" download-copy="Download Now" download-position="btf3">
+Download Now
+</a>
+</div>
+</div>
+</section>
+<!-- Package Trackers Grid -->
+<section class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">
+Supported Carriers
+</h2>
+<p class="text-xl text-gray-600">
+Track packages from these popular carriers and many more
+</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-truck-line text-amber-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">AmazonMws</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-plane-line text-purple-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">APC</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-mail-line text-red-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">FedEx</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-government-line text-blue-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">Australia Post</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-government-line text-blue-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">USPS®</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-ship-line text-green-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">Better Trucks</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-roadster-line text-indigo-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">Canada Post</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-bus-line text-teal-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">Canpar</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-train-line text-pink-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">UPS®</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-rocket-line text-cyan-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">Chronopost</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-car-line text-yellow-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">CloudSort</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-sailboat-line text-emerald-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">Courier Express</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-subway-line text-rose-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">CouriersPlease</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-taxi-line text-violet-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">CSLogistics</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-motorbike-line text-lime-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">Dai Post</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-truck-fill text-gray-600"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">DeliverIt</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-flight-takeoff-line text-blue-500"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">Deutsche Post</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer text-center">
+<div class="w-8 h-8 flex items-center justify-center mx-auto mb-3 text-2xl">
+<i class="ri-ship-2-line text-orange-500"></i>
+</div>
+<p class="text-sm font-medium text-gray-900">DHL</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-20 bg-white">
+<div class="max-w-4xl mx-auto px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">
+Frequently Asked Questions
+</h2>
+<p class="text-xl text-gray-600">
+Everything you need to know about our package tracking service
+</p>
+</div>
+<div class="space-y-4">
+<div class="border border-gray-200 rounded-lg">
+<button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors">
+<span class="font-semibold text-gray-900">Can I track packages from multiple carriers?</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-add-line faq-icon text-gray-500"></i>
+</div>
+</button>
+<div class="faq-content hidden px-6 pb-4">
+<p class="text-gray-600">
+Yes! You can track shipments from various carriers all in one place. Our system supports over 100 carriers worldwide and automatically detects the carrier based on your tracking number format.
+</p>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg">
+<button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors">
+<span class="font-semibold text-gray-900">Is this a Package Tracking App?</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-add-line faq-icon text-gray-500"></i>
+</div>
+</button>
+<div class="faq-content hidden px-6 pb-4">
+<p class="text-gray-600">
+No, Package Tracker is included as a feature within aiBrowser. When you download, you'll get the full browser with Package Tracker and other productivity tools.
+</p>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg">
+<button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors">
+<span class="font-semibold text-gray-900">Do I need to sign in or create an account?</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-add-line faq-icon text-gray-500"></i>
+</div>
+</button>
+<div class="faq-content hidden px-6 pb-4">
+<p class="text-gray-600">
+No account needed! Just download the app and start tracking.
+</p>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg">
+<button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors">
+<span class="font-semibold text-gray-900">Is my tracking information secure?</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-add-line faq-icon text-gray-500"></i>
+</div>
+</button>
+<div class="faq-content hidden px-6 pb-4">
+<p class="text-gray-600">
+Yes. We don't store or share any of your tracking information — your privacy is respected at all times.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="max-w-5xl mx-auto mt-16 bg-primary rounded-lg py-16 md:py-32 px-6 md:px-12 relative overflow-hidden">
+    <div class="relative z-10 text-center md:text-left md:max-w-[45%]">
+    <h2 class="text-3xl font-bold text-white mb-8">Never miss a delivery again. Track all your packages in one place.</h2>
+    <a href="#" class="inline-flex items-center px-8 py-4 text-lg font-semibold text-primary bg-white hover:bg-gray-50 transition-colors rounded-button whitespace-nowrap download-ai" download-copy="Download Now" download-position="btf4">
+    Download Now
+    </a>
+    </div>
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/btf2.png" alt="Package Tracking Interface" class="lazy-img mt-10 md:mt-0 md:absolute top-8 -right-12 h-full md:w-1/2 object-cover object-left">
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 py-12">
+<div class="max-w-7xl mx-auto px-6 lg:px-8">
+<div class="text-center space-y-8">
+<div class="flex flex-wrap justify-center gap-8">
+<a href="../../legal/privacy-policy/" target="_blank" class="hover:text-white transition-colors">Privacy Policy</a>
+<a href="../../legal/terms-of-service/" target="_blank" class="hover:text-white transition-colors">Terms of Service</a>
+<a href="mailto:contact@aibrowser.com" class="hover:text-white transition-colors">Contact Us</a>
+<a href="../../legal/uninstall-instructions/" target="_blank" class="hover:text-white transition-colors">Uninstall</a>
+<a href="../../legal/do-not-share-my-personal-information/" target="_blank" class="hover:text-white transition-colors">Do Not Share My Personal Information</a>
+</div>
+<div class="border-t border-gray-800 pt-8">
+<p class="text-sm text-gray-500">All third-party names, logos, and images are trademarks or properties of their respective owners. Their use does not imply any affiliation or endorsement.</p>
+</div>
+</div>
+</div>
+</footer>
+<script>
+(function(){
+var observer = new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+var img = entry.target;
+img.src = img.dataset.src;
+img.classList.remove('lazy-img');
+observer.unobserve(img);
+}
+});
+},{rootMargin:'200px'});
+document.querySelectorAll('img.lazy-img').forEach(function(img){observer.observe(img);});
+})();
+</script>
+<script src="../../js/product.js" ></script>
+<script id="faq-functionality">
+document.addEventListener('DOMContentLoaded', function() {
+const faqToggles = document.querySelectorAll('.faq-toggle');
+faqToggles.forEach(toggle => {
+toggle.addEventListener('click', function() {
+const content = this.nextElementSibling;
+const icon = this.querySelector('.faq-icon');
+if (content.classList.contains('hidden')) {
+content.classList.remove('hidden');
+icon.classList.remove('ri-add-line');
+icon.classList.add('ri-subtract-line');
+} else {
+content.classList.add('hidden');
+icon.classList.remove('ri-subtract-line');
+icon.classList.add('ri-add-line');
+}
+});
+});
+});
+</script>
+</body>
+</html>

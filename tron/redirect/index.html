@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect</title>
+</head>
+<body>
+    <script>
+        const path = '/thank-you';
+        const returnUrl = new URLSearchParams(window.location.search).get('returnUrl');
+        const source = new URLSearchParams(window.location.search).get('source');
+        document.cookie = `source=${source}; path=${path}; max-age=86400`;
+        window.location.href = returnUrl;
+    </script>
+</body>
+</html>

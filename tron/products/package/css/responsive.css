@@ -1,0 +1,145 @@
+/* Responsive Styles */
+
+/* Tablets and smaller desktops */
+@media (max-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+/* Tablets and large phones */
+@media (max-width: 768px) {
+  .hero .container {
+    flex-direction: column;
+  }
+  
+  .hero-content,
+  .hero-image {
+    width: 100%;
+  }
+  
+  .hero-image {
+    margin-top: var(--space-8);
+    order: -1;
+  }
+  
+  .nav {
+    display: none;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .nav.active {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-4);
+  }
+  
+  .nav.active .nav-list {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .steps-container {
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+  
+  .step:not(:last-child)::after {
+    display: none;
+  }
+  
+  .advantages-grid {
+    grid-template-columns: 1fr;
+  }
+  .carriers-grid,
+  .features-grid {
+    max-width: 400px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .features-grid .feature-card:last-child{
+    grid-column: 1;
+    margin: 0;
+
+  }
+  .advantages-list{
+    max-width: 400px;
+  }
+  .feature-icon, .advantage-icon, .step-number {
+    width: 36px;
+    height: 36px;
+  }
+  .step-number{
+    font-size: 1rem;
+  }
+  .hero{
+    padding: calc(30px + var(--space-12)) 0 var(--space-16);
+  }
+  .hero .cta-container, .hero-content, .hero-image{
+    text-align: center;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .carriers-grid,
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .track-form {
+    flex-direction: column;
+  }
+  
+  .tracking-input {
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--space-2);
+  }
+  
+  .track-btn {
+    border-radius: var(--border-radius-md);
+    width: 100%;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .advantage-card {
+    flex-direction: column;
+  }
+  
+  .advantage-icon {
+    margin-right: 0;
+    margin-bottom: var(--space-3);
+  }
+}

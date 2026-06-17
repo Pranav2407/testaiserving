@@ -1,0 +1,507 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Directions</title>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T3RLNKRM');</script>
+<!-- End Google Tag Manager -->
+ <link rel="icon" type="image/png" href="images/logo.png">
+<link rel="stylesheet" href="./tailwind.min.css">
+<script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+<script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+<script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+<script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+<script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-harp.js"></script>
+<link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<meta name="robots" content="noindex, nofollow">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+#mapToggleBtn {
+transition: transform 0.2s;
+}
+#mapToggleBtn:hover {
+transform: scale(1.05);
+}
+#mapToggleBtn:active {
+transform: scale(0.95);
+}
+.map-container {
+width: 100%;
+height: 100%;
+}
+.tab-active {
+color: #1A6AF4;
+border-bottom: 2px solid #1A6AF4;
+}
+.transport-active {
+background-color: #1A6AF4 !important;
+color: white;
+}
+input[type="text"] {
+outline: none;
+}
+input[type="text"]:focus {
+border-color: #1A6AF4;
+}
+.direction-step {
+position: relative;
+}
+.direction-step::before {
+content: "";
+position: absolute;
+left: 12px;
+top: 24px;
+bottom: -8px;
+width: 2px;
+background-color: #E5E7EB;
+z-index: 0;
+}
+.direction-step:last-child::before {
+display: none;
+}
+.pady-20 {
+   padding-top: 7rem;
+   padding-bottom: 6rem;
+}
+.pFixed {
+   position: fixed;
+   width: 100%;
+}
+.topPad {
+   padding-top: 89px;
+}
+ @media (max-width: 1279px) {
+    .rmHeight {
+        height: auto !important;
+    }
+ }
+ #searchPanel {
+    min-height: 432px;
+ }
+
+ .H_ib_close.H_btn{
+    display: none !important;
+ }
+ .popupstyle{
+    width: max-content !important;
+ }
+ .H_ib_content{
+    margin: 0 !important;
+ }
+</style>
+</head>
+<body class="min-h-screen bg-white">
+<div class="flex flex-col h-screen rmHeight">
+<!-- Navigation -->
+<nav class="flex items-center justify-between px-4 py-2 xl:py-3 border-b border-gray-200 w-full top-0 bg-white z-50 pFixed">
+<div class="flex items-center gap-2">
+<div class="w-12 h-12 xl:w-16 xl:h-16 flex items-center justify-center relative">
+<div class="absolute inset-0 flex items-center justify-center">
+<i class="ri-cpu-fill text-primary text-4xl"></i>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<img src="./images/logo.png" alt="Logo" class="w-12 h-12 object-contain">
+</div>
+</div>
+<a href="#" class="h-5 flex items-center -ml-1">
+<img src="./images/logoname.png" alt="Quick Directions" class="h-full">
+</a>
+</div>
+<div class="hidden xl:flex space-x-8 ml-auto mr-5">
+<a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="text-gray-800 hover:text-primary">Home</a>
+<a href="#features" class="text-gray-500 hover:text-primary">Types of Maps</a>
+<a href="#how-it-works" class="text-gray-500 hover:text-primary">Reading Maps</a>
+<a href="#faq" class="text-gray-500 hover:text-primary">FAQs</a>
+</div>
+<!-- I want it alway on top right -->
+<div class="flex items-center gap-2">
+<button id="mapToggleBtn" class="xl:hidden w-10 h-10 flex items-center justify-center bg-primary text-white rounded-lg hover:bg-primary/90 absolute top-4 right-4 z-50 shadow-lg transition-all duration-300 ease-in-out">
+<i class="ri-map-2-line text-xl"></i>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<div class="flex flex-col xl:flex-row flex-1 overflow-hidden relative topPad">
+<!-- Left Panel (Full width on mobile, 35% on desktop) -->
+<div class="w-full xl:w-[35%] flex flex-col border-b xl:border-b-0 border-gray-200 overflow-y-auto">
+<div class="p-6 pt-8">
+<h1 class="text-2xl font-bold text-gray-900">Find Your Way with Quick Directions</h1>
+<p class="mt-2 text-gray-600">Quick Directions with aiBrowser - Get real-time directions and explore nearby places with ease.</p>
+</div>
+<!-- Tabs -->
+<div class="flex border-b border-gray-200">
+<button id="directionsTab" class="flex-1 py-3 text-center tab-active font-medium">Directions</button>
+<button id="searchTab" class="flex-1 py-3 text-center text-gray-500 font-medium">Search</button>
+</div>
+<!-- Directions Panel -->
+<div id="directionsPanel" class="p-6">
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Starting Point</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<i class="ri-map-pin-2-line text-gray-400 text-lg"></i>
+</div>
+<input type="text" id="startingPoint" class="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-primary/20" placeholder="Enter your starting location" autocomplete="off" spellcheck="false">
+<div id="startingPointSuggestions" class="absolute left-0 right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg overflow-y-auto max-h-[240px] z-50 hidden">
+</div>
+</div>
+</div>
+<div class="flex justify-center my-2">
+<button id="swapBtn" class="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 hover:bg-gray-50">
+<i class="ri-arrow-up-down-line text-gray-500"></i>
+</button>
+</div>
+<div class="mb-6">
+<label class="block text-sm font-medium text-gray-700 mb-1">Destination</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<i class="ri-map-pin-2-line text-gray-400 text-lg"></i>
+</div>
+<input type="text" id="destination" class="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-primary/20" placeholder="Enter your destination" autocomplete="off" spellcheck="false">
+<div id="destinationSuggestions" class="absolute left-0 right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg overflow-y-auto max-h-[240px] z-50 hidden">
+</div>
+</div>
+</div>
+<div class="mb-6">
+<label class="block text-sm font-medium text-gray-700 mb-2">Transport Mode</label>
+<div class="flex space-x-2">
+<button data-mode="drive" class="transport-btn flex-1 flex items-center justify-center py-2 px-3 transport-active rounded-button hover:bg-gray-200 whitespace-nowrap">
+<i class="ri-car-line mr-2"></i>
+Drive
+</button>
+<button data-mode="transit" class="transport-btn flex-1 flex items-center justify-center py-2 px-3 bg-gray-100 text-gray-700 rounded-button hover:bg-gray-200 whitespace-nowrap">
+<i class="ri-bus-line mr-2"></i>
+Transit
+</button>
+<button data-mode="walk" class="transport-btn flex-1 flex items-center justify-center py-2 px-3 bg-gray-100 text-gray-700 rounded-button hover:bg-gray-200 whitespace-nowrap">
+<i class="ri-walk-line mr-2"></i>
+Walk
+</button>
+<button data-mode="bike" class="transport-btn flex-1 flex items-center justify-center py-2 px-3 bg-gray-100 text-gray-700 rounded-button hover:bg-gray-200 whitespace-nowrap">
+<i class="ri-bike-line mr-2"></i>
+Bike
+</button>
+</div>
+</div>
+<div class="flex space-x-3 mb-6">
+<button id="getDirectionsBtn" class="flex-1 py-2 px-4 bg-primary text-white font-medium rounded-button hover:bg-primary/90 whitespace-nowrap">
+Get Directions
+</button>
+<button id="resetBtn" class="py-2 px-4 text-gray-600 font-medium hover:bg-gray-100 rounded-button whitespace-nowrap">
+Reset
+</button>
+</div>
+<!-- Directions Results -->
+<div id="directionsResults" class="border-t border-gray-200 pt-4 hidden">
+<div class="flex justify-between mb-4">
+<div>
+<div class="text-sm text-gray-500">Estimated Time</div>
+<div class="text-lg font-semibold">17 min</div>
+</div>
+<div class="text-right">
+<div class="text-sm text-gray-500">Distance</div>
+<div class="text-lg font-semibold">8.3 mi</div>
+</div>
+</div>
+<div class="flex items-center text-sm text-gray-600 mb-4">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-car-line"></i>
+</div>
+Via Drive
+</div>
+<!-- Step by Step Directions -->
+<div class="space-y-4">
+<div class="direction-step pl-6 pb-2 relative">
+<div class="w-6 h-6 flex items-center justify-center bg-primary rounded-full text-white absolute left-0 top-0">
+<i class="ri-arrow-right-up-line"></i>
+</div>
+<div class="font-medium">Head northeast on Broadway</div>
+<div class="text-sm text-gray-500 mt-1">0.5 miles · 2 min</div>
+</div>
+<div class="direction-step pl-6 pb-2 relative">
+<div class="w-6 h-6 flex items-center justify-center bg-primary rounded-full text-white absolute left-0 top-0">
+<i class="ri-corner-right-up-line"></i>
+</div>
+<div class="font-medium">Turn right onto 5th Avenue</div>
+<div class="text-sm text-gray-500 mt-1">1.2 miles · 4 min</div>
+</div>
+<div class="direction-step pl-6 pb-2 relative">
+<div class="w-6 h-6 flex items-center justify-center bg-primary rounded-full text-white absolute left-0 top-0">
+<i class="ri-arrow-left-line"></i>
+</div>
+<div class="font-medium">Keep left to continue on 5th Avenue</div>
+<div class="text-sm text-gray-500 mt-1">0.8 miles · 3 min</div>
+</div>
+<div class="direction-step pl-6 pb-2 relative">
+<div class="w-6 h-6 flex items-center justify-center bg-primary rounded-full text-white absolute left-0 top-0">
+<i class="ri-corner-right-up-line"></i>
+</div>
+<div class="font-medium">Turn right onto Park Avenue</div>
+<div class="text-sm text-gray-500 mt-1">1.5 miles · 5 min</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Search Panel (Hidden by Default) -->
+<div id="searchPanel" class="p-6 hidden">
+<div class="mb-6">
+<label class="block text-sm font-medium text-gray-700 mb-1">Search for a place</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<i class="ri-search-line text-gray-400 text-lg"></i>
+</div>
+<input type="text" id="searchInput" class="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-primary/20" placeholder="Enter a location" autocomplete="off" spellcheck="false">
+</div>
+</div>
+<div class="flex space-x-3">
+<button id="searchBtn" class="flex-1 py-2 px-4 bg-primary text-white font-medium rounded-button hover:bg-primary/90 whitespace-nowrap">
+Search
+</button>
+<button id="searchResetBtn" class="py-2 px-4 text-gray-600 font-medium hover:bg-gray-100 rounded-button whitespace-nowrap">
+Reset
+</button>
+</div>
+</div>
+</div>
+<!-- Map Container (Hidden by default on mobile) -->
+<div id="mapContainer" class="fixed xl:relative xl:flex-1 inset-0 bg-white z-40 transform translate-x-full xl:translate-x-0 transition-transform duration-300 ease-in-out">
+<div class="absolute inset-0">
+<div class="map-container w-full h-full"></div>
+</div>
+</div>
+<!-- Map Toggle Button moved to nav -->
+</div>
+</div>
+<!-- Navigate with Ease Section -->
+<section id="features" class="pady-20 bg-white">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Digital Map Types</h2>
+<p class="text-gray-600">Explore common maps for daily use</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+<div class="p-6 bg-white rounded-lg border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-4">
+<i class="ri-map-pin-2-line text-primary text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2 min-h-[3rem]">Navigation Maps</h3>
+<p class="text-gray-600">Get step-by-step directions and real-time traffic updates for smooth travel.</p>
+</div>
+<div class="p-6 bg-white rounded-lg border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-4">
+<i class="ri-walk-line text-primary text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2 min-h-[3rem]">Satellite Maps</h3>
+<p class="text-gray-600">View detailed satellite images showing real landscapes and buildings.</p>
+</div>
+<div class="p-6 bg-white rounded-lg border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-4">
+<i class="ri-road-map-line text-primary text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2 min-h-[3rem]">Street Maps</h3>
+<p class="text-gray-600">Find streets, landmarks, and neighborhoods with clear layouts.</p>
+</div>
+<div class="p-6 bg-white rounded-lg border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-4">
+<i class="ri-earth-line text-primary text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2 min-h-[3rem]">Hybrid Maps</h3>
+<p class="text-gray-600">Combine satellite images and street labels for a complete map view.</p>
+</div>
+<div class="p-6 bg-white rounded-lg border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-4">
+<i class="ri-train-line text-primary text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2 min-h-[3rem]">Public Transit Maps</h3>
+<p class="text-gray-600">Plan trips using buses, trains, and subways with live schedules.</p>
+</div>
+<div class="p-6 bg-white rounded-lg border border-gray-100">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-4">
+<i class="ri-building-2-line text-primary text-xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2 min-h-[3rem]">Indoor Maps</h3>
+<p class="text-gray-600">Navigate large buildings like malls and airports with detailed floor plans.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section id="how-it-works" class="py-20 bg-gray-50">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">How to Read a Map</h2>
+<p class="text-gray-600">Key Elements to Understand</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex items-start gap-6 p-6 bg-white rounded-lg">
+<div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-primary text-white rounded-full text-xl">
+<i class="ri-list-settings-line"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Legend</h3>
+<p class="text-gray-600">Explains symbols and colors on the map.</p>
+</div>
+</div>
+<div class="flex items-start gap-6 p-6 bg-white rounded-lg">
+<div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-primary text-white rounded-full text-xl">
+<i class="ri-ruler-line"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Scale</h3>
+<p class="text-gray-600">Shows the link between map and real distances.</p>
+</div>
+</div>
+<div class="flex items-start gap-6 p-6 bg-white rounded-lg">
+<div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-primary text-white rounded-full text-xl">
+<i class="ri-compass-3-line"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Compass Rose</h3>
+<p class="text-gray-600">Indicates map orientation (North, South, East, West).</p>
+</div>
+</div>
+<div class="flex items-start gap-6 p-6 bg-white rounded-lg">
+<div class="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-primary text-white rounded-full text-xl">
+<i class="ri-layout-grid-line"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Grid Lines</h3>
+<p class="text-gray-600">Help locate exact positions using coordinates.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Download section -->
+<section class="py-20 bg-gray-50">
+   <div class="max-w-6xl mx-auto px-6">
+   <div class="text-center mb-12">
+   <h2 class="text-4xl font-bold text-gray-900 mb-6">Quick Directions with aiBrowser - Get the App Today</h2>
+   <div class="flex justify-center mb-8">
+   <div class="max-w-lg">
+   <img src="https://static.readdy.ai/image/be13743f0e9895a18914e5f783e93ffd/88b96cf82f33983998ee73bf67880b8a.png" alt="aiBrowser Quick Directions App" class="w-full h-auto object-contain rounded-lg">
+   </div>
+   </div>
+   <div class="flex justify-center mb-6">
+   <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 bg-primary text-white font-semibold rounded-button hover:bg-primary/90 transition-colors !rounded-button whitespace-nowrap text-lg download-ai" download-copy="Download Now" download-position="btf">
+   Download Now
+   </a>
+   </div>
+   <h2 class="text-base text-gray-600 max-w-4xl mx-auto leading-relaxed">By clicking the button above, you agree to download aiBrowser from aibrowserapps.com, which includes Quick Directions and other productivity tools and you accept our <a href="/legal/terms-of-service/" target="_blank" rel="noopener noreferrer" class="hover:text-primary">Terms of Service</a> and <a href="/legal/privacy-policy/" target="_blank" rel="noopener noreferrer" class="hover:text-primary">Privacy Policy</a>.</h2>
+   </div>
+   </div>
+</section>
+<!-- FAQs Section -->
+<section id="faq" class="pady-20 bg-white">
+<div class="max-w-3xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">FAQs</h2>
+<p class="text-gray-600">Find answers to commonly asked questions.</p>
+</div>
+<div class="space-y-4">
+<div class="border border-gray-200 rounded-lg">
+      <button class="w-full px-6 py-4 text-left focus:outline-none faq-toggle">
+      <div class="flex items-center justify-between">
+      <span class="font-medium text-gray-900">Is this a Maps App?</span>
+      <i class="ri-add-line text-gray-400 faq-icon ri-subtract-line"></i>
+      </div>
+      </button>
+      <div class="px-6 py-4 border-t border-gray-200 faq-content">
+      <p class="text-gray-600">This is a Maps widget which is one of the many features built into aiBrowser. When you download it, you get the full browser along with other productivity tools designed to make your browsing smarter, faster, and more efficient. </p>
+      </div>
+</div>
+<div class="border border-gray-200 rounded-lg">
+<button class="w-full px-6 py-4 text-left focus:outline-none faq-toggle">
+<div class="flex items-center justify-between">
+<span class="font-medium text-gray-900">Can I get directions between two places?</span>
+<i class="ri-add-line text-gray-400 faq-icon"></i>
+</div>
+</button>
+<div class="px-6 py-4 border-t border-gray-200 faq-content hidden">
+<p class="text-gray-600">Yes. Enter your starting point and destination, then choose your preferred method of travel (driving, walking, biking, or public transit) to get turn-by-turn directions and estimated travel time.</p>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg">
+<button class="w-full px-6 py-4 text-left focus:outline-none faq-toggle">
+<div class="flex items-center justify-between">
+<span class="font-medium text-gray-900">How do I search for a place on the map?</span>
+<i class="ri-add-line text-gray-400 faq-icon"></i>
+</div>
+</button>
+<div class="px-6 py-4 border-t border-gray-200 faq-content hidden">
+<p class="text-gray-600">Just type the name of a city, address, landmark, or business into the search bar. The map will zoom in on that location and display relevant information.</p>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg">
+<button class="w-full px-6 py-4 text-left focus:outline-none faq-toggle">
+<div class="flex items-center justify-between">
+<span class="font-medium text-gray-900">What are map markers or pins?</span>
+<i class="ri-add-line text-gray-400 faq-icon"></i>
+</div>
+</button>
+<div class="px-6 py-4 border-t border-gray-200 faq-content hidden">
+<p class="text-gray-600">Markers (or pins) are icons placed on the map to identify specific points of interest like businesses, addresses, or landmarks. <!--Clicking a marker will usually show more details about that place. --></p>
+</div>
+</div>
+<div class="border border-gray-200 rounded-lg">
+<button class="w-full px-6 py-4 text-left focus:outline-none faq-toggle">
+<div class="flex items-center justify-between">
+<span class="font-medium text-gray-900">How do I zoom in or out on the map?</span>
+<i class="ri-add-line text-gray-400 faq-icon"></i>
+</div>
+</button>
+<div class="px-6 py-4 border-t border-gray-200 faq-content hidden">
+<p class="text-gray-600">Use the "+" or "–" buttons on the screen, scroll with your mouse, or pinch in/out on a touch device to zoom.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-12">
+<div class="max-w-6xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+<div class="col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
+<div class="flex items-center gap-2 mb-4">
+<h3 class="text-white font-medium">Quick Directions</h3>
+</div>
+<p class="text-sm">This tool helps users find accurate routes, explore new places, and save time with real-time directions from their desktop.</p>
+</div>
+<div class="col-span-1 flex justify-center">
+<div class="text-center md:text-left">
+<ul class="space-y-2 text-sm">
+<li><a href="/legal/terms-of-service/" target="_blank" rel="noopener noreferrer" class="hover:text-white">Terms of Service</a></li>
+<li><a href="/legal/privacy-policy/" target="_blank" rel="noopener noreferrer" class="hover:text-white">Privacy Policy</a></li>
+<li><a href="/legal/do-not-share-my-personal-information" target="_blank" rel="noopener noreferrer" class="hover:text-white">Do Not Share My Personal Information</a></li>
+<li><a href="/legal/uninstall-instructions" target="_blank" rel="noopener noreferrer" class="hover:text-white">Uninstall Instructions</a></li>
+</ul>
+</div>
+</div>
+<div class="col-span-1 flex justify-center md:justify-end">
+<div class="text-center md:text-left">
+<p class="text-sm"><a href="mailto:contact@aibrowser.com">contact@aibrowser.com</a></p>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-6">
+<p class="text-center text-[12px] text-gray-500 mt-2">All third-party names, logos, and images are trademarks or properties of their respective owners. Their use does not imply any affiliation or endorsement.</p>
+</div>
+</div>
+</footer>
+<script src="./js/index.js"></script>
+</body>
+</html>

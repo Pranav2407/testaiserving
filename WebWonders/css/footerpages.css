@@ -1,0 +1,147 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+/* General Styles */
+html {
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: 100%
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word
+}
+  body, h1, h2, h3, h4, p {
+            font-family:"Inter", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            word-wrap: break-word;
+        }
+
+        header {
+           
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / .1), 0 2px 4px -2px rgb(0 0 0 / .1);
+        }
+        header section {
+            padding: 1rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .logoImg img {
+            width: 38.4px;
+            height: auto;
+        }
+        .logoText {
+            font-weight: 600;
+            font-family:"Inter", Arial, sans-serif;
+            font-size: 1.5rem;
+    line-height: 2rem;
+    padding-top: 5px;
+    color: #1a365d;
+        }
+        main  {
+            padding: 3rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        main h1 {
+            color: #1a365d;
+            font-size: 50px;
+            font-family:"Inter", Arial, sans-serif; 
+            padding-bottom: 50px;
+        }
+        main h3 {
+            padding: 30px 0;
+            font-size: 25px;
+            font-weight: 600px;
+            color: #1a365d;
+        }
+        main h4 {
+            padding: 10px 0 20px;
+            font-size: 20px;
+            font-weight: 600px;
+            color: #1a365d;
+           
+        }
+        .uline {
+            text-decoration: underline;
+            font-style: italic;
+        }
+        main p {
+            padding: 0 0 20px;
+            font-size: 18px;
+            font-weight: 400px;
+            color: #4b5563;
+            line-height: 25px;
+        }
+        main ul, main ol  {
+            padding: 0 0 20px 35px;
+            font-size: 18px;
+            font-weight: 400px;
+            color: #4b5563;
+            line-height: 25px;
+        }
+        main p a,  main ul a {
+            font-size: 18px;
+            font-weight: 400px;
+            color: #4b5563;
+            line-height: 25px;
+            text-decoration: none;
+        }
+
+/*======== footer CSS start ========*/
+        footer {
+            background: #1a365d;
+        }
+        footer section {
+            padding: 1rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        footer section p {
+            text-align: center;
+        }
+        footer section p a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 12px;
+            padding: 0 5px;
+            border-right: 1px solid #71717a;
+        }
+        footer section p a:last-child {
+            border-right: none;
+        }
+        footer section p a:hover {
+            text-decoration: underline;
+        }
+
+        /*======== footer CSS end ========*/
+
+        @media screen and (max-width:450px) {
+            main h1 {
+                font-size: 40px;
+            }
+            main h3 {
+                font-size: 22px;
+            }
+            main p, main ul, main ol {
+                font-size: 16px;
+            }
+            main h4 {
+                font-size: 18px;
+            }
+        }
+
+        @media screen and (max-width:330px) {
+            .logoText {
+                font-size: 22px;
+            }
+        }

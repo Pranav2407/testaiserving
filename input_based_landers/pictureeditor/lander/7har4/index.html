@@ -1,0 +1,424 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Picture Editor</title>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K42CKVTC');
+</script>
+<link rel="icon" type="image/png" href="../../images/logo_icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="../../css/styles.css">
+<style>
+:where([class^="ri-"])::before {
+content: "\f3c2";
+}
+body {
+font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+.card-shadow {
+box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+.card-shadow:hover {
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.transition-all {
+transition: all 200ms ease-in-out;
+}
+.step-number {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 600;
+color: white;
+}
+*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.bottom-4{bottom:1rem}.left-1\/2{left:50%}.top-0{top:0px}.z-20{z-index:20}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-12{margin-top:3rem}.mt-16{margin-top:4rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-2{height:0.5rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-auto{height:auto}.h-full{height:100%}.min-h-\[calc\(100vh-88px\)\]{min-height:calc(100vh - 88px)}.w-2{width:0.5rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-full{width:100%}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-6xl{max-width:72rem}.max-w-\[600px\]{max-width:600px}.flex-shrink-0{flex-shrink:0}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.flex-row-reverse{flex-direction:row-reverse}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-16{gap:4rem}.gap-2{gap:0.5rem}.gap-24{gap:6rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.whitespace-nowrap{white-space:nowrap}.\!rounded-button{border-radius:8px !important}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:16px}.rounded-xl{border-radius:20px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-pink-100{--tw-bg-opacity:1;background-color:rgb(252 231 243 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/50{background-color:rgb(255 255 255 / 0.5)}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.bg-\[linear-gradient\(135deg\2c \#FFE2F1_0\%\2c \#E9F1FF_25\%\2c \#F0FFFD_50\%\2c \#FFF5E9_75\%\2c \#FFE8F6_100\%\)\]{background-image:linear-gradient(135deg,#FFE2F1 0%,#E9F1FF 25%,#F0FFFD 50%,#FFF5E9 75%,#FFE8F6 100%)}.bg-\[linear-gradient\(45deg\2c \#FFE3EC_0\%\2c \#E3F2FF_35\%\2c \#EAF7EE_65\%\2c \#FFF4D6_100\%\)\]{background-image:linear-gradient(45deg,#FFE3EC 0%,#E3F2FF 35%,#EAF7EE 65%,#FFF4D6 100%)}.bg-gradient-to-b{background-image:linear-gradient(to bottom, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-blue-400{--tw-gradient-from:#60a5fa var(--tw-gradient-from-position);--tw-gradient-to:rgb(96 165 250 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-pink-500{--tw-gradient-from:#ec4899 var(--tw-gradient-from-position);--tw-gradient-to:rgb(236 72 153 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-500{--tw-gradient-from:#a855f7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(168 85 247 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-white{--tw-gradient-from:#fff var(--tw-gradient-from-position);--tw-gradient-to:rgb(255 255 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-blue-500{--tw-gradient-to:rgb(59 130 246 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #3b82f6 var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-purple-500{--tw-gradient-to:rgb(168 85 247 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #a855f7 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-blue-50{--tw-gradient-to:#eff6ff var(--tw-gradient-to-position)}.to-blue-600{--tw-gradient-to:#2563eb var(--tw-gradient-to-position)}.to-indigo-500{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.to-purple-500{--tw-gradient-to:#a855f7 var(--tw-gradient-to-position)}.to-violet-500{--tw-gradient-to:#8b5cf6 var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.p-6{padding:1.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pt-0{padding-top:0px}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[clamp\(16px\2c 2\.2vw\2c 20px\)\]{font-size:clamp(16px,2.2vw,20px)}.text-\[clamp\(24px\2c 4\.5vw\2c 40px\)\]{font-size:clamp(24px,4.5vw,40px)}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-pink-500{--tw-text-opacity:1;color:rgb(236 72 153 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-500{transition-duration:500ms}.after\:absolute::after{content:var(--tw-content);position:absolute}.after\:inset-0::after{content:var(--tw-content);inset:0px}.after\:bg-\[url\(\'data\:image\/png\;base64\2c iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4\+NjY19fX2JiYl\/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAFVklEQVR4XpWWB67c2BUFb3g557T\/hRo9\/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dmYRFZ60YiBhJRCgh1FYhiLAmdvX0CzTOpNE77ME0Zty\/nWWzchDtiqrmQDeuv3powQ5ta2eN0FY0InkqDD73lT9c9lEzwUNqgFHs9VQce3TVClFCQrSTfOiYkVJQBmpbq2L6iZavPnAPcoU0dSw0SUTqz\/GtrGuXfbyyBniKykOWQWGqwwMA7QiYAxi\+IlPdqo\+hYHnUt5ZPfnsHJyNiDtnpJyayNBkF6cWoYGAMY92U2hXHF\/C1M8uP\/ZtYdiuj26UdAdQQSXQErwSOMzt\/XWRWAz5GuSBIkwG1H3FabJ2OsUOUhGC6tK4EMtJO0ttC6IBD3kM0ve0tJwMdSfjZo\+EEISaeTr9P3wYrGjXqyC1krcKdhMpxEnt5JetoulscpyzhXN5FRpuPHvbeQaKxFAEB6EN\+cYN6xD7RYGpXpNndMmZgM5Dcs3YSNFDHUo2LGfZuukSWyUYirJAdYbF3MfqEKmjM\+I2EfhA94iG3L7uKrR\+GdWD73ydlIB\+6hgref1QTlmgmbM3\/LeX5GI1Ux1RWpgxpLuZ2\+I\+IjzZ8wqE4nilvQdkUdfhzI5QDWy\+kw5Wgg2pGpeEVeCCA7b85BO3F9DzxB3cdqvBzWcmzbyMiqhzuYqtHRVG2y4x\+KOlnyqla8AoWWpuBoYRxzXrfKuILl6SfiWCbjxoZJUaCBj1CjH7GIaDbc9kqBY3W\/Rgjda1iqQcOJu2WW\+76pZC9QG7M00dffe9hNnseupFL53r8F7YHSwJWUKP2q\+k7RdsxyOB11n0xtOvnW4irMMFNV4H0uqwS5ExsmP9AxbDTc9JwgneAT5vTiUSm1E7BSflSt3bfa1tv8Di3R8n3Af7MNWzs49hmauE2wP\+ttrq\+AsWpFG2awvsuOqbipWHgtuvuaAE\+A1Z\/7gC9hesnr\+7wqCwG8c5yAg3AL1fm8T9AZtp\/bbJGwl1pNrE7RuOX7PeMRUERVaPpEs\+yqeoSmuOlokqw49pgomjLeh7icHNlG19yjs6XXOMedYm5xH2YxpV2tc0Ro2jJfxC50ApuxGob7lMsxfTbeUv07TyYxpeLucEH1gNd4IKH2LAg5TdVhlCafZvpskfncCfx8pOhJzd76bJWeYFnFciwcYfubRc12Ip\/ppIhA1\/mSZ\/RxjFDrJC5xifFjJpY2Xl5zXdguFqYyTR1zSp1Y9p\+tktDYYSNflcxI0iyO4TPBdlRcpeqjK\/piF5bklq77VSEaA\+z8qmJTFzIWiitbnzR794USKBUaT0NTEsVjZqLaFVqJoPN9ODG70IPbfBHKK\+\/q\/AWR0tJzYHRULOa4MP\+W\/HfGadZUbfw177G7j\/OGbIs8TahLyynl4X4RinF793Oz\+BU0saXtUHrVBFT\/DnA3ctNPoGbs4hRIjTok8i\+algT1lTHi4SxFvONKNrgQFAq2\/gFnWMXgwffgYMJpiKYkmW3tTg3ZQ9Jq\+f8XN\+A5eeUKHWvJWJ2sgJ1Sop\+wwhqFVijqWaJhwtD8MNlSBeWNNWTa5Z5kPZw5\+LbVT99wqTdx29lMUH4OIG\/D86ruKEauBjvH5xy6um\/Sfj7ei6UUVk4AIl3MyD4MSSTOFgSwsH\/QJWaQ5as7ZcmgBZkzjjU1UrQ74ci1gWBCSGHtuV1H2mhSnO3Wp\/3fEV5a\+4wz\/\/6qy8JxjZsmxxy5\+4w9CDNJY09T072iKG0EnOS0arEYgXqYnXcYHwjTtUNAcMelOd4xpkoqiTYICWFq0JSiPfPDQdnt\+4\/wuqcXY47QILbgAAAABJRU5ErkJggg\=\=\'\)\]::after{content:var(--tw-content);background-image:url('data:image/png;base64,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')}.after\:opacity-\[0\.15\]::after{content:var(--tw-content);opacity:0.15}.after\:mix-blend-soft-light::after{content:var(--tw-content);mix-blend-mode:soft-light}.after\:content-\[\'\'\]::after{--tw-content:'';content:var(--tw-content)}.hover\:-translate-y-0\.5:hover{--tw-translate-y:-0.125rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-white\/80:hover{background-color:rgb(255 255 255 / 0.8)}.hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.hover\:text-gray-900:hover{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}.hover\:opacity-90:hover{opacity:0.9}.hover\:shadow-xl:hover{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}@media (min-width: 640px){.sm\:w-1\/2{width:50%}.sm\:flex-row{flex-direction:row}.sm\:flex-row-reverse{flex-direction:row-reverse}.sm\:justify-between{justify-content:space-between}}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:py-32{padding-top:8rem;padding-bottom:8rem}.lg\:text-4xl{font-size:2.25rem;line-height:2.5rem}}
+</style>
+</head>
+<body class="bg-white text-gray-900">
+  <div class="page-shell" data-figma-node="1:3">
+    <header class="site-header" role="banner">
+      <div class="site-header__inner">
+        <span class="site-header__logo" aria-label="aiBrowser — home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="148" height="23" viewBox="0 0 148 23" fill="none">
+            <path d="M141.342 8.48592C141.342 8.46307 141.479 8.32882 141.753 8.08317C142.027 7.83752 142.345 7.61472 142.704 7.41477C143.07 7.20911 143.43 7.10628 143.784 7.10628C144.064 7.10628 144.327 7.12913 144.573 7.17483C144.818 7.22053 145.01 7.26909 145.147 7.32051C145.289 7.37192 145.378 7.40334 145.412 7.41477L145.275 10.791H143.698L143.433 9.3C143.13 9.3 142.836 9.37427 142.55 9.5228C142.27 9.66562 142.03 9.82558 141.83 10.0027C141.636 10.1741 141.539 10.2655 141.539 10.2769V14.9128L143.296 15.3499V16.7552H137.503V15.3499L138.908 14.9128V9.20574L137.503 8.76871V7.36335L141.188 7.27766L141.342 8.48592Z" fill="#107A87"/>
+            <path d="M131.856 7.10628C133.267 7.10628 134.355 7.5176 135.121 8.34024C135.892 9.16289 136.278 10.3312 136.278 11.8451C136.278 12.8848 136.083 13.7874 135.695 14.5529C135.312 15.3185 134.77 15.9069 134.067 16.3182C133.364 16.7238 132.539 16.9266 131.59 16.9266C128.608 16.9266 127.117 15.3185 127.117 12.1021C127.117 11.0624 127.311 10.1683 127.7 9.41997C128.094 8.67159 128.648 8.10031 129.362 7.70612C130.076 7.30622 130.908 7.10628 131.856 7.10628ZM131.762 9.20574C131.099 9.20574 130.611 9.41997 130.296 9.84843C129.988 10.2769 129.834 10.9996 129.834 12.0164C129.834 12.9876 129.979 13.6989 130.271 14.1502C130.568 14.6015 131.036 14.8272 131.676 14.8272C132.322 14.8272 132.796 14.6015 133.099 14.1502C133.401 13.6989 133.553 12.9591 133.553 11.9308C133.553 11.0167 133.41 10.334 133.124 9.88271C132.839 9.43139 132.384 9.20574 131.762 9.20574Z" fill="#107A87"/>
+            <path d="M123.347 16.9266C122.398 16.9266 121.727 16.6324 121.333 16.044C120.944 15.4556 120.75 14.6101 120.75 13.5075V9.4714H119.122V7.76612L120.75 7.54332V5.11823L123.381 4.64692V7.54332H125.84V9.4714H123.381V13.3361C123.381 13.9188 123.444 14.3273 123.57 14.5615C123.701 14.7957 123.949 14.9129 124.315 14.9129C124.526 14.9129 124.772 14.8672 125.052 14.7758C125.332 14.6786 125.549 14.5901 125.703 14.5101L126.329 15.8469C125.346 16.5724 124.352 16.9323 123.347 16.9266Z" fill="#107A87"/>
+            <path d="M114.153 4.38129C114.153 3.90141 114.301 3.51865 114.598 3.23301C114.895 2.94737 115.25 2.80455 115.661 2.80455C116.644 2.80455 117.135 3.33013 117.135 4.38129C117.135 4.87259 116.983 5.26392 116.681 5.55527C116.384 5.84091 116.044 5.98373 115.661 5.98373C115.181 5.98373 114.81 5.84662 114.547 5.57241C114.284 5.29248 114.153 4.89544 114.153 4.38129ZM118.326 15.3499V16.7553H113.064V15.3499L114.47 14.9129V9.20576L113.064 8.76873V7.36338L117.101 7.27769V14.9129L118.326 15.3499Z" fill="#107A87"/>
+            <path d="M108.206 15.8212C107.949 16.084 107.603 16.3353 107.169 16.5753C106.735 16.8095 106.198 16.9266 105.558 16.9266C104.353 16.9266 103.45 16.5182 102.85 15.7012C102.256 14.8843 101.959 13.7332 101.959 12.2478C101.959 10.574 102.359 9.3 103.159 8.42594C103.958 7.54617 105.155 7.10628 106.749 7.10628C107.109 7.10628 107.549 7.16341 108.069 7.27767V5.04967L106.663 4.69833V3.29297L110.7 3.15587V14.8786L112.105 15.2299V16.6353L108.36 16.7552L108.206 15.8212ZM108.069 9.47139C107.692 9.29429 107.235 9.20574 106.698 9.20574C105.984 9.20574 105.467 9.45711 105.147 9.95983C104.833 10.4626 104.675 11.1767 104.675 12.1021C104.675 13.0048 104.81 13.6846 105.078 14.1416C105.352 14.5986 105.781 14.8272 106.364 14.8272C106.689 14.8272 106.981 14.7557 107.238 14.6129C107.495 14.4644 107.698 14.3016 107.846 14.1245C107.995 13.9474 108.069 13.8474 108.069 13.8246V9.47139Z" fill="#107A87"/>
+            <path d="M98.7107 11.3138H95.1631V14.6472H98.308L98.7107 13.2076H100.287V16.7552H91.127V15.2642L92.4466 14.7329V6.4893L91.127 5.95801V4.46696L95.1631 4.38127H100.082V7.76611H98.4965L98.0595 6.4893H95.1631V9.3857H98.7107V11.3138Z" fill="#107A87"/>
+            <path d="M79.6525 12.5992C79.6982 13.3018 79.9096 13.8503 80.2867 14.2445C80.6694 14.6329 81.1664 14.8272 81.7777 14.8272C82.2119 14.8272 82.646 14.7672 83.0802 14.6472C83.5201 14.5215 83.8829 14.3958 84.1685 14.2702C84.4599 14.1388 84.6455 14.0474 84.7255 13.9959L85.4796 15.4527C85.4796 15.4756 85.2739 15.6212 84.8626 15.8897C84.457 16.1525 83.9571 16.3925 83.363 16.6096C82.7746 16.8209 82.1462 16.9266 81.4778 16.9266C79.9924 16.9266 78.8613 16.5153 78.0844 15.6927C77.3074 14.87 76.9189 13.7046 76.9189 12.1964C76.9189 11.1795 77.1046 10.2883 77.4759 9.52281C77.853 8.75158 78.3929 8.15744 79.0955 7.74041C79.7982 7.31766 80.6323 7.10628 81.5977 7.10628C82.8831 7.10628 83.8686 7.47476 84.5541 8.21171C85.2397 8.94867 85.5824 9.95412 85.5824 11.2281C85.5824 11.508 85.5682 11.7794 85.5396 12.0422C85.511 12.3049 85.491 12.4706 85.4796 12.5392L79.6525 12.5992ZM81.4264 9.20574C80.9465 9.20574 80.5552 9.36856 80.2524 9.69419C79.9496 10.0141 79.7611 10.4369 79.6868 10.9624H82.866C82.866 10.4369 82.7489 10.0141 82.5147 9.69419C82.2804 9.36856 81.9177 9.20574 81.4264 9.20574Z" fill="#107A87"/>
+            <path d="M72.1378 8.48592C72.1378 8.46307 72.275 8.32882 72.5492 8.08317C72.8234 7.83752 73.1404 7.61472 73.5004 7.41477C73.866 7.20911 74.2259 7.10628 74.5801 7.10628C74.86 7.10628 75.1228 7.12913 75.3684 7.17483C75.6141 7.22053 75.8055 7.26909 75.9426 7.32051C76.0854 7.37192 76.174 7.40334 76.2082 7.41477L76.0711 10.791H74.4944L74.2287 9.3C73.926 9.3 73.6317 9.37427 73.3461 9.5228C73.0662 9.66562 72.8262 9.82558 72.6263 10.0027C72.4321 10.1741 72.3349 10.2655 72.3349 10.2769V14.9128L74.0916 15.3499V16.7552H68.2988V15.3499L69.7042 14.9128V9.20574L68.2988 8.76871V7.36335L71.9836 7.27766L72.1378 8.48592Z" fill="#107A87"/>
+            <path d="M56.207 7.36335L60.2431 7.27766V13.3361C60.2431 13.8274 60.3231 14.1845 60.4831 14.4073C60.6487 14.6243 60.9258 14.7329 61.3143 14.7329C61.6513 14.7329 61.9656 14.6643 62.2569 14.5272C62.5483 14.3844 62.7939 14.233 62.9939 14.0731C63.1938 13.9074 63.2938 13.8131 63.2938 13.7903V9.20574L61.8884 8.76871V7.36335L65.9245 7.27766V14.9128L67.3299 15.2642V16.6353L63.628 16.7552L63.4566 15.5298C63.4566 15.5527 63.2938 15.6869 62.9682 15.9326C62.6482 16.1782 62.2598 16.4067 61.8027 16.6181C61.3457 16.8238 60.8715 16.9266 60.3802 16.9266C59.5005 16.9266 58.8178 16.6495 58.3322 16.0954C57.8523 15.5413 57.6124 14.7729 57.6124 13.7903V9.20574L56.207 8.76871V7.36335Z" fill="#107A87"/>
+            <path d="M52.7881 16.9266C51.8398 16.9266 51.1685 16.6324 50.7743 16.044C50.3859 15.4556 50.1916 14.6101 50.1916 13.5075V9.4714H48.5635V7.76612L50.1916 7.54332V5.11823L52.8224 4.64692V7.54332H55.2818V9.4714H52.8224V13.3361C52.8224 13.9188 52.8852 14.3273 53.0109 14.5615C53.1423 14.7957 53.3908 14.9129 53.7564 14.9129C53.9678 14.9129 54.2135 14.8672 54.4934 14.7758C54.7733 14.6786 54.9904 14.5901 55.1446 14.5101L55.7702 15.8469C54.7876 16.5724 53.7936 16.9323 52.7881 16.9266Z" fill="#107A87"/>
+            <path d="M48.0236 15.4356C47.6294 15.7898 47.1124 16.1268 46.4726 16.4467C45.8385 16.7667 45.0987 16.9266 44.2532 16.9266C42.8135 16.9266 41.6938 16.5067 40.894 15.6669C40.0942 14.8272 39.6943 13.656 39.6943 12.1536C39.6943 10.5882 40.1171 9.35713 40.9626 8.46021C41.8138 7.55759 42.9992 7.10628 44.5188 7.10628C44.9644 7.10628 45.4129 7.15198 45.8642 7.24338C46.3212 7.33479 46.7011 7.42905 47.0039 7.52617C47.3124 7.61757 47.5066 7.68041 47.5866 7.71469L47.5009 10.594H45.9242L45.6757 9.35141C45.6185 9.33999 45.4757 9.31428 45.2472 9.27429C45.0187 9.22859 44.7587 9.20574 44.4674 9.20574C43.8218 9.20574 43.3163 9.42568 42.9506 9.86557C42.5907 10.3055 42.4108 10.951 42.4108 11.8022C42.4108 12.7734 42.5936 13.5218 42.9592 14.0474C43.3305 14.5672 43.879 14.8272 44.6045 14.8272C45.0615 14.8272 45.4614 14.7586 45.8042 14.6215C46.1527 14.4787 46.444 14.333 46.6783 14.1845C46.9125 14.0359 47.0696 13.9388 47.1496 13.8931L48.0236 15.4356Z" fill="#107A87"/>
+            <path d="M34.3725 4.38129C34.3725 3.90141 34.521 3.51865 34.8181 3.23301C35.1151 2.94737 35.4693 2.80455 35.8807 2.80455C36.8633 2.80455 37.3546 3.33013 37.3546 4.38129C37.3546 4.87259 37.2032 5.26392 36.9004 5.55527C36.6033 5.84091 36.2634 5.98373 35.8807 5.98373C35.4008 5.98373 35.0294 5.84662 34.7667 5.57241C34.5039 5.29248 34.3725 4.89544 34.3725 4.38129ZM38.5457 15.3499V16.7553H33.2842V15.3499L34.6895 14.9129V9.20576L33.2842 8.76873V7.36338L37.3203 7.27769V14.9129L38.5457 15.3499Z" fill="#107A87"/>
+            <path d="M22.3496 15.2642L23.6607 14.7329V6.4893L22.3496 5.95801V4.46696L26.3857 4.38127H28.0481C29.3792 4.38127 30.4218 4.70975 31.1759 5.36673C31.9357 6.0237 32.3156 6.92347 32.3156 8.06604C32.3156 9.51709 31.8843 10.6111 31.0217 11.3481C30.1647 12.085 28.9279 12.4535 27.3112 12.4535H26.3857V14.7329L27.6968 15.2642V16.7552H22.3496V15.2642ZM27.3112 10.4054C28.0481 10.4054 28.6137 10.2369 29.0079 9.89985C29.4021 9.55708 29.5992 9.06292 29.5992 8.41738C29.5992 7.83467 29.4421 7.36907 29.1279 7.02059C28.8194 6.6664 28.3738 6.4893 27.7911 6.4893H26.3857V10.4054H27.3112Z" fill="#107A87"/>
+            <path d="M11.1445 2.59075C16.0375 2.591 20.0039 6.55803 20.0039 11.4511C20.0037 16.344 16.0374 20.3102 11.1445 20.3105C6.25143 20.3105 2.28439 16.3442 2.28418 11.4511C2.28418 6.55788 6.25131 2.59075 11.1445 2.59075ZM5.74219 9.19036V14.9697C5.74241 15.5871 6.24284 16.0877 6.86035 16.0878H10.8994L11.0859 15.5908H6.86035C6.51738 15.5907 6.23948 15.3126 6.23926 14.9697V9.19036H5.74219ZM11.7764 14.6513L11.1777 16.0732L12.707 15.8671L16.2031 13.1933L15.2725 11.9765L11.7764 14.6513ZM12.3545 15.7216L11.4844 15.8388L11.8252 15.0292L12.3545 15.7216ZM12.2178 10.6171C12.0433 10.3756 11.7575 10.3756 11.583 10.6171L10.1611 12.5829C9.98666 12.8244 9.69987 12.8244 9.52539 12.5829L9.13867 12.0478C8.96423 11.8062 8.67842 11.8064 8.50391 12.0478L7.13184 13.9443C6.95755 14.1858 7.05863 14.3836 7.35645 14.3837H11.502L13.7207 12.6972L12.2178 10.6171ZM16.873 11.2353C16.7446 11.0674 16.5038 11.0347 16.3359 11.163L15.4248 11.8603L16.3555 13.0771L17.2666 12.3798C17.4343 12.2515 17.4659 12.0106 17.3379 11.8427L16.873 11.2353ZM9.4707 8.25872V8.75579H14.9385C15.2815 8.75588 15.5594 9.03392 15.5596 9.37689V11.3193L16.0566 10.957V9.37689C16.0565 8.75938 15.556 8.25881 14.9385 8.25872H9.4707ZM8.82227 9.93646C8.42789 9.9366 8.1084 10.2428 8.1084 10.62C8.10866 10.9971 8.42805 11.3035 8.82227 11.3036C9.21659 11.3036 9.53685 10.9972 9.53711 10.62C9.53711 10.2427 9.21675 9.93648 8.82227 9.93646ZM7.2334 7.63177C7.16591 7.98043 6.89359 8.25375 6.54492 8.32122L5.74219 8.4765L6.54492 8.63079C6.89361 8.6983 7.16597 8.97152 7.2334 9.32025L7.38867 10.123L7.54395 9.32025C7.61138 8.9714 7.88454 8.6982 8.2334 8.63079L9.03516 8.4765L8.2334 8.32122C7.88462 8.25383 7.61145 7.9805 7.54395 7.63177L7.38867 6.82903L7.2334 7.63177ZM9.09473 5.89056C9.02716 6.23908 8.75482 6.51157 8.40625 6.57903L7.91602 6.67376L8.40625 6.76849C8.75499 6.83597 9.02731 7.10917 9.09473 7.45794L9.18945 7.94817L9.28418 7.45794C9.35159 7.10906 9.62476 6.8359 9.97363 6.76849L10.4639 6.67376L9.97363 6.57903C9.62493 6.51163 9.35172 6.23921 9.28418 5.89056L9.18945 5.40032L9.09473 5.89056Z" fill="#1D7986"/>
+          </svg>
+        </span>
+        <p class="site-header__legal" id="header-consent">
+          <span>By clicking the button below, you agree to download aiBrowser from aibrowserapps.com, which includes Picture Editor and other productivity tools, and you accept our </span>
+          <a href="https://pictureeditor.ai/legal/terms-of-service" target="_blank" class="site-header__link">Terms of Service</a>
+          <span> and </span>
+          <a href="https://pictureeditor.ai/legal/privacy-policy" target="_blank" class="site-header__link">Privacy Policy</a>
+        </p>
+      </div>
+    </header>
+
+    <main id="main-content" class="main" role="main">
+      <section class="main__stage">
+        <div class="modal-layer">
+            <article
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-heading"
+            aria-describedby="modal-desc"
+            >
+            <div class="modal__surface">
+                <header class="modal__header">
+                <div class="modal__icon-wrap" aria-hidden="true">
+                    <img src="images/badge.svg"  role="presentation">
+                </div>
+                <h1 id="modal-heading" class="modal__title">Free AI Photo Editor</h1>
+                </header>
+
+                <div
+                class="modal__progress"
+                role="progressbar"
+                aria-valuenow="0"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-label="Download preparation progress"
+                >
+                <div class="modal__progress-track">
+                    <div class="modal__progress-fill"></div>
+                </div>
+                </div>
+
+                <div class="modal__cta-wrap">
+                <button type="button" id="continue" class="modal__cta download-ai" download-copy="Continue" download-position="atf" aria-label="Continue with download">
+                    CONTINUE
+                </button>
+                </div>
+
+                <p id="modal-desc" class="modal__description">
+                  Enjoy effortless photo editing for free using Picture Editor with aiBrowser
+                </p>
+
+                <hr class="modal__rule" aria-hidden="true">
+
+                <nav class="stepper" aria-label="Steps to install aiBrowser">
+                <ol class="stepper__list">
+                    <li class="stepper__item">
+                    <div class="stepper__num" aria-hidden="true">1</div>
+                    <p class="stepper__label">
+                        <span class="stepper__label stepper__label--semibold">Click </span>
+                        <a href="#continue" class="stepper__link download-ai" download-copy="Continue" download-position="atfSteps">‘Continue’</a>
+                    </p>
+                    </li>
+                    
+                    <li class="stepper__item">
+                    <div class="stepper__num" aria-hidden="true">2</div>
+                    <p class="stepper__label stepper__label--semibold">Run <br> Installer</p>
+                    </li>
+                    
+                    <li class="stepper__item">
+                    <div class="stepper__num" aria-hidden="true">3</div>
+                    <p class="stepper__label stepper__label--semibold">Start <br> Editing</p>
+                    </li>
+                </ol>
+                </nav>
+            </div>
+            </article>
+        </div>
+      </section>
+    </main>
+  </div>
+<section class="py-20 lg:py-32 bg-white">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Powerful Features</h2>
+</div>
+<div class="flex flex-col gap-12">
+<div class="flex flex-col gap-24">
+<div class="flex items-center gap-16 flex-col sm:flex-row">
+<div class="w-full sm:w-1/2">
+<h3 class="text-2xl font-semibold text-gray-900 mb-4 bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">AI Magic Enhancement</h3>
+<p class="text-gray-600 leading-relaxed text-lg">Enhance photos instantly with our AI-Magic tool. Lighting, clarity, contrast and saturation are optimized automatically, producing quality results in seconds without complex manual edits.</p>
+</div>
+<div class="w-full sm:w-1/2">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img1.jpg" alt="AI Enhancement Interface" class="lazy-img rounded-lg shadow-xl w-full">
+</div>
+</div>
+<div class="flex items-center gap-16 flex-row-reverse flex-col sm:flex-row-reverse">
+<div class="w-full sm:w-1/2">
+<h3 class="text-2xl font-semibold text-gray-900 mb-4 bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent">Advanced Photo Adjustments</h3>
+<p class="text-gray-600 leading-relaxed text-lg">Take full creative control of your images with precision tools for brightness, contrast, saturation, exposure, temperature, gamma, clarity, and vignette - fine-tune every detail until it’s picture-perfect</p>
+</div>
+<div class="w-full sm:w-1/2">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img2.png" alt="Advanced Adjustments Interface" class="lazy-img rounded-lg shadow-xl w-full">
+</div>
+</div>
+<div class="flex items-center gap-16 flex-col sm:flex-row">
+<div class="w-full sm:w-1/2">
+<h3 class="text-2xl font-semibold text-gray-900 mb-4 bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">Crop, Rotate & Flip</h3>
+<p class="text-gray-600 leading-relaxed text-lg">Refine your photo composition to any custom size with ease. Rotate to exact angles or flip horizontally and vertically for perfect alignment and framing every time.</p>
+</div>
+<div class="w-full sm:w-1/2">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img3.png" alt="Crop and Rotate Interface" class="lazy-img rounded-lg shadow-xl w-full">
+</div>
+</div>
+<div class="flex items-center gap-16 flex-row-reverse flex-col sm:flex-row-reverse">
+<div class="w-full sm:w-1/2">
+<h3 class="text-2xl font-semibold text-gray-900 mb-4 bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent">Text & Shape Tools</h3>
+<p class="text-gray-600 leading-relaxed text-lg">Add captions or titles with versatile text tools. Customize fonts, sizes, and colors, align with precision, and enhance your visuals with simple shapes for a clean and polished finish.</p>
+</div>
+<div class="w-full sm:w-1/2">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img4.png" alt="Text and Shape Tools Interface" class="lazy-img rounded-lg shadow-xl w-full">
+</div>
+</div>
+<div class="flex items-center gap-16 flex-col sm:flex-row">
+<div class="w-full sm:w-1/2">
+<h3 class="text-2xl font-semibold text-gray-900 mb-4 bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">Filters and Frames</h3>
+<p class="text-gray-600 leading-relaxed text-lg">Apply curated filters to transform the overall mood, add adjustable borders for unique style, and layer textures like light leaks or film grain for extra creative depth.</p>
+</div>
+<div class="w-full sm:w-1/2">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img5.jpg" alt="Filters and Frames Interface" class="lazy-img rounded-lg shadow-xl w-full">
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-16">
+<div class="flex flex-col items-center">
+<button class="bg-blue-600 text-white px-8 py-4 !rounded-button font-semibold text-lg transition-all hover:opacity-90 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 download-ai" download-copy="Download Now" download-position="btf">
+Download Now
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 lg:py-32 bg-white">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Why Choose Our Editor</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-pink-100 rounded-full">
+<i class="ri-check-line text-pink-500"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Beginner-Friendly</h3>
+<p class="text-gray-600">An intuitive interface designed to make photo editing simple for users of any skill level.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-pink-100 rounded-full">
+<i class="ri-check-line text-pink-500"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">AI-Powered Editing</h3>
+<p class="text-gray-600">Our AI Magic feature automatically enhances your photos, making editing effortless and saving you time.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-pink-100 rounded-full">
+<i class="ri-check-line text-pink-500"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Fast and Smooth</h3>
+<p class="text-gray-600">Responsive performance with no lag, ensuring a smooth and effortless editing experience.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-pink-100 rounded-full">
+<i class="ri-check-line text-pink-500"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Works for Any Need</h3>
+<p class="text-gray-600">Equally effective for quick adjustments or more detailed edits, depending on your project.</p>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-16">
+<div class="flex flex-col items-center">
+<button class="bg-blue-600 text-white px-8 py-4 !rounded-button font-semibold text-lg transition-all hover:opacity-90 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 download-ai" download-copy="Download Now" download-position="btf2">
+Download Now
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 lg:py-32 bg-white">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Bring Your Photos to Life</h2>
+</div>
+<div class="relative overflow-hidden rounded-xl shadow-lg">
+<div class="flex transition-transform duration-500" id="carousel">
+<img src="../../images/slide1.png" alt="Photo Editor Interface Screenshot" class="w-full h-auto flex-shrink-0">
+<img src="../../images/slide2.png" alt="Photo Editor Interface Screenshot" class="w-full h-auto flex-shrink-0">
+<img src="../../images/slide3.png" alt="Photo Editor Interface Screenshot" class="w-full h-auto flex-shrink-0">
+<img src="../../images/slide4.png" alt="Photo Editor Interface Screenshot" class="w-full h-auto flex-shrink-0">
+<img src="../../images/slide5.png" alt="Photo Editor Interface Screenshot" class="w-full h-auto flex-shrink-0">
+<img src="../../images/slide6.png" alt="Photo Editor Interface Screenshot" class="w-full h-auto flex-shrink-0">
+</div>
+<div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="0"></button>
+<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="1"></button>
+<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="2"></button>
+<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="3"></button>
+<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="4"></button>
+<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="5"></button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 lg:py-32 bg-gray-50">
+<div class="max-w-4xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full flex items-center justify-between text-left focus:outline-none p-6">
+<h3 class="text-lg font-semibold text-gray-900">Is this a photo editor app?</h3>
+<i class="ri-arrow-down-s-line text-gray-400 text-xl transition-transform"></i>
+</button>
+<div class="p-6 hidden pt-0">
+<p class="text-gray-600">No, Picture Editor is included as a feature within aiBrowser. When you download, you will get the full browser along with photo editor and other productivity tools.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full flex items-center justify-between text-left focus:outline-none p-6">
+<h3 class="text-lg font-semibold text-gray-900">Is it beginner-friendly?</h3>
+<i class="ri-arrow-down-s-line text-gray-400 text-xl transition-transform"></i>
+</button>
+<div class="p-6 hidden pt-0">
+<p class="text-gray-600">Absolutely. The interface is simple enough for first-time users while offering advanced tools for experienced editors.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full flex items-center justify-between text-left focus:outline-none p-6">
+<h3 class="text-lg font-semibold text-gray-900">Do I need to sign up to use the editor?</h3>
+<i class="ri-arrow-down-s-line text-gray-400 text-xl transition-transform"></i>
+</button>
+<div class="p-6 hidden pt-0">
+<p class="text-gray-600">No. You can start editing immediately after download without creating an account or signing up.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full flex items-center justify-between text-left focus:outline-none p-6">
+<h3 class="text-lg font-semibold text-gray-900">What does the AI Magic option do?</h3>
+<i class="ri-arrow-down-s-line text-gray-400 text-xl transition-transform"></i>
+</button>
+<div class="p-6 hidden pt-0">
+<p class="text-gray-600">It enhances photos instantly by automatically optimizing lighting, clarity, contrast, and saturation, giving you quality results in seconds without complex edits.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="relative py-20 lg:py-32 overflow-hidden">
+<div class="absolute inset-0 bg-[linear-gradient(135deg,#FFE2F1_0%,#E9F1FF_25%,#F0FFFD_50%,#FFF5E9_75%,#FFE8F6_100%)]"></div>
+<div class="relative max-w-4xl mx-auto px-6 text-center">
+<h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">Ready to Transform Your Photos?</h2>
+<p class="text-xl text-gray-600 mb-8">Experience editing made simple, powerful, and fast.</p>
+<button class="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white px-8 py-4 !rounded-button font-semibold text-lg transition-all hover:opacity-90 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 download-ai" download-copy="Download Now" download-position="btf3">Download Now
+</button>
+</div>
+</section>
+<footer class="bg-gradient-to-b from-white to-blue-50 border-t border-gray-200 py-8">
+<div class="max-w-6xl mx-auto px-6">
+<div class="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-600">
+<a href="../../legal/privacy-policy/" target="_blank" class="hover:text-gray-900 transition-all">Privacy Policy</a>
+<span class="text-gray-300">|</span>
+<a href="../../legal/terms-of-service/" target="_blank" class="hover:text-gray-900 transition-all">Terms of Service</a>
+<span class="text-gray-300">|</span>
+<a href="mailto:contact@aibrowser.com" class="hover:text-gray-900 transition-all">Contact Us</a>
+<span class="text-gray-300">|</span>
+<a href="../../legal/uninstall-instructions/" target="_blank" class="hover:text-gray-900 transition-all">Uninstall</a>
+<span class="text-gray-300">|</span>
+<a href="../../legal/do-not-share-my-personal-information/" target="_blank" class="hover:text-gray-900 transition-all">Do Not Share My Personal Information</a>
+</div>
+<p class="text-xs text-gray-500 text-center mt-6">All third-party names, logos, and images are trademarks or properties of their respective owners. Their use does not imply any affiliation or endorsement.</p>
+</div>
+</footer>
+<script>
+(function(){
+var observer = new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+var img = entry.target;
+img.src = img.dataset.src;
+img.classList.remove('lazy-img');
+observer.unobserve(img);
+}
+});
+},{rootMargin:'200px'});
+document.querySelectorAll('img.lazy-img').forEach(function(img){observer.observe(img);});
+})();
+</script>
+<script src="../../js/product.js" ></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const faqButtons = document.querySelectorAll('.bg-white.rounded-lg button');
+faqButtons.forEach(button => {
+button.addEventListener('click', () => {
+const content = button.nextElementSibling;
+const icon = button.querySelector('.ri-arrow-down-s-line');
+const isHidden = content.classList.contains('hidden');
+if (isHidden) {
+content.classList.remove('hidden');
+icon.style.transform = 'rotate(180deg)';
+} else {
+content.classList.add('hidden');
+icon.style.transform = 'rotate(0)';
+}
+});
+});
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const carousel = document.getElementById('carousel');
+const dots = document.querySelectorAll('[data-index]');
+let currentIndex = 0;
+function updateCarousel(index) {
+carousel.style.transform = `translateX(-${index * 100}%)`;
+dots.forEach((dot, i) => {
+dot.style.backgroundColor = i === index ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.5)';
+});
+}
+function nextSlide() {
+currentIndex = (currentIndex + 1) % 6;
+updateCarousel(currentIndex);
+}
+dots.forEach((dot, index) => {
+dot.addEventListener('click', () => {
+currentIndex = index;
+updateCarousel(currentIndex);
+});
+});
+updateCarousel(0);
+setInterval(nextSlide, 3000);
+});
+</script>
+</body>
+</html>

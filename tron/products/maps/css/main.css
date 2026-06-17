@@ -1,0 +1,132 @@
+/* Import other CSS files */
+@import 'reset.css';
+@import 'layout.css';
+@import 'components.css';
+@import 'sections.css';
+@import 'responsive.css';
+
+/* Base styles */
+:root {
+  /* Primary colors */
+  --color-primary: #2D6EBD;
+  --color-primary-light: #4A89D5;
+  --color-primary-dark: #1F5298;
+  
+  /* Secondary colors */
+  --color-secondary: #4CAF50;
+  --color-secondary-light: #6DBF70;
+  --color-secondary-dark: #3C8C3F;
+  
+  /* Neutral colors */
+  --color-white: #FFFFFF;
+  --color-gray-100: #F8F9FA;
+  --color-gray-200: #E9ECEF;
+  --color-gray-300: #DEE2E6;
+  --color-gray-400: #CED4DA;
+  --color-gray-500: #ADB5BD;
+  --color-gray-600: #6C757D;
+  --color-gray-700: #495057;
+  --color-gray-800: #343A40;
+  --color-gray-900: #212529;
+  --color-black: #000000;
+  
+  /* Accent colors */
+  --color-accent: #FF9800;
+  --color-accent-light: #FFB74D;
+  --color-accent-dark: #F57C00;
+  
+  /* Status colors */
+  --color-success: #28A745;
+  --color-warning: #FFC107;
+  --color-danger: #DC3545;
+  --color-info: #17A2B8;
+  
+  /* Typography */
+  --font-family: 'Inter', sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+  --line-height-heading: 1.2;
+  
+  /* Spacing (8px grid) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-7: 56px;
+  --space-8: 64px;
+  
+  /* Sizing */
+  --border-radius-sm: 4px;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --container-max-width: 1200px;
+  
+  /* Animation */
+  --transition-speed: 0.3s;
+  --transition-timing: ease;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-gray-800);
+  line-height: var(--line-height-base);
+  background-color: var(--color-white);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  line-height: var(--line-height-heading);
+  font-weight: 700;
+  color: var(--color-gray-900);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-3);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: var(--space-2);
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-2);
+}
+
+h4 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-1);
+}
+
+p {
+  margin-bottom: var(--space-3);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-speed) var(--transition-timing);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+.text-link {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

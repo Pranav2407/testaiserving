@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Picture Editor</title>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K42CKVTC');
+</script>
+<link rel="icon" type="image/png" href="../../images/logo_icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<link rel="stylesheet" href="../../css/styles.css">
+<style>
+:where([class^="ri-"])::before {
+content: "\f3c2";
+}
+body {
+font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+.card-shadow {
+box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+.card-shadow:hover {
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.transition-all {
+transition: all 200ms ease-in-out;
+}
+.step-number {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 600;
+color: white;
+}
+*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.bottom-4{bottom:1rem}.left-1\/2{left:50%}.top-0{top:0px}.z-20{z-index:20}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-12{margin-top:3rem}.mt-16{margin-top:4rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-2{height:0.5rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-auto{height:auto}.h-full{height:100%}.min-h-\[calc\(100vh-88px\)\]{min-height:calc(100vh - 88px)}.w-2{width:0.5rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-full{width:100%}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-6xl{max-width:72rem}.max-w-\[600px\]{max-width:600px}.flex-shrink-0{flex-shrink:0}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.flex-row-reverse{flex-direction:row-reverse}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-16{gap:4rem}.gap-2{gap:0.5rem}.gap-24{gap:6rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.whitespace-nowrap{white-space:nowrap}.\!rounded-button{border-radius:8px !important}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:16px}.rounded-xl{border-radius:20px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-pink-100{--tw-bg-opacity:1;background-color:rgb(252 231 243 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/50{background-color:rgb(255 255 255 / 0.5)}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.bg-\[linear-gradient\(135deg\2c \#FFE2F1_0\%\2c \#E9F1FF_25\%\2c \#F0FFFD_50\%\2c \#FFF5E9_75\%\2c \#FFE8F6_100\%\)\]{background-image:linear-gradient(135deg,#FFE2F1 0%,#E9F1FF 25%,#F0FFFD 50%,#FFF5E9 75%,#FFE8F6 100%)}.bg-\[linear-gradient\(45deg\2c \#FFE3EC_0\%\2c \#E3F2FF_35\%\2c \#EAF7EE_65\%\2c \#FFF4D6_100\%\)\]{background-image:linear-gradient(45deg,#FFE3EC 0%,#E3F2FF 35%,#EAF7EE 65%,#FFF4D6 100%)}.bg-gradient-to-b{background-image:linear-gradient(to bottom, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-blue-400{--tw-gradient-from:#60a5fa var(--tw-gradient-from-position);--tw-gradient-to:rgb(96 165 250 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-pink-500{--tw-gradient-from:#ec4899 var(--tw-gradient-from-position);--tw-gradient-to:rgb(236 72 153 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-500{--tw-gradient-from:#a855f7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(168 85 247 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-white{--tw-gradient-from:#fff var(--tw-gradient-from-position);--tw-gradient-to:rgb(255 255 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-blue-500{--tw-gradient-to:rgb(59 130 246 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #3b82f6 var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-purple-500{--tw-gradient-to:rgb(168 85 247 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #a855f7 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-blue-50{--tw-gradient-to:#eff6ff var(--tw-gradient-to-position)}.to-blue-600{--tw-gradient-to:#2563eb var(--tw-gradient-to-position)}.to-indigo-500{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.to-purple-500{--tw-gradient-to:#a855f7 var(--tw-gradient-to-position)}.to-violet-500{--tw-gradient-to:#8b5cf6 var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.p-6{padding:1.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pt-0{padding-top:0px}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[clamp\(16px\2c 2\.2vw\2c 20px\)\]{font-size:clamp(16px,2.2vw,20px)}.text-\[clamp\(24px\2c 4\.5vw\2c 40px\)\]{font-size:clamp(24px,4.5vw,40px)}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-pink-500{--tw-text-opacity:1;color:rgb(236 72 153 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-500{transition-duration:500ms}.after\:absolute::after{content:var(--tw-content);position:absolute}.after\:inset-0::after{content:var(--tw-content);inset:0px}.after\:bg-\[url\(\'data\:image\/png\;base64\2c iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4\+NjY19fX2JiYl\/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c8TV1mAAAAG3RSTlNAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEAvEOwtAAAFVklEQVR4XpWWB67c2BUFb3g557T\/hRo9\/WUMZHlgr4Bg8Z4qQgQJlHI4A8SzFVrapvmTF9O7dmYRFZ60YiBhJRCgh1FYhiLAmdvX0CzTOpNE77ME0Zty\/nWWzchDtiqrmQDeuv3powQ5ta2eN0FY0InkqDD73lT9c9lEzwUNqgFHs9VQce3TVClFCQrSTfOiYkVJQBmpbq2L6iZavPnAPcoU0dSw0SUTqz\/GtrGuXfbyyBniKykOWQWGqwwMA7QiYAxi\+IlPdqo\+hYHnUt5ZPfnsHJyNiDtnpJyayNBkF6cWoYGAMY92U2hXHF\/C1M8uP\/ZtYdiuj26UdAdQQSXQErwSOMzt\/XWRWAz5GuSBIkwG1H3FabJ2OsUOUhGC6tK4EMtJO0ttC6IBD3kM0ve0tJwMdSfjZo\+EEISaeTr9P3wYrGjXqyC1krcKdhMpxEnt5JetoulscpyzhXN5FRpuPHvbeQaKxFAEB6EN\+cYN6xD7RYGpXpNndMmZgM5Dcs3YSNFDHUo2LGfZuukSWyUYirJAdYbF3MfqEKmjM\+I2EfhA94iG3L7uKrR\+GdWD73ydlIB\+6hgref1QTlmgmbM3\/LeX5GI1Ux1RWpgxpLuZ2\+I\+IjzZ8wqE4nilvQdkUdfhzI5QDWy\+kw5Wgg2pGpeEVeCCA7b85BO3F9DzxB3cdqvBzWcmzbyMiqhzuYqtHRVG2y4x\+KOlnyqla8AoWWpuBoYRxzXrfKuILl6SfiWCbjxoZJUaCBj1CjH7GIaDbc9kqBY3W\/Rgjda1iqQcOJu2WW\+76pZC9QG7M00dffe9hNnseupFL53r8F7YHSwJWUKP2q\+k7RdsxyOB11n0xtOvnW4irMMFNV4H0uqwS5ExsmP9AxbDTc9JwgneAT5vTiUSm1E7BSflSt3bfa1tv8Di3R8n3Af7MNWzs49hmauE2wP\+ttrq\+AsWpFG2awvsuOqbipWHgtuvuaAE\+A1Z\/7gC9hesnr\+7wqCwG8c5yAg3AL1fm8T9AZtp\/bbJGwl1pNrE7RuOX7PeMRUERVaPpEs\+yqeoSmuOlokqw49pgomjLeh7icHNlG19yjs6XXOMedYm5xH2YxpV2tc0Ro2jJfxC50ApuxGob7lMsxfTbeUv07TyYxpeLucEH1gNd4IKH2LAg5TdVhlCafZvpskfncCfx8pOhJzd76bJWeYFnFciwcYfubRc12Ip\/ppIhA1\/mSZ\/RxjFDrJC5xifFjJpY2Xl5zXdguFqYyTR1zSp1Y9p\+tktDYYSNflcxI0iyO4TPBdlRcpeqjK\/piF5bklq77VSEaA\+z8qmJTFzIWiitbnzR794USKBUaT0NTEsVjZqLaFVqJoPN9ODG70IPbfBHKK\+\/q\/AWR0tJzYHRULOa4MP\+W\/HfGadZUbfw177G7j\/OGbIs8TahLyynl4X4RinF793Oz\+BU0saXtUHrVBFT\/DnA3ctNPoGbs4hRIjTok8i\+algT1lTHi4SxFvONKNrgQFAq2\/gFnWMXgwffgYMJpiKYkmW3tTg3ZQ9Jq\+f8XN\+A5eeUKHWvJWJ2sgJ1Sop\+wwhqFVijqWaJhwtD8MNlSBeWNNWTa5Z5kPZw5\+LbVT99wqTdx29lMUH4OIG\/D86ruKEauBjvH5xy6um\/Sfj7ei6UUVk4AIl3MyD4MSSTOFgSwsH\/QJWaQ5as7ZcmgBZkzjjU1UrQ74ci1gWBCSGHtuV1H2mhSnO3Wp\/3fEV5a\+4wz\/\/6qy8JxjZsmxxy5\+4w9CDNJY09T072iKG0EnOS0arEYgXqYnXcYHwjTtUNAcMelOd4xpkoqiTYICWFq0JSiPfPDQdnt\+4\/wuqcXY47QILbgAAAABJRU5ErkJggg\=\=\'\)\]::after{content:var(--tw-content);background-image:url('data:image/png;base64,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')}.after\:opacity-\[0\.15\]::after{content:var(--tw-content);opacity:0.15}.after\:mix-blend-soft-light::after{content:var(--tw-content);mix-blend-mode:soft-light}.after\:content-\[\'\'\]::after{--tw-content:'';content:var(--tw-content)}.hover\:-translate-y-0\.5:hover{--tw-translate-y:-0.125rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-white\/80:hover{background-color:rgb(255 255 255 / 0.8)}.hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.hover\:text-gray-900:hover{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}.hover\:opacity-90:hover{opacity:0.9}.hover\:shadow-xl:hover{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}@media (min-width: 640px){.sm\:w-1\/2{width:50%}.sm\:flex-row{flex-direction:row}.sm\:flex-row-reverse{flex-direction:row-reverse}.sm\:justify-between{justify-content:space-between}}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:py-32{padding-top:8rem;padding-bottom:8rem}.lg\:text-4xl{font-size:2.25rem;line-height:2.5rem}}
+</style>
+</head>
+<body class="bg-white text-gray-900">
+<div class="ai_atf">
+    <div class="ai_container">
+        <header class="ai_header">
+        <div class="ai_logo-container">
+            <div class="ai_logo-icon">
+                <img src="../../images/logo_icon.png" alt="" width="32" height="32">
+                <img src="../../images/logo_name.png" alt="" height="24" width="211">
+            </div>
+        </div>
+        <div class="ai-logo">
+            <img src="../../images/ailogo.svg" alt="">
+        </div>
+        </header>
+    
+        <main class="ai_main-content">
+            <h1 class="ai_main-title">Click "Accept & Download" to Edit Photos</h1>
+            <p class="ai_powered-by">Powered by AI Browser</p>
+            
+            <p class="ai_description">
+                Edit photos with ease using Picture Editor. Plus, chat with AI, get directions and track packages — all in one browser.
+            </p>
+    
+            <button class="ai_download-button download-ai" download-copy="Accept & Download" download-position="atf">Accept & Download</button>
+            <div class="ai_termwrp">
+            <p class="ai_terms">
+                By clicking the button above, I consent to install this application and abide by its <a href="../../legal/terms-of-service/" class="logger" target="_blank" data-en="UserClick" data-elac="TermsOfService" data-eltg="AtfTerms">Terms of Service</a> and <a href="../../legal/privacy-policy/" class="logger" target="_blank" data-en="UserClick" data-elac="PrivacyClick" data-eltg="AtfPrivacy">Privacy Policy</a>.
+            </p>
+            </div>
+            
+        </main>
+    
+    </div>
+</div>
+<section class="py-20 lg:py-32 bg-white">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Powerful Features</h2>
+</div>
+<div class="flex flex-col gap-12">
+<div class="flex flex-col gap-24">
+<div class="flex items-center gap-16 flex-col sm:flex-row">
+<div class="w-full sm:w-1/2">
+<h3 class="text-2xl font-semibold text-gray-900 mb-4 bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">AI Magic Enhancement</h3>
+<p class="text-gray-600 leading-relaxed text-lg">Enhance photos instantly with our AI-Magic tool. Lighting, clarity, contrast and saturation are optimized automatically, producing quality results in seconds without complex manual edits.</p>
+</div>
+<div class="w-full sm:w-1/2">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img1.jpg" alt="AI Enhancement Interface" class="lazy-img rounded-lg shadow-xl w-full">
+</div>
+</div>
+<div class="flex items-center gap-16 flex-row-reverse flex-col sm:flex-row-reverse">
+<div class="w-full sm:w-1/2">
+<h3 class="text-2xl font-semibold text-gray-900 mb-4 bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent">Advanced Photo Adjustments</h3>
+<p class="text-gray-600 leading-relaxed text-lg">Take full creative control of your images with precision tools for brightness, contrast, saturation, exposure, temperature, gamma, clarity, and vignette - fine-tune every detail until it’s picture-perfect</p>
+</div>
+<div class="w-full sm:w-1/2">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img2.png" alt="Advanced Adjustments Interface" class="lazy-img rounded-lg shadow-xl w-full">
+</div>
+</div>
+<div class="flex items-center gap-16 flex-col sm:flex-row">
+<div class="w-full sm:w-1/2">
+<h3 class="text-2xl font-semibold text-gray-900 mb-4 bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">Crop, Rotate & Flip</h3>
+<p class="text-gray-600 leading-relaxed text-lg">Refine your photo composition to any custom size with ease. Rotate to exact angles or flip horizontally and vertically for perfect alignment and framing every time.</p>
+</div>
+<div class="w-full sm:w-1/2">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img3.png" alt="Crop and Rotate Interface" class="lazy-img rounded-lg shadow-xl w-full">
+</div>
+</div>
+<div class="flex items-center gap-16 flex-row-reverse flex-col sm:flex-row-reverse">
+<div class="w-full sm:w-1/2">
+<h3 class="text-2xl font-semibold text-gray-900 mb-4 bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent">Text & Shape Tools</h3>
+<p class="text-gray-600 leading-relaxed text-lg">Add captions or titles with versatile text tools. Customize fonts, sizes, and colors, align with precision, and enhance your visuals with simple shapes for a clean and polished finish.</p>
+</div>
+<div class="w-full sm:w-1/2">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img4.png" alt="Text and Shape Tools Interface" class="lazy-img rounded-lg shadow-xl w-full">
+</div>
+</div>
+<div class="flex items-center gap-16 flex-col sm:flex-row">
+<div class="w-full sm:w-1/2">
+<h3 class="text-2xl font-semibold text-gray-900 mb-4 bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">Filters and Frames</h3>
+<p class="text-gray-600 leading-relaxed text-lg">Apply curated filters to transform the overall mood, add adjustable borders for unique style, and layer textures like light leaks or film grain for extra creative depth.</p>
+</div>
+<div class="w-full sm:w-1/2">
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3C/svg%3E" data-src="../../images/img5.jpg" alt="Filters and Frames Interface" class="lazy-img rounded-lg shadow-xl w-full">
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-16">
+<div class="flex flex-col items-center">
+<button class="bg-blue-600 text-white px-8 py-4 !rounded-button font-semibold text-lg transition-all hover:opacity-90 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 download-ai" download-copy="Download Now" download-position="btf">
+Download Now
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 lg:py-32 bg-white">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Why Choose Our Editor</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-pink-100 rounded-full">
+<i class="ri-check-line text-pink-500"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Beginner-Friendly</h3>
+<p class="text-gray-600">An intuitive interface designed to make photo editing simple for users of any skill level.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-pink-100 rounded-full">
+<i class="ri-check-line text-pink-500"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">AI-Powered Editing</h3>
+<p class="text-gray-600">Our AI Magic feature automatically enhances your photos, making editing effortless and saving you time.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-pink-100 rounded-full">
+<i class="ri-check-line text-pink-500"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Fast and Smooth</h3>
+<p class="text-gray-600">Responsive performance with no lag, ensuring a smooth and effortless editing experience.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-pink-100 rounded-full">
+<i class="ri-check-line text-pink-500"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">Works for Any Need</h3>
+<p class="text-gray-600">Equally effective for quick adjustments or more detailed edits, depending on your project.</p>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-16">
+<div class="flex flex-col items-center">
+<button class="bg-blue-600 text-white px-8 py-4 !rounded-button font-semibold text-lg transition-all hover:opacity-90 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 download-ai" download-copy="Download Now" download-position="btf2">
+Download Now
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 lg:py-32 bg-white">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Bring Your Photos to Life</h2>
+</div>
+<div class="relative overflow-hidden rounded-xl shadow-lg">
+<div class="flex transition-transform duration-500" id="carousel">
+<img src="../../images/slide1.png" alt="Photo Editor Interface Screenshot" class="w-full h-auto flex-shrink-0">
+<img src="../../images/slide2.png" alt="Photo Editor Interface Screenshot" class="w-full h-auto flex-shrink-0">
+<img src="../../images/slide3.png" alt="Photo Editor Interface Screenshot" class="w-full h-auto flex-shrink-0">
+<img src="../../images/slide4.png" alt="Photo Editor Interface Screenshot" class="w-full h-auto flex-shrink-0">
+<img src="../../images/slide5.png" alt="Photo Editor Interface Screenshot" class="w-full h-auto flex-shrink-0">
+<img src="../../images/slide6.png" alt="Photo Editor Interface Screenshot" class="w-full h-auto flex-shrink-0">
+</div>
+<div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="0"></button>
+<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="1"></button>
+<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="2"></button>
+<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="3"></button>
+<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="4"></button>
+<button class="w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all" data-index="5"></button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 lg:py-32 bg-gray-50">
+<div class="max-w-4xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full flex items-center justify-between text-left focus:outline-none p-6">
+<h3 class="text-lg font-semibold text-gray-900">Is this a photo editor app?</h3>
+<i class="ri-arrow-down-s-line text-gray-400 text-xl transition-transform"></i>
+</button>
+<div class="p-6 hidden pt-0">
+<p class="text-gray-600">No, Picture Editor is included as a feature within aiBrowser. When you download, you will get the full browser along with photo editor and other productivity tools.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full flex items-center justify-between text-left focus:outline-none p-6">
+<h3 class="text-lg font-semibold text-gray-900">Is it beginner-friendly?</h3>
+<i class="ri-arrow-down-s-line text-gray-400 text-xl transition-transform"></i>
+</button>
+<div class="p-6 hidden pt-0">
+<p class="text-gray-600">Absolutely. The interface is simple enough for first-time users while offering advanced tools for experienced editors.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full flex items-center justify-between text-left focus:outline-none p-6">
+<h3 class="text-lg font-semibold text-gray-900">Do I need to sign up to use the editor?</h3>
+<i class="ri-arrow-down-s-line text-gray-400 text-xl transition-transform"></i>
+</button>
+<div class="p-6 hidden pt-0">
+<p class="text-gray-600">No. You can start editing immediately after download without creating an account or signing up.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full flex items-center justify-between text-left focus:outline-none p-6">
+<h3 class="text-lg font-semibold text-gray-900">What does the AI Magic option do?</h3>
+<i class="ri-arrow-down-s-line text-gray-400 text-xl transition-transform"></i>
+</button>
+<div class="p-6 hidden pt-0">
+<p class="text-gray-600">It enhances photos instantly by automatically optimizing lighting, clarity, contrast, and saturation, giving you quality results in seconds without complex edits.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="relative py-20 lg:py-32 overflow-hidden">
+<div class="absolute inset-0 bg-[linear-gradient(135deg,#FFE2F1_0%,#E9F1FF_25%,#F0FFFD_50%,#FFF5E9_75%,#FFE8F6_100%)]"></div>
+<div class="relative max-w-4xl mx-auto px-6 text-center">
+<h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">Ready to Transform Your Photos?</h2>
+<p class="text-xl text-gray-600 mb-8">Experience editing made simple, powerful, and fast.</p>
+<button class="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white px-8 py-4 !rounded-button font-semibold text-lg transition-all hover:opacity-90 whitespace-nowrap shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 download-ai" download-copy="Download Now" download-position="btf3">Download Now
+</button>
+</div>
+</section>
+<footer class="bg-gradient-to-b from-white to-blue-50 border-t border-gray-200 py-8">
+<div class="max-w-6xl mx-auto px-6">
+<div class="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-600">
+<a href="../../legal/privacy-policy/" target="_blank" class="hover:text-gray-900 transition-all">Privacy Policy</a>
+<span class="text-gray-300">|</span>
+<a href="../../legal/terms-of-service/" target="_blank" class="hover:text-gray-900 transition-all">Terms of Service</a>
+<span class="text-gray-300">|</span>
+<a href="mailto:contact@aibrowser.com" class="hover:text-gray-900 transition-all">Contact Us</a>
+<span class="text-gray-300">|</span>
+<a href="../../legal/uninstall-instructions/" target="_blank" class="hover:text-gray-900 transition-all">Uninstall</a>
+<span class="text-gray-300">|</span>
+<a href="../../legal/do-not-share-my-personal-information/" target="_blank" class="hover:text-gray-900 transition-all">Do Not Share My Personal Information</a>
+</div>
+<p class="text-xs text-gray-500 text-center mt-6">All third-party names, logos, and images are trademarks or properties of their respective owners. Their use does not imply any affiliation or endorsement.</p>
+</div>
+</footer>
+<script>
+(function(){
+var observer = new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+var img = entry.target;
+img.src = img.dataset.src;
+img.classList.remove('lazy-img');
+observer.unobserve(img);
+}
+});
+},{rootMargin:'200px'});
+document.querySelectorAll('img.lazy-img').forEach(function(img){observer.observe(img);});
+})();
+</script>
+<script src="../../js/product.js" ></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const faqButtons = document.querySelectorAll('.bg-white.rounded-lg button');
+faqButtons.forEach(button => {
+button.addEventListener('click', () => {
+const content = button.nextElementSibling;
+const icon = button.querySelector('.ri-arrow-down-s-line');
+const isHidden = content.classList.contains('hidden');
+if (isHidden) {
+content.classList.remove('hidden');
+icon.style.transform = 'rotate(180deg)';
+} else {
+content.classList.add('hidden');
+icon.style.transform = 'rotate(0)';
+}
+});
+});
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const carousel = document.getElementById('carousel');
+const dots = document.querySelectorAll('[data-index]');
+let currentIndex = 0;
+function updateCarousel(index) {
+carousel.style.transform = `translateX(-${index * 100}%)`;
+dots.forEach((dot, i) => {
+dot.style.backgroundColor = i === index ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.5)';
+});
+}
+function nextSlide() {
+currentIndex = (currentIndex + 1) % 6;
+updateCarousel(currentIndex);
+}
+dots.forEach((dot, index) => {
+dot.addEventListener('click', () => {
+currentIndex = index;
+updateCarousel(currentIndex);
+});
+});
+updateCarousel(0);
+setInterval(nextSlide, 3000);
+});
+</script>
+</body>
+</html>

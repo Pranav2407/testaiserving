@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aiBrowser Installation</title>
+    <meta name="description" content="overlay" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel='stylesheet' id='elementor-frontend-css' href='/instruction-overlay/style_v2.css' media='all' />
+  </head>
+  <body>
+    <div class="wrapperOverlay">
+      <!-- Cross Button -->
+      <div class="crossBtn">
+        X
+       </div>
+      <!-- Setup Badge -->
+      <div class="setupBadge">
+        <p class="setupBadge-text">
+          Click 
+          <span class="setupBadge-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="34" viewBox="0 0 36 34" fill="none">
+              <g clip-path="url(#clip0_1_23)">
+                <path d="M18.5143 0H17.4857C7.82862 0 0 7.61116 0 17C0 26.3888 7.82862 34 17.4857 34H18.5143C28.1714 34 36 26.3888 36 17C36 7.61116 28.1714 0 18.5143 0Z" fill="#D7E6FF"/>
+                <path d="M22.3125 15.5833L18 19.6562M18 19.6562L13.6875 15.5833M18 19.6562V7.4375M27.7031 19.6562V21.6927C27.7031 22.8174 26.7378 23.7292 25.5468 23.7292H10.4532C9.26226 23.7292 8.29688 22.8174 8.29688 21.6927V19.6562" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_1_23">
+                  <rect width="36" height="34" fill="white"/>
+                </clipPath>
+              </defs>
+            </svg>
+        </span> 
+        to start
+        </p>
+        <p class="setupBadge-text2">Then click the aiBrowser Setup file</p>  
+      </div>
+      <!-- Download Link -->
+      <div class="download-link fade-in">
+        <p>
+          If your download did not start automatically, please
+          <a href="#" class="text-link download-ai" download-position="instruction-atf">click here.</a>
+        </p>
+      </div>
+    </div>
+    <script type="text/javascript">
+
+        document.addEventListener("DOMContentLoaded", function() {
+        if (navigator.userAgent.includes("OPR") || navigator.userAgent.includes("Opera")) {
+            document.querySelector(".setupBadge").style.right = "45px";
+        }
+        });
+
+
+
+    </script>
+  </body>
+
+</html>

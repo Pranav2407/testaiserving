@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <script>
+      try {
+        function getCookie(t){t=("; "+document.cookie).split(`; ${t}=`);if(2===t.length)return t.pop().split(";").shift()}
+        const urlParams = new URLSearchParams(window.location.search);
+        let u = urlParams.get('u') || getCookie("userid") || "ty-"+crypto.randomUUID();
+        console.log("userid", u);
+        if(u){
+          navigator.sendBeacon(`https://l.manualschat.ai/ld`, JSON.stringify({
+            id: u,
+            en: "ty_page_begin"
+          }));
+        }
+      } catch (ignored) {
+        console.error("error in thank you page", ignored);
+      }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WRFCPRMH');
+    </script>
+    <script src="../js/thank-you/thankyou.js"></script>
+    <!-- End Google Tag Manager -->
+   
+    <title>Thank you - aiBrowser</title>
+    <!-- Taboola Pixel Code -->
+    <script type='text/javascript'>
+        window._tfa = window._tfa || [];
+        window._tfa.push({notify: 'event', name: 'page_view', id: 1795853});
+        !function (t, f, a, x) {
+          if (!document.getElementById(x)) {
+            t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
+          }
+        }(document.createElement('script'),
+                document.getElementsByTagName('script')[0],
+                '//cdn.taboola.com/libtrc/unip/1795853/tfa.js',
+                'tb_tfa_script');
+    </script>
+    <!-- End of Taboola Pixel Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="icon" href="./images/logo.png">
+   
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%
+}
+      body{
+        font-family: 'Barlow', sans-serif;
+    font-size: 1rem;
+    line-height:1.3;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+      }
+      img{
+        max-width: 100%;
+        height: auto;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .header {
+        background: #ffffff;
+        border-bottom: 1px solid #f5f5f5;
+      }
+
+      .header-inner {
+        height: 88px;
+        display: flex;
+        align-items: center;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        text-decoration: none;
+      }
+
+      .brand-logo {
+        width: 3.5rem;
+        height: 3.5rem;
+        object-fit: contain;
+      }
+
+      .brand-name {
+        font-size: 44px;
+        line-height: 1;
+        font-weight: 600;
+        color: #17a4d7;
+      }
+
+      .content {
+        flex: 1;
+        display: flex;
+      }
+
+      .hero {
+        width: 100%;
+        text-align: center;
+        padding: 90px 0 88px;
+      }
+
+      .hero h1 {
+        margin: 0;
+        font-size: 3rem;
+        line-height: 1.1em;
+        font-weight: 800;
+        color: #212121;
+        margin-bottom: 20px;
+      }
+
+      .hero-subtitle {
+        margin: 0 0 50px;
+        font-size: 1.75rem;
+        line-height: 1.2em;
+        color: #212121;
+        font-weight: 400;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        align-items: start;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        margin-bottom: 100px;
+      }
+
+      .feature {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 310px;
+        margin: 0 auto;
+      }
+      .feature-2{
+        padding-top: 5px;
+      }
+      .feature-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 20px;
+      }
+      .feature-icon-2 {
+        width: 90px;
+        height: 72.17px;
+      }
+      .feature-title {
+        margin: 0 0 15px;
+        font-size: 1.375rem;
+    line-height: 1.2em;
+        font-weight: 400;
+        color: #212121;
+      }
+
+      .feature-desc {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.3;
+        color: #212121;
+        max-width: 320px;
+      }
+
+      .footer {
+        background: #f7fbfb;
+        border-top: 1px solid #eaeaea;
+        padding: 28px 0;
+        min-height: 111px;
+      }
+
+      .footer-menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .footer-menu a {
+        text-decoration: none;
+        color: #002a3c;
+        font-size: 0.875rem;
+        line-height: 1.3;
+      }
+      .footer-menu a:hover{
+        color: #00b2e3;
+      }
+      .scroll-top{
+        position: fixed;
+    text-align: center;
+    cursor: pointer;
+    z-index: 99;
+    width: 2.1em;
+    height: 2.1em;
+    line-height: 2.1;
+    color: #ffffff;
+    border-radius: 50%;
+    background-color: #00b2e3;
+    font-size: 15px;
+    transform: translate(0, -20%) rotate(180deg);
+    right: 30px;
+    bottom: 30px;
+    cursor: pointer;
+    display: none;
+      }
+      .scroll-top svg{
+        height: .6em;
+    width: 1.6em;
+    fill:#ffffff
+      }
+      @media (max-width: 921px) {
+        .header-inner{
+          justify-content: center;
+        }
+        .header-inner{
+          height: 80px;
+        }
+        .footer{
+          padding-bottom: 10px;
+        }
+        .footer-menu{
+          flex-direction: column;
+          align-items: center;
+          gap: 0px;
+        }
+        html {
+        font-size: 91.2%;
+    }
+      }
+      @media (max-width: 767px) {
+        .features{
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .hero{
+          padding: 60px 10px 40px;
+        }
+        .features{
+          margin-bottom: 0;
+        }
+      }
+      @media (max-width: 544px) {
+    html {
+        font-size: 91.2%;
+    }
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="container header-inner">
+          <a href="/" class="brand" rel="home">
+            <img src="./images/logo.png" alt="Manuals Chat logo" class="brand-logo" width="56px" height="56px">
+            <img src="./images/logoname.png" alt="Manuals Chat logo" class="brand-logo-text" width="214px">
+          </a>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="container hero">
+          <h1>Thank you for installing aiBrowser</h1>
+          <p class="hero-subtitle">Here’s what you can get from your browser</p>
+
+          <div class="features">
+            <article class="feature">
+              <img decoding="async" width="87" height="87" src="images/2025-01-icon-aichat.svg" class="feature-icon" alt="" />
+              <h2 class="feature-title">AI Chatbot</h2>
+              <p class="feature-desc">Explore our AI assistant <br>for all your browsing needs</p>
+            </article>
+
+            <article class="feature feature-2">
+              <img decoding="async" width="101" height="81" src="images/2025-01-icon-toolbar.svg" class="feature-icon feature-icon-2" alt="" />
+              <h2 class="feature-title">Tools Sidebar</h2>
+              <p class="feature-desc">Use built-in widgets <br>for everyday tasks</p>
+            </article>
+
+            <article class="feature">
+              <img decoding="async" width="80" height="80" src="images/2025-02-icon-secure.svg" class="feature-icon" alt="" />
+              <h2 class="feature-title">Secure Browsing</h2>
+              <p class="feature-desc">Enjoy security against <br>malware and phishing threats</p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <ul class="footer-menu">
+            <li><a href="../legal/privacy-policy/" class="logger" data-en="UserClick" data-elac="PrivacyClick" data-eltg="FooterPrivacy">Privacy policy</a></li>
+            <li><a href="../legal/terms-of-service/" class="logger" data-en="UserClick" data-elac="TermsOfService" data-eltg="FooterTerms">Terms of service</a></li>
+            <li><a href="mailto:contact@aibrowser.com" class="logger" data-en="UserClick" data-elac="ContactUs" data-eltg="FooterContact">Contact us</a></li>
+            <li><a href="../legal/do-not-share-my-personal-information/" class="logger" data-en="UserClick" data-elac="DoNotShare" data-eltg="FooterDoNotShare">Do not share my personal information</a></li>
+            <li><a href="../legal/uninstall-instructions/" class="logger" data-en="UserClick" data-elac="UninstallInstructions" data-eltg="FooterUninstallInstructions">Uninstall Instructions</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+    <div class="scroll-top">
+      <svg class="ast-arrow-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="26px" height="16.043px" viewbox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve">
+        <path d="M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z" />
+      </svg>
+    </div>
+    <script>
+      //when user scrolls down 100px, show the scroll to top button
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          document.querySelector('.scroll-top').style.display = 'block';
+        } else {
+          document.querySelector('.scroll-top').style.display = 'none';
+        }
+      });
+
+      //when user clicks the scroll to top button, scroll to the top of the page
+      document.querySelector('.scroll-top').addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+  </body>
+</html>

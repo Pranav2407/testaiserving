@@ -1,0 +1,28 @@
+{
+  "name": "tron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=production --config webpack.config.js",
+    "start": "webpack --mode=development --config webpack.config.js",
+    "btf-build": "node tron/component/btf-build.js",
+    "btf-watch": "nodemon --watch tron/component/lander_btf.html --exec \"npm run btf-build\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@tree.mn:genesis/tron.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  },
+  "dependencies": {
+    "axios": "^1.8.4"
+  }
+}

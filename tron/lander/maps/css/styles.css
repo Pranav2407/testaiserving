@@ -1,0 +1,221 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.ai_container{
+    margin: 0 auto;
+    width: 100%;
+    display: block;
+    background-color: #fff;
+    height: auto;
+    font-family: 'Inter', Helvetica, Arial, sans-serif !important;
+}
+.ai_container *{
+    font-family: 'Inter', Helvetica, Arial, sans-serif !important;
+}
+.ai_container p{
+    margin: 0;
+}
+.ai_header {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+}
+.ai_main-content {
+    align-items: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.ai_main-title {
+    color: #000;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 62px;
+}
+.ai_new-badge{
+    background: #dc2626;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 24px;
+    max-width: 60px;
+    padding: 4px 10px;
+    text-align: center;
+}
+.ai_powered-by{
+    color: #000;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+}
+.ai_description{
+    color: #2f3438;
+    font-size: 18px;
+    line-height: 32px;
+    text-wrap: balance;
+    max-width: 75%;
+}
+.ai_download-button{
+    background-color: #3b82f6;
+    border: 0;
+    border-radius: 10px !important;
+    color: #fff;
+    cursor: pointer;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    padding: 20px 13px;
+    text-transform: none;
+    line-height: 1.15;
+}
+.ai_download-button:hover{
+    background-color: #295bac;
+}
+.ai_terms{
+    color: #2f3438;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.78;
+}
+.ai_terms a{
+    color: #005eb7 !important;
+    text-decoration: underline !important;
+}
+.ai_terms a:hover{
+    color: #2f3438 !important;
+    text-decoration: none !important;
+}
+@media (min-width: 20em) {
+    .ai_container {
+        padding: 40px 16px;
+    }
+    .ai_main-content {
+    gap: 24px;
+    padding: 24px 16px 0;
+}
+.ai_main-title{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+}
+.ai_new-badge{
+    margin: 0 auto 16px;
+    position: static;
+}
+}
+@media (min-width: 48em) {
+    .ai_container {
+        max-width: 752px;
+        padding: 64px 0;
+    }
+    .ai_main-content{
+    gap: 40px;
+    max-width: 704px;
+    padding: 64px 0 0;
+    }
+    .ai_main-title{
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 62px;
+    position: relative;
+    text-wrap: pretty;
+    }
+    .ai_powered-by{
+        font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    }
+    .ai_description{
+        font-size: 18px;
+        line-height: 32px;
+    }
+    .ai_download-button{
+        font-size: 40px !important;
+        min-width: 568px;
+    }
+}
+@media (min-width: 64em) {
+    .ai_container {
+        max-width: 1440px;
+        padding: 80px 104px;
+    }
+    .ai_header {
+    padding: 0 88px;
+    }
+    .ai_main-content {
+    gap: 24px;
+    max-width: 1232px;
+    padding: 64px;
+    }
+    .ai_new-badge{
+        position: absolute;
+    right: -76px;
+    top: 0;
+    }
+}
+@media (max-width: 480px) {
+    .ai_logo-icon svg{
+        width: 150px;
+    }
+    .ai-logo svg{
+        width: 100px;
+    }
+}
+
+.download-ai {
+    transition: all 0.3s ease;
+}
+
+.download-ai.loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.download-ai.loading > *,
+.download-ai.loading .ast-custom-button {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.download-ai.loading::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: inherit;
+    border-radius: inherit;
+    z-index: 1;
+}
+
+.download-ai.loading::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: 50%;
+    margin-left: -12px;
+    margin-top: -12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-left-color: #fff;
+    border-top-color: #fff;
+    border-radius: 50%;
+    z-index: 2;
+    animation: loading-spin 0.8s linear infinite;
+}
+
+@keyframes loading-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

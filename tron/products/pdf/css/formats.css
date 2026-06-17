@@ -1,0 +1,42 @@
+.formats {
+  background-color: var(--color-gray-50);
+}
+
+.formats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 64rem;
+  margin: 0 auto 3rem;
+}
+
+@media (min-width: 768px) {
+  .formats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.format-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--color-white);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.format-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.format-icon {
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.format-label {
+  font-size: 1.125rem;
+  font-weight: 500;
+}

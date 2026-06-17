@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WRFCPRMH');</script>
+<!-- End Google Tag Manager -->
+<title>Manuals Chat</title>
+<link rel="icon" type="image/png" href="../../images/logo.png">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../../css/styles.css">
+<link rel="stylesheet" href="styles.css">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#2563eb',
+secondary: '#10b981'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before {
+content: "\f3c2";
+}
+html {
+scroll-behavior: smooth;
+}
+.accordion-content {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease-out;
+}
+.accordion-content.active {
+max-height: 200px;
+}
+.accordion-arrow {
+transition: transform 0.3s ease;
+}
+.accordion-arrow.active {
+transform: rotate(180deg);
+}
+.disclam a {
+    text-decoration: underline;
+}
+.disclam a:hover {
+    text-decoration: none;
+}
+@media only screen and  (max-width: 840px){
+.responsive1 {
+    flex-wrap: wrap;
+}
+.respBox1 {
+    width: 100% !important;
+    padding-right: 0 !important;
+    justify-content: center;
+    text-align: center !important;
+}
+.respBox2 {
+    width: 100% !important;
+}
+.manuLogo {
+    justify-content: center;
+}
+.mobilePad {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+}
+}
+</style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+<div class="min-h-screen">
+  <div class="page-shell hfeed site" id="page">
+    <header class="site-header" role="banner">
+        <div class="site-header__inner">
+          <span class="site-header__logo" aria-label="aiBrowser — home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="154" height="25" viewBox="0 0 154 25" fill="none">
+              <path d="M15.6152 8.7634C16.3584 8.40101 18.2868 7.74281 20.0781 8.02697C20.2132 8.04841 20.3196 8.18775 20.3156 8.33818C20.3116 8.48862 20.1988 8.5932 20.0637 8.57176C18.397 8.30736 16.5587 8.92716 15.8508 9.27234C15.7323 9.33011 15.5835 9.263 15.5184 9.12247C15.4534 8.98193 15.4967 8.82119 15.6152 8.7634Z" fill="#0DA6FF"/>
+              <path d="M6.91483 7.88939C7.87101 7.83037 10.2303 7.93536 12.0355 8.85228C12.1717 8.92146 12.226 9.08795 12.1568 9.22413C12.0877 9.36032 11.9212 9.41465 11.785 9.34547C10.1053 8.4923 7.85959 8.38525 6.94886 8.44147C6.79641 8.45086 6.66522 8.3349 6.65581 8.18244C6.64641 8.02999 6.76237 7.8988 6.91483 7.88939Z" fill="#0DA6FF"/>
+              <path d="M6.9495 12.7423C7.90567 12.6833 10.265 12.7883 12.0702 13.7052C12.2063 13.7744 12.2607 13.9409 12.1915 14.0771C12.1223 14.2132 11.9558 14.2676 11.8196 14.1984C10.14 13.3452 7.89426 13.2382 6.98353 13.2944C6.83108 13.3038 6.69989 13.1878 6.69047 13.0354C6.68107 12.8829 6.79704 12.7517 6.9495 12.7423Z" fill="#0DA6FF"/>
+              <path d="M7.02694 9.501C7.84898 9.41181 9.88636 9.44582 11.4754 10.32C11.5953 10.3859 11.6482 10.5531 11.5935 10.6932C11.5387 10.8334 11.3972 10.8936 11.2773 10.8277C9.79872 10.0143 7.85918 9.9747 7.07621 10.0597C6.94514 10.0739 6.82788 9.96032 6.81426 9.80605C6.80065 9.65178 6.89587 9.51522 7.02694 9.501Z" fill="#0DA6FF"/>
+              <path d="M7.06161 14.3539C7.88365 14.2647 9.92103 14.2987 11.5101 15.1729C11.63 15.2389 11.6828 15.406 11.6281 15.5462C11.5734 15.6864 11.4319 15.7465 11.312 15.6806C9.83339 14.8672 7.89385 14.8276 7.11088 14.9126C6.97981 14.9268 6.86254 14.8132 6.84893 14.659C6.83532 14.5047 6.93054 14.3681 7.06161 14.3539Z" fill="#0DA6FF"/>
+              <path d="M22.3062 10.2365C23.1238 10.2366 23.7884 10.8981 23.7886 11.716V15.1623C23.7884 15.9802 23.1238 16.6428 22.3062 16.6428H19.0815L17.188 18.2873C16.7399 18.6763 16.0381 18.3601 16.0376 17.7639V16.6428H16.0054C15.1877 16.6428 14.5231 15.9802 14.5229 15.1623V11.716C14.5231 10.8981 15.1877 10.2366 16.0054 10.2365H22.3062ZM16.0054 11.0197C15.6186 11.0198 15.3063 11.3321 15.3062 11.716V15.1623C15.3063 15.5462 15.6186 15.8596 16.0054 15.8596H16.8208V17.5686L18.7886 15.8596H22.3062C22.6929 15.8596 23.0052 15.5462 23.0054 15.1623V11.716C23.0052 11.3321 22.6929 11.0198 22.3062 11.0197H16.0054ZM17.231 12.8469C17.5732 12.847 17.8501 13.1247 17.8501 13.467C17.8497 13.809 17.573 14.086 17.231 14.0861C16.8889 14.086 16.6112 13.809 16.6108 13.467C16.6108 13.1247 16.8887 12.847 17.231 12.8469ZM19.2534 12.8469C19.5956 12.847 19.8726 13.1247 19.8726 13.467C19.8722 13.809 19.5954 14.086 19.2534 14.0861C18.9115 14.0859 18.6337 13.8089 18.6333 13.467C18.6333 13.1248 18.9113 12.8471 19.2534 12.8469ZM21.2759 12.8469C21.6182 12.8469 21.896 13.1247 21.896 13.467C21.8956 13.809 21.618 14.0861 21.2759 14.0861C20.934 14.0859 20.6561 13.8089 20.6558 13.467C20.6558 13.1248 20.9337 12.8471 21.2759 12.8469Z" fill="#0DA6FF"/>
+              <path d="M4.68488 7.18764H4.01322V18.9803H11.3771L11.5226 18.9976C11.5484 19.0482 11.576 19.0978 11.6054 19.1462C12.0165 19.8234 12.7671 20.2755 13.6243 20.2755C14.5428 20.2755 15.3389 19.7562 15.726 18.9976L15.9406 18.9803H23.3045V16.714C23.5963 16.5568 23.8372 16.3175 23.9959 16.0267V19.1088C23.9959 19.4143 23.7483 19.662 23.4428 19.662H16.1281C15.5794 20.444 14.6628 20.9571 13.6243 20.9572C12.5857 20.9572 11.6691 20.4439 11.1205 19.662H3.87493C3.56944 19.662 3.32179 19.4143 3.32178 19.1088V7.05914C3.32178 6.75364 3.56943 6.50599 3.87493 6.50599H4.68488V7.18764Z" fill="#0DA6FF"/>
+              <path d="M23.4428 6.50599C23.7483 6.506 23.9959 6.75365 23.9959 7.05914V10.7436C23.8372 10.4529 23.5963 10.2135 23.3045 10.0564V7.18764H22.6624V6.50599H23.4428Z" fill="#0DA6FF"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M5.22021 4.84872C9.56842 4.31532 12.5083 5.7961 13.6353 6.78036C14.7678 5.79607 17.7047 4.32319 22.0435 4.85555L22.3169 4.88876V9.9913H21.6938V5.44247C17.5779 5.01402 14.8936 6.4737 13.9849 7.30282V18.3663C14.4996 17.9927 15.0838 17.7039 15.6987 17.4825V18.1475C15.017 18.4153 14.3986 18.7727 13.9009 19.2413L13.6353 19.4806L13.3628 19.2345C12.3397 18.2713 10.8065 17.7782 9.26221 17.5665C7.71831 17.3549 6.21119 17.431 5.30322 17.5655L4.94678 17.6183V4.88192L5.22021 4.84872ZM13.2788 7.29598C12.3701 6.46684 9.68512 5.00704 5.56885 5.43563V16.9034C6.53434 16.7935 7.92366 16.7544 9.34619 16.9493C10.7208 17.1377 12.1632 17.5496 13.2788 18.3595V7.29598Z" fill="#0DA6FF"/>
+              <path d="M99.297 15.6055C99.3039 15.9671 99.3596 16.2765 99.4639 16.5338C99.5682 16.7841 99.7072 16.9892 99.8811 17.1492C100.055 17.3021 100.253 17.4134 100.476 17.4829C100.698 17.5525 100.935 17.5872 101.185 17.5872C101.421 17.5872 101.651 17.5698 101.873 17.5351C102.103 17.4933 102.304 17.4273 102.478 17.3369C102.659 17.2465 102.802 17.1248 102.906 16.9718C103.01 16.8189 103.062 16.6242 103.062 16.3878C103.062 16.1931 103 16.0227 102.875 15.8767C102.749 15.7307 102.582 15.5985 102.374 15.4803C102.172 15.3552 101.939 15.2439 101.675 15.1466C101.411 15.0492 101.14 14.9519 100.862 14.8545C100.437 14.7085 100.006 14.5486 99.5682 14.3747C99.1301 14.194 98.7338 13.9784 98.3791 13.7281C98.0245 13.4708 97.7325 13.1683 97.503 12.8207C97.2805 12.466 97.1693 12.0384 97.1693 11.5378C97.1693 11.0371 97.2701 10.6025 97.4717 10.234C97.6734 9.85852 97.948 9.54909 98.2957 9.30572C98.6434 9.0554 99.0536 8.87114 99.5265 8.75293C100.006 8.62777 100.524 8.56519 101.081 8.56519C101.692 8.56519 102.249 8.63472 102.749 8.77379C103.25 8.91286 103.678 9.12494 104.032 9.41002C104.394 9.68816 104.675 10.0463 104.877 10.4843C105.086 10.9224 105.204 11.4369 105.232 12.028H102.802C102.767 11.7637 102.697 11.5447 102.593 11.3709C102.496 11.1901 102.37 11.0475 102.217 10.9432C102.064 10.832 101.891 10.7555 101.696 10.7138C101.501 10.6651 101.296 10.6408 101.081 10.6408C100.601 10.6408 100.232 10.7277 99.975 10.9015C99.7246 11.0684 99.5995 11.2909 99.5995 11.5691C99.5995 11.7429 99.662 11.8993 99.7872 12.0384C99.9124 12.1775 100.076 12.3061 100.277 12.4243C100.486 12.5425 100.722 12.6538 100.987 12.7581C101.251 12.8554 101.526 12.9563 101.811 13.0606C102.235 13.2135 102.666 13.3804 103.104 13.5612C103.549 13.742 103.949 13.9541 104.303 14.1974C104.658 14.4408 104.947 14.7294 105.169 15.0631C105.399 15.3899 105.513 15.7759 105.513 16.2209C105.513 16.8189 105.392 17.3334 105.148 17.7645C104.912 18.1887 104.589 18.5364 104.178 18.8075C103.775 19.0787 103.306 19.2769 102.77 19.4021C102.235 19.5342 101.672 19.6002 101.081 19.6002C100.517 19.6002 99.9784 19.5168 99.4639 19.3499C98.9563 19.183 98.5078 18.9362 98.1184 18.6094C97.736 18.2756 97.4265 17.8584 97.1901 17.3578C96.9537 16.8571 96.8251 16.273 96.8042 15.6055H99.297Z" fill="#0DA6FF"/>
+              <path d="M95.2501 4.85208V19.3916H92.7886V4.85208H95.2501Z" fill="#0DA6FF"/>
+              <path d="M91.7245 19.11C91.5229 19.2352 91.3456 19.329 91.1926 19.3916C91.0396 19.4612 90.9005 19.5098 90.7754 19.5376C90.6572 19.5724 90.5529 19.5898 90.4625 19.5898C90.379 19.5967 90.306 19.6002 90.2434 19.6002C89.9931 19.6002 89.7637 19.555 89.5551 19.4646C89.3534 19.3742 89.1726 19.256 89.0127 19.11C88.8597 18.957 88.7241 18.7832 88.6059 18.5885C88.4947 18.3869 88.4008 18.1748 88.3243 17.9523C88.0114 18.2791 87.7159 18.5503 87.4377 18.7658C87.1596 18.9744 86.885 19.1413 86.6138 19.2665C86.3426 19.3916 86.0714 19.4785 85.8002 19.5272C85.529 19.5759 85.2474 19.6002 84.9554 19.6002C84.4756 19.6002 84.0271 19.5272 83.6099 19.3812C83.1997 19.2282 82.8416 19.0161 82.5356 18.745C82.2297 18.4668 81.9898 18.1331 81.8159 17.7437C81.6421 17.3543 81.5552 16.9232 81.5552 16.4503C81.5552 16.0401 81.6456 15.6855 81.8264 15.3865C82.0141 15.0875 82.2575 14.8267 82.5565 14.6042C82.8624 14.3817 83.2066 14.1905 83.589 14.0306C83.9784 13.8706 84.3713 13.7281 84.7676 13.6029C85.1709 13.4708 85.5638 13.3456 85.9462 13.2274C86.3356 13.1092 86.6798 12.9841 86.9788 12.852C87.2848 12.7198 87.5281 12.5738 87.7089 12.4139C87.8967 12.247 87.9905 12.0488 87.9905 11.8194C87.9905 11.5969 87.9314 11.4126 87.8132 11.2666C87.702 11.1136 87.556 10.9919 87.3752 10.9015C87.2013 10.8042 87.0032 10.7346 86.7806 10.6929C86.5651 10.6512 86.353 10.6303 86.1444 10.6303C85.9358 10.6303 85.7272 10.6616 85.5186 10.7242C85.31 10.7798 85.1188 10.8702 84.945 10.9954C84.7781 11.1206 84.6355 11.284 84.5173 11.4856C84.3991 11.6803 84.3226 11.9132 84.2879 12.1844H81.7951C81.8368 11.5725 81.9863 11.0406 82.2436 10.5886C82.5078 10.1297 82.8416 9.75074 83.2448 9.45175C83.6481 9.15275 84.1001 8.93024 84.6008 8.78422C85.1084 8.6382 85.6229 8.56519 86.1444 8.56519C86.7146 8.56519 87.257 8.62777 87.7715 8.75293C88.293 8.87809 88.7519 9.07626 89.1483 9.34744C89.5446 9.61863 89.861 9.9663 90.0974 10.3905C90.3338 10.8077 90.452 11.3118 90.452 11.9028V17.0553C90.452 17.1944 90.4972 17.323 90.5876 17.4412C90.678 17.5525 90.8067 17.6081 90.9735 17.6081C90.9944 17.6081 91.0709 17.6011 91.203 17.5872C91.3351 17.5664 91.509 17.4968 91.7245 17.3786V19.11ZM87.9905 14.3017C87.8306 14.3991 87.622 14.486 87.3647 14.5625C87.1075 14.639 86.8293 14.7189 86.5303 14.8024C86.2313 14.8789 85.9289 14.9623 85.6229 15.0527C85.3239 15.1431 85.0527 15.2509 84.8094 15.376C84.566 15.4942 84.3643 15.6368 84.2044 15.8037C84.0514 15.9636 83.975 16.1548 83.975 16.3773C83.975 16.5929 84.0097 16.7771 84.0793 16.9301C84.1488 17.0831 84.2392 17.2083 84.3504 17.3056C84.4686 17.403 84.6008 17.476 84.7468 17.5246C84.8928 17.5664 85.0388 17.5872 85.1848 17.5872C85.6646 17.5872 86.1514 17.4273 86.6451 17.1074C87.1457 16.7806 87.5942 16.2904 87.9905 15.6368V14.3017Z" fill="#0DA6FF"/>
+              <path d="M79.6467 19.3916H77.1852V18.1922C76.921 18.4633 76.6637 18.6893 76.4134 18.8701C76.1631 19.0509 75.9162 19.1969 75.6729 19.3082C75.4295 19.4125 75.1827 19.4855 74.9323 19.5272C74.682 19.5759 74.4247 19.6002 74.1605 19.6002C73.6251 19.6002 73.1453 19.5203 72.7212 19.3603C72.3039 19.2004 71.9458 18.9744 71.6469 18.6824C71.3479 18.3834 71.1184 18.0288 70.9585 17.6185C70.8055 17.2013 70.729 16.7354 70.729 16.2209V8.77379H73.1905V16.0436C73.1905 16.3147 73.2253 16.5477 73.2948 16.7424C73.3713 16.9301 73.4721 17.0831 73.5973 17.2013C73.7294 17.3195 73.8824 17.4064 74.0562 17.4621C74.23 17.5107 74.4178 17.5351 74.6194 17.5351C74.9393 17.5351 75.2522 17.4621 75.5581 17.316C75.871 17.1631 76.1457 16.9579 76.3821 16.7007C76.6255 16.4434 76.8202 16.1479 76.9662 15.8141C77.1122 15.4803 77.1852 15.1257 77.1852 14.7502V8.77379H79.6467V19.3916Z" fill="#0DA6FF"/>
+              <path d="M59.2144 8.77379H61.6759V10.0254C62.1348 9.5039 62.6146 9.13189 63.1152 8.90938C63.6228 8.67992 64.1408 8.56519 64.6693 8.56519C65.2117 8.56519 65.6984 8.64515 66.1295 8.80508C66.5606 8.96501 66.9222 9.19447 67.2142 9.49347C67.5132 9.78551 67.7427 10.1401 67.9026 10.5573C68.0626 10.9676 68.1425 11.4265 68.1425 11.9341V19.3916H65.681V12.3305C65.681 12.0593 65.6428 11.8194 65.5663 11.6108C65.4898 11.4022 65.3855 11.2249 65.2534 11.0788C65.1213 10.9328 64.9648 10.825 64.784 10.7555C64.6032 10.679 64.412 10.6408 64.2104 10.6408C63.8836 10.6408 63.5672 10.7103 63.2612 10.8494C62.9553 10.9815 62.6841 11.1623 62.4477 11.3917C62.2182 11.6143 62.0305 11.875 61.8845 12.174C61.7454 12.466 61.6759 12.772 61.6759 13.0918V19.3916H59.2144V8.77379Z" fill="#0DA6FF"/>
+              <path d="M57.9521 19.11C57.7504 19.2352 57.5731 19.329 57.4201 19.3916C57.2671 19.4612 57.1281 19.5098 57.0029 19.5376C56.8847 19.5724 56.7804 19.5898 56.69 19.5898C56.6066 19.5967 56.5336 19.6002 56.471 19.6002C56.2207 19.6002 55.9912 19.555 55.7826 19.4646C55.5809 19.3742 55.4002 19.256 55.2402 19.11C55.0873 18.957 54.9517 18.7832 54.8335 18.5885C54.7222 18.3869 54.6283 18.1748 54.5518 17.9523C54.2389 18.2791 53.9434 18.5503 53.6653 18.7658C53.3872 18.9744 53.1125 19.1413 52.8413 19.2665C52.5701 19.3916 52.2989 19.4785 52.0278 19.5272C51.7566 19.5759 51.475 19.6002 51.1829 19.6002C50.7031 19.6002 50.2546 19.5272 49.8374 19.3812C49.4272 19.2282 49.0691 19.0161 48.7631 18.745C48.4572 18.4668 48.2173 18.1331 48.0435 17.7437C47.8696 17.3543 47.7827 16.9232 47.7827 16.4503C47.7827 16.0401 47.8731 15.6855 48.0539 15.3865C48.2416 15.0875 48.485 14.8267 48.784 14.6042C49.09 14.3817 49.4341 14.1905 49.8166 14.0306C50.206 13.8706 50.5988 13.7281 50.9952 13.6029C51.3985 13.4708 51.7913 13.3456 52.1738 13.2274C52.5632 13.1092 52.9074 12.9841 53.2064 12.852C53.5123 12.7198 53.7557 12.5738 53.9365 12.4139C54.1242 12.247 54.2181 12.0488 54.2181 11.8194C54.2181 11.5969 54.159 11.4126 54.0408 11.2666C53.9295 11.1136 53.7835 10.9919 53.6027 10.9015C53.4289 10.8042 53.2307 10.7346 53.0082 10.6929C52.7926 10.6512 52.5806 10.6303 52.372 10.6303C52.1634 10.6303 51.9548 10.6616 51.7461 10.7242C51.5375 10.7798 51.3463 10.8702 51.1725 10.9954C51.0056 11.1206 50.8631 11.284 50.7449 11.4856C50.6267 11.6803 50.5502 11.9132 50.5154 12.1844H48.0226C48.0643 11.5725 48.2138 11.0406 48.4711 10.5886C48.7353 10.1297 49.0691 9.75074 49.4724 9.45175C49.8757 9.15275 50.3277 8.93024 50.8283 8.78422C51.3359 8.6382 51.8505 8.56519 52.372 8.56519C52.9421 8.56519 53.4845 8.62777 53.9991 8.75293C54.5206 8.87809 54.9795 9.07626 55.3758 9.34744C55.7722 9.61863 56.0885 9.9663 56.325 10.3905C56.5614 10.8077 56.6796 11.3118 56.6796 11.9028V17.0553C56.6796 17.1944 56.7248 17.323 56.8152 17.4412C56.9056 17.5525 57.0342 17.6081 57.2011 17.6081C57.2219 17.6081 57.2984 17.6011 57.4306 17.5872C57.5627 17.5664 57.7365 17.4968 57.9521 17.3786V19.11ZM54.2181 14.3017C54.0582 14.3991 53.8496 14.486 53.5923 14.5625C53.335 14.639 53.0569 14.7189 52.7579 14.8024C52.4589 14.8789 52.1564 14.9623 51.8505 15.0527C51.5515 15.1431 51.2803 15.2509 51.0369 15.376C50.7935 15.4942 50.5919 15.6368 50.432 15.8037C50.279 15.9636 50.2025 16.1548 50.2025 16.3773C50.2025 16.5929 50.2373 16.7771 50.3068 16.9301C50.3763 17.0831 50.4667 17.2083 50.578 17.3056C50.6962 17.403 50.8283 17.476 50.9743 17.5246C51.1203 17.5664 51.2664 17.5872 51.4124 17.5872C51.8922 17.5872 52.3789 17.4273 52.8726 17.1074C53.3732 16.7806 53.8217 16.2904 54.2181 15.6368V14.3017Z" fill="#0DA6FF"/>
+              <path d="M34.2969 4.84163L38.3646 16.2522L42.5158 4.84163H45.2902V19.3916H42.8287V9.7855L39.4806 19.3916H37.3946L33.984 9.75421V19.3916H31.5225V4.84163H34.2969Z" fill="#0DA6FF"/>
+              <path d="M148.6 5.85338V8.7738H150.55V10.7868H148.6V16.5651C148.6 16.8571 148.666 17.1005 148.798 17.2952C148.937 17.4899 149.128 17.5872 149.372 17.5872C149.448 17.5872 149.601 17.5768 149.831 17.5559C150.06 17.5281 150.376 17.4343 150.78 17.2743V19.2143C150.349 19.3812 149.938 19.4855 149.549 19.5272C149.167 19.5759 148.85 19.6002 148.6 19.6002C148.273 19.6002 147.96 19.5342 147.661 19.4021C147.362 19.27 147.098 19.0857 146.868 18.8493C146.646 18.6059 146.469 18.3139 146.337 17.9731C146.204 17.6324 146.138 17.2535 146.138 16.8363V10.7868H144.626V8.7738H146.138V5.85338H148.6Z" fill="#0DA6FF"/>
+              <path d="M144.365 19.11C144.163 19.2352 143.986 19.329 143.833 19.3916C143.68 19.4612 143.541 19.5098 143.416 19.5376C143.297 19.5724 143.193 19.5898 143.103 19.5898C143.019 19.5967 142.946 19.6002 142.884 19.6002C142.633 19.6002 142.404 19.555 142.195 19.4646C141.994 19.3742 141.813 19.256 141.653 19.11C141.5 18.957 141.364 18.7832 141.246 18.5885C141.135 18.3869 141.041 18.1748 140.964 17.9523C140.652 18.2791 140.356 18.5503 140.078 18.7658C139.8 18.9744 139.525 19.1413 139.254 19.2665C138.983 19.3916 138.712 19.4785 138.44 19.5272C138.169 19.5759 137.888 19.6002 137.596 19.6002C137.116 19.6002 136.667 19.5272 136.25 19.3812C135.84 19.2282 135.482 19.0161 135.176 18.745C134.87 18.4668 134.63 18.1331 134.456 17.7437C134.282 17.3543 134.195 16.9232 134.195 16.4503C134.195 16.0401 134.286 15.6855 134.466 15.3865C134.654 15.0875 134.898 14.8267 135.197 14.6042C135.503 14.3817 135.847 14.1905 136.229 14.0306C136.619 13.8706 137.011 13.7281 137.408 13.6029C137.811 13.4708 138.204 13.3456 138.586 13.2274C138.976 13.1092 139.32 12.9841 139.619 12.852C139.925 12.7198 140.168 12.5738 140.349 12.4139C140.537 12.247 140.631 12.0488 140.631 11.8194C140.631 11.5969 140.572 11.4126 140.453 11.2666C140.342 11.1136 140.196 10.9919 140.015 10.9015C139.841 10.8042 139.643 10.7346 139.421 10.6929C139.205 10.6512 138.993 10.6303 138.785 10.6303C138.576 10.6303 138.367 10.6616 138.159 10.7242C137.95 10.7798 137.759 10.8702 137.585 10.9954C137.418 11.1206 137.276 11.284 137.157 11.4856C137.039 11.6803 136.963 11.9132 136.928 12.1844H134.435C134.477 11.5725 134.626 11.0406 134.884 10.5886C135.148 10.1297 135.482 9.75074 135.885 9.45174C136.288 9.15275 136.74 8.93024 137.241 8.78422C137.748 8.6382 138.263 8.56519 138.785 8.56519C139.355 8.56519 139.897 8.62777 140.412 8.75293C140.933 8.87809 141.392 9.07626 141.788 9.34744C142.185 9.61863 142.501 9.96629 142.738 10.3905C142.974 10.8077 143.092 11.3118 143.092 11.9028V17.0553C143.092 17.1943 143.137 17.323 143.228 17.4412C143.318 17.5524 143.447 17.6081 143.614 17.6081C143.635 17.6081 143.711 17.6011 143.843 17.5872C143.975 17.5664 144.149 17.4968 144.365 17.3786V19.11ZM140.631 14.3017C140.471 14.3991 140.262 14.486 140.005 14.5625C139.748 14.639 139.469 14.7189 139.17 14.8024C138.871 14.8789 138.569 14.9623 138.263 15.0527C137.964 15.1431 137.693 15.2509 137.45 15.376C137.206 15.4942 137.004 15.6368 136.845 15.8037C136.692 15.9636 136.615 16.1548 136.615 16.3773C136.615 16.5929 136.65 16.7771 136.719 16.9301C136.789 17.0831 136.879 17.2083 136.991 17.3056C137.109 17.4029 137.241 17.476 137.387 17.5246C137.533 17.5664 137.679 17.5872 137.825 17.5872C138.305 17.5872 138.792 17.4273 139.285 17.1074C139.786 16.7806 140.234 16.2904 140.631 15.6368V14.3017Z" fill="#0DA6FF"/>
+              <path d="M125.81 4.85206V9.93152C126.582 9.02062 127.548 8.56518 128.71 8.56518C129.252 8.56518 129.742 8.65209 130.18 8.82593C130.625 8.99976 131.001 9.23965 131.307 9.5456C131.62 9.85155 131.86 10.2097 132.026 10.6199C132.2 11.0302 132.287 11.4682 132.287 11.9341V19.3916H129.826V12.4973C129.826 12.1636 129.781 11.8819 129.69 11.6525C129.6 11.4161 129.478 11.2248 129.325 11.0788C129.179 10.9259 129.009 10.8146 128.814 10.7451C128.619 10.6755 128.418 10.6408 128.209 10.6408C127.924 10.6408 127.639 10.7033 127.354 10.8285C127.069 10.9537 126.811 11.124 126.582 11.3396C126.352 11.5551 126.165 11.8089 126.019 12.101C125.88 12.393 125.81 12.7059 125.81 13.0397V19.3916H123.349V4.85206H125.81Z" fill="#0DA6FF"/>
+              <path d="M110.624 11.9132C110.624 12.9145 110.745 13.7802 110.989 14.5103C111.239 15.2404 111.566 15.8454 111.969 16.3252C112.372 16.798 112.828 17.1526 113.335 17.389C113.85 17.6185 114.368 17.7332 114.89 17.7332C115.425 17.7332 115.912 17.6255 116.35 17.4099C116.788 17.1874 117.17 16.8954 117.497 16.5338C117.831 16.1722 118.105 15.7619 118.321 15.303C118.537 14.8371 118.693 14.3608 118.79 13.8741H121.294C121.134 14.7016 120.876 15.4734 120.522 16.1896C120.174 16.8988 119.729 17.5212 119.187 18.0566C118.651 18.585 118.022 19.0022 117.299 19.3082C116.583 19.6072 115.78 19.7567 114.89 19.7567C113.86 19.7567 112.932 19.5828 112.105 19.2352C111.277 18.8805 110.571 18.3695 109.987 17.7019C109.403 17.0275 108.951 16.2035 108.631 15.23C108.319 14.2565 108.162 13.1475 108.162 11.9028C108.162 10.9363 108.312 10.008 108.611 9.11798C108.91 8.22099 109.344 7.4283 109.914 6.73992C110.491 6.05153 111.194 5.50221 112.021 5.09196C112.856 4.68171 113.805 4.47659 114.869 4.47659C115.773 4.47659 116.579 4.60522 117.288 4.8625C117.998 5.11978 118.62 5.47788 119.155 5.9368C119.691 6.38877 120.139 6.92766 120.501 7.55346C120.869 8.17927 121.161 8.86418 121.377 9.60819H118.822C118.453 8.57214 117.946 7.80031 117.299 7.29271C116.652 6.77816 115.842 6.52088 114.869 6.52088C114.243 6.52088 113.669 6.66343 113.148 6.94852C112.633 7.23361 112.188 7.623 111.813 8.11669C111.437 8.60343 111.145 9.1736 110.937 9.82722C110.728 10.4808 110.624 11.1762 110.624 11.9132Z" fill="#0DA6FF"/>
+            </svg>
+          </span>
+          <p class="site-header__legal" id="header-consent">
+            <span>By clicking the button below, you agree to download aiBrowser from aibrowserapps.com, which includes Manuals Chat and other productivity tools, and you accept our </span>
+            <a href="https://manualschat.ai/legal/terms-of-service" target="_blank" class="site-header__link">Terms of Service</a>
+            <span> and </span>
+            <a href="https://manualschat.ai/legal/privacy-policy" target="_blank" class="site-header__link">Privacy Policy</a>.
+          </p>
+        </div>
+    </header>
+    <main id="main-content" class="main" role="main">
+        <section class="main__stage">
+            <div class="modal-layer">
+                <article
+                class="modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="modal-heading"
+                aria-describedby="modal-desc"
+                >
+                <div class="modal__surface">
+                    <header class="modal__header">
+                    <div class="modal__icon-wrap" aria-hidden="true">
+                        <img src="../images/badge.svg"  role="presentation">
+                    </div>
+                    <h1 id="modal-heading" class="modal__title">Click to View Manuals</h1>
+                    </header>
+    
+                    <div
+                    class="modal__progress"
+                    role="progressbar"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-label="Download preparation progress"
+                    >
+                    <div class="modal__progress-track">
+                        <div class="modal__progress-fill"></div>
+                    </div>
+                    </div>
+    
+                    <div class="modal__cta-wrap">
+                    <button type="button" id="continue" class="modal__cta download-ai" download-copy="Continue" download-position="atf" aria-label="Continue with download">
+                        CONTINUE
+                    </button>
+                    </div>
+    
+                    <p id="modal-desc" class="modal__description">
+                      Access thousands of free user manuals and repair guides anytime using Manuals Chat with aiBrowser
+                    </p>
+    
+                    <hr class="modal__rule" aria-hidden="true">
+    
+                    <nav class="stepper" aria-label="Steps to install aiBrowser">
+                    <ol class="stepper__list">
+                        <li class="stepper__item">
+                        <div class="stepper__num" aria-hidden="true">1</div>
+                        <p class="stepper__label">
+                            <span class="stepper__label stepper__label--semibold">Click </span>
+                            <a href="javascript:void(0)" class="stepper__link download-ai" download-copy="Continue" download-position="atfSteps">‘Continue’</a>
+                        </p>
+                        </li>
+                        
+                        <li class="stepper__item">
+                        <div class="stepper__num" aria-hidden="true">2</div>
+                        <p class="stepper__label stepper__label--semibold">Install the  <br> Browser</p>
+                        </li>
+                        
+                        <li class="stepper__item">
+                        <div class="stepper__num" aria-hidden="true">3</div>
+                        <p class="stepper__label stepper__label--semibold">Get <br> Manuals</p>
+                        </li>
+                    </ol>
+                    </nav>
+                </div>
+                </article>
+            </div>
+        </section>
+    </main>
+</div>
+<section id="features" class="w-full py-20 bg-white">
+<div class="max-w-6xl mx-auto px-6">
+<h1 class="text-4xl font-bold text-center text-gray-900 mb-16">Smarter Troubleshooting Starts Here</h1>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="bg-white p-8 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+<i class="ri-brain-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Smart Problem Solving</h3>
+<p class="text-gray-600">Simply type what’s wrong - from “My microwave isn’t heating” to “My lawn mower won’t start” - Our assistant instantly matches your description with instructions to resolve your device issue.</p>
+</div>
+<div class="bg-white p-8 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-secondary/10 rounded-lg mb-6">
+<i class="ri-robot-line text-2xl text-secondary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">AI-Powered Solutions</h3>
+<p class="text-gray-600">Skip the endless forum threads and the hassle of sifting through thick manuals. Our AI gives you tailored solutions in seconds, so you spend less time searching and more time getting things fixed. </p>
+</div>
+<div class="bg-white p-8 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+<i class="ri-guide-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Easy to Follow Support</h3>
+<p class="text-gray-600">We take complex repair instructions and turn them into clear, easy-to-understand steps. You’ll know what to do, in what order, without getting lost in technical manuals or confusing diagrams.
+</p>
+</div>
+<div class="bg-white p-8 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 flex items-center justify-center bg-secondary/10 rounded-lg mb-6">
+<i class="ri-device-line text-2xl text-secondary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Wide Product Support</h3>
+<p class="text-gray-600"> From kitchen appliances and garden tools to electronics, cameras, and power equipment - our database covers thousands of products, ensuring you’ll find help for almost anything you own. </p>
+</div>
+</div>
+<div class="flex justify-center mt-16">
+<button class="bg-primary text-white px-8 py-4 text-lg !rounded-button hover:bg-blue-700 transition-colors whitespace-nowrap shadow-lg hover:shadow-xl transform transition-all duration-300 download-ai" download-copy="Download Now" download-position="btf">Download Now</button>
+</div>
+</div>
+</section>
+<section id="how-it-works" class="w-full py-24 bg-gradient-to-br from-blue-50 via-white to-green-50">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-20">
+<h1 class="text-4xl md:text-5xl font-bold text-gray-900">How It Works</h1>
+<p class="text-xl text-gray-600 mt-4">Get started in three simple steps</p>
+</div>
+<div class="relative">
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-primary/10 via-primary/20 to-primary/10"></div>
+<div class="grid md:grid-cols-3 gap-16 relative">
+<div class="bg-white rounded-xl p-8 shadow-lg transform hover:-translate-y-2 transition-all duration-300">
+<div class="relative mb-8">
+<div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center text-white text-2xl font-bold -mt-12 mx-auto shadow-md">1</div>
+<img src="../images/hiw1.png" alt="Describe Issue Interface" class="w-full h-auto rounded-lg shadow-sm">
+</div>
+<div class="text-center">
+<h3 class="text-xl font-bold text-gray-900 mb-3">Describe the Issue</h3>
+<p class="text-gray-600">For example: “ My blender is leaking.”</p>
+</div>
+</div>
+<div class="bg-white rounded-xl p-8 shadow-lg transform hover:-translate-y-2 transition-all duration-300">
+<div class="relative mb-8">
+<div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center text-white text-2xl font-bold -mt-12 mx-auto shadow-md">2</div>
+<img src="../images/hiw2.png" alt="Product Details Interface" class="w-full h-auto rounded-lg shadow-sm">
+</div>
+<div class="text-center">
+<h3 class="text-xl font-bold text-gray-900 mb-3">Add Product Details</h3>
+<p class="text-gray-600">Optionally, include brand, model, or product name. </p>
+</div>
+</div>
+<div class="bg-white rounded-xl p-8 shadow-lg transform hover:-translate-y-2 transition-all duration-300">
+<div class="relative mb-8">
+<div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center text-white text-2xl font-bold -mt-12 mx-auto shadow-md">3</div>
+<img src="../images/hiw3.png" alt="Solution Interface" class="w-full h-auto rounded-lg shadow-sm">
+</div>
+<div class="text-center">
+<h3 class="text-xl font-bold text-gray-900 mb-3">Get the Solution</h3>
+<p class="text-gray-600">Receive clear, step-by-step guidance easily.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-16">
+<button class="bg-primary text-white px-8 py-4 text-lg !rounded-button hover:bg-blue-700 transition-colors whitespace-nowrap shadow-lg hover:shadow-xl transform transition-all duration-300 download-ai" download-copy="Download Now" download-position="btf2">Download Now</button>
+</div>
+</div>
+</section>
+<section class="w-full py-20 bg-white">
+<div class="max-w-6xl mx-auto px-6">
+<h1 class="text-4xl font-bold text-center text-gray-900 mb-16">60,000+ Manuals, 20,000+ Brands</h1>
+<div class="grid grid-cols-3 md:grid-cols-6 gap-6 mb-8">
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Intel</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Panasonic</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">LG</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Asus</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Nvidia</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">HP</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Philips</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Acer</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Huawei</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Epson</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Toshiba</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Sharp</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Microsoft</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Dell™</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">AMD</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Canon</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">Sony</span>
+</div>
+<div class="flex items-center justify-center px-6 py-8 bg-gradient-to-br from-white to-blue-50/30 rounded-xl shadow-sm border border-gray-100">
+<span class="text-xl font-semibold text-gray-700">D-Link</span>
+</div>
+</div>
+<p class="text-center text-gray-500 text-lg italic mb-16">and more...</p>
+<div class="flex justify-center">
+<button class="bg-primary text-white px-8 py-4 text-lg !rounded-button hover:bg-blue-700 transition-colors whitespace-nowrap download-ai" download-copy="Download Now" download-position="btf3">Download Now</button>
+</div>
+</div>
+</section>
+<section id="faq" class="w-full py-20 bg-gray-50">
+<div class="max-w-4xl mx-auto px-6">
+<h1 class="text-4xl font-bold text-center text-gray-900 mb-16">Frequently Asked Questions</h1>
+<div class="space-y-4">
+<div class="bg-white rounded-lg border border-gray-200">
+<button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors accordion-trigger">
+<span class="font-semibold text-gray-900">What kind of problems can Manuals Chat help with?</span>
+<i class="ri-arrow-down-s-line text-xl text-gray-500 accordion-arrow"></i>
+</button>
+<div class="accordion-content">
+<div class="px-6 pb-4 text-gray-600">AI Manuals Chat helps with issues like devices not starting, strange noises, leaks, error codes, or poor performance—across appliances, electronics, tools, and more.</div>
+</div>
+</div>
+<div class="bg-white rounded-lg border border-gray-200">
+<button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors accordion-trigger">
+<span class="font-semibold text-gray-900">Is this a Manuals Chat App?</span>
+<i class="ri-arrow-down-s-line text-xl text-gray-500 accordion-arrow"></i>
+</button>
+<div class="accordion-content">
+<div class="px-6 pb-4 text-gray-600">No, manuals chat is included as a feature within aiBrowser. When you download, you will get the full browser along with manuals chat and other productivity tools.
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg border border-gray-200">
+<button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors accordion-trigger">
+<span class="font-semibold text-gray-900">Do I have to enter brand and model details?</span>
+<i class="ri-arrow-down-s-line text-xl text-gray-500 accordion-arrow"></i>
+</button>
+<div class="accordion-content">
+<div class="px-6 pb-4 text-gray-600">No. You’ll still get general troubleshooting steps with just a problem description. But adding details ensures you get precise, device-specific guidance. </div>
+</div>
+</div>
+<div class="bg-white rounded-lg border border-gray-200">
+<button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors accordion-trigger">
+<span class="font-semibold text-gray-900">What are the sources for solutions?</span>
+<i class="ri-arrow-down-s-line text-xl text-gray-500 accordion-arrow"></i>
+</button>
+<div class="accordion-content">
+<div class="px-6 pb-4 text-gray-600">Our AI sources them from official product manuals, manufacturer instructions, and trusted repair databases.
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-16">
+<button class="bg-primary text-white px-8 py-4 text-lg !rounded-button hover:bg-blue-700 transition-colors whitespace-nowrap shadow-lg hover:shadow-xl transform transition-all duration-300 download-ai" download-copy="Download Now" download-position="btf4">Download Now</button>
+</div>
+</div>
+</section>
+<section class="w-full py-20 bg-gradient-to-br from-blue-50 to-green-50">
+<div class="max-w-6xl mx-auto px-6 text-center">
+<h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Your AI-Powered Assistant for Any Device Issue</h1>
+<h2 class="text-xl md:text-2xl mb-12 text-gray-600">Install now for instant, AI-driven solutions to any device problem.</h2>
+<div class="flex flex-col items-center gap-8">
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-white px-8 py-4 text-lg !rounded-button hover:bg-blue-700 transition-colors whitespace-nowrap download-ai" download-copy="Download Now" download-position="btf5">Download Now</button>
+</div>
+<img src="../images/laptop2.png" alt="AI Manuals Assistant Interface" class="w-full max-w-3xl h-auto">
+</div>
+</div>
+</section>
+<footer class="w-full bg-gray-50 py-12 border-t border-gray-200">
+<div class="max-w-6xl mx-auto px-6">
+<div class="flex flex-wrap gap-8 justify-center text-center mb-8">
+<a href="https://manualschat.ai/legal/privacy-policy" target="_blank" class="text-gray-600 hover:text-primary transition-colors">Privacy Policy</a>
+<a href="https://manualschat.ai/legal/terms-of-service" target="_blank" class="text-gray-600 hover:text-primary transition-colors">Terms of Service</a>
+<a href="mailto:contact@aibrowser.com" class="text-gray-600 hover:text-primary transition-colors">Contact Us</a>
+<a href="https://manualschat.ai/legal/uninstall-instructions" target="_blank" class="text-gray-600 hover:text-primary transition-colors">Uninstall Instructions
+</a>
+<a href="https://manualschat.ai/legal/do-not-share-my-personal-information" target="_blank" class="text-gray-600 hover:text-primary transition-colors">Do Not Share My Personal Information</a>
+</div>
+<p class="text-sm text-gray-500 text-center">All third-party names, logos, and images are trademarks or properties of their respective owners. Their use does not imply any affiliation or endorsement.</p>
+</div>
+</footer>
+</div>
+<script src="../../js/product.js"></script>
+<script id="accordion-functionality">
+document.addEventListener('DOMContentLoaded', function() {
+const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+accordionTriggers.forEach(trigger => {
+trigger.addEventListener('click', function() {
+const content = this.nextElementSibling;
+const arrow = this.querySelector('.accordion-arrow');
+const isActive = content.classList.contains('active');
+accordionTriggers.forEach(otherTrigger => {
+const otherContent = otherTrigger.nextElementSibling;
+const otherArrow = otherTrigger.querySelector('.accordion-arrow');
+otherContent.classList.remove('active');
+otherArrow.classList.remove('active');
+});
+if (!isActive) {
+content.classList.add('active');
+arrow.classList.add('active');
+}
+});
+});
+});
+</script>
+<script id="smooth-scroll">
+document.addEventListener('DOMContentLoaded', function() {
+const links = document.querySelectorAll('a[href^="#"]');
+links.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+targetElement.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+}
+});
+});
+});
+</script>
+
+</body>
+</html>

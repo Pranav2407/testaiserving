@@ -1,0 +1,197 @@
+.scrollbar-thin::-webkit-scrollbar {
+width: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+background: #f1f1f1;
+border-radius: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+background: #d1d5db;
+border-radius: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+background: #9ca3af;
+}
+.adjust-toggle + div,
+.transform-toggle + div,
+.shapes-toggle + div,
+.filters-toggle + div,
+.resize-toggle + div,
+.text-toggle + div {
+max-height: 0;
+overflow: hidden;
+transition: all 0.3s ease-in-out;
+opacity: 0;
+}
+.adjust-toggle + div:not(.hidden),
+.transform-toggle + div:not(.hidden),
+.shapes-toggle + div:not(.hidden),
+.filters-toggle + div:not(.hidden),
+.resize-toggle + div:not(.hidden),
+.text-toggle + div:not(.hidden) {
+max-height: 1000px;
+opacity: 1;
+}
+:where([class^="ri-"])::before { content: "\f3c2"; }
+#cropOverlay {
+position: absolute;
+border: 2px dashed #2C7A7B;
+background: rgba(44, 122, 123, 0.1);
+cursor: move;
+display: none;
+}
+#cropOverlay .crop-handle {
+position: absolute;
+width: 8px;
+height: 8px;
+background: #2C7A7B;
+border-radius: 50%;
+cursor: nw-resize;
+}
+#cropOverlay .crop-handle.nw { top: -4px; left: -4px; }
+#cropOverlay .crop-handle.ne { top: -4px; right: -4px; }
+#cropOverlay .crop-handle.sw { bottom: -4px; left: -4px; }
+#cropOverlay .crop-handle.se { bottom: -4px; right: -4px; }
+.gradient-animate {
+background: linear-gradient(-45deg, rgba(44, 122, 123, 0.05), rgba(40, 94, 97, 0.05), rgba(44, 122, 123, 0.08), rgba(40, 94, 97, 0.08));
+animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+.floating-icon {
+position: absolute;
+opacity: 0.08;
+animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+0% { transform: translateY(0px) rotate(0deg); }
+50% { transform: translateY(-20px) rotate(5deg); }
+100% { transform: translateY(0px) rotate(0deg); }
+}
+.icon-1 { top: 15%; left: 10%; animation-delay: 0s; font-size: 2.5rem; }
+.icon-2 { top: 25%; right: 15%; animation-delay: 1s; font-size: 3rem; }
+.icon-3 { bottom: 20%; left: 20%; animation-delay: 2s; font-size: 2rem; }
+.icon-4 { bottom: 30%; right: 10%; animation-delay: 3s; font-size: 2.8rem; }
+.icon-5 { top: 40%; left: 25%; animation-delay: 1.5s; font-size: 2.2rem; }
+.icon-6 { bottom: 35%; right: 25%; animation-delay: 2.5s; font-size: 2.4rem; }
+#editor-container{
+    height: 85vh;
+    width: 100%;
+}
+
+/* Target the wrapper div containing the AI Magic button and move it to first position */
+div:has(button img[src*="ai-magic"]),
+div:has(button svg[src*="ai-magic"]),
+div:has(button svg[href*="ai-magic"]),
+div:has(button[title*="AI Magic"]),
+div:has(button[aria-label*="AI Magic"]) {
+    order: -1 !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+.tiny-scrollbar button.bg-primary:hover{
+    background-color: #1f5354 !important;
+    border-color: #1f5354 !important;
+}
+
+.tiny-scrollbar .ml-auto{
+   /*  margin-left: 0 !important; */
+}
+/* second last child */
+.tiny-scrollbar .flex-shrink-0:nth-last-child(2){
+    /* margin-right: auto !important; */
+}
+
+
+
+/* Mobile Menu Styles */
+@media (max-width: 720px) {
+    .pixie-root{
+        position: relative !important;
+     }
+     #editor-container {
+        height: 75vh;
+        width: 100%;
+    }
+     #editor-container > div:first-child{
+         display: none !important;
+     }
+     /* hide button with svg data-testid="CloseOutlinedIcon" */
+     #editor-container .ml-auto + button:has(svg[data-testid="CloseOutlinedIcon"]){
+        display: none !important;
+     }
+}
+@media (max-width: 768px) {
+    .contactfooter{
+        margin: 0 auto !important;
+    }
+}
+@media (max-width: 767px) {
+    #mobile-menu {
+        animation: slideDown 0.3s ease-out;
+    }
+    
+    #mobile-menu.hidden {
+        animation: slideUp 0.3s ease-in;
+    }
+    
+    #mobile-menu-button {
+        transition: all 0.3s ease;
+    }
+    
+    #mobile-menu-button:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Mobile menu links */
+    #mobile-menu a {
+        transition: all 0.2s ease;
+        border-radius: 8px;
+        margin: 2px 0;
+    }
+    
+    #mobile-menu a:hover {
+        transform: translateX(4px);
+        background-color: rgba(44, 122, 123, 0.1);
+    }
+    
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* Ensure mobile menu is above other content */
+#mobile-menu {
+    z-index: 60;
+    position: relative;
+    margin-top: 10px;
+}
+@media (max-height: 768px) {
+    .ptcu{
+        padding-top: 120px !important;
+    }
+}
+/* Remove any CSS that might interfere with Pixie buttons */

@@ -1,0 +1,652 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="Track your packages in real-time with TrackIt. Support for 700+ carriers worldwide. No account needed.">
+<title>Package Tracker</title>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WJSQRB3D');</script>
+<!-- End Google Tag Manager -->
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="stylesheet" href="./tailwind.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+background-color: #f9fafb;
+text-rendering: optimizeLegibility;
+-webkit-font-smoothing: antialiased;
+overflow-x: hidden;
+}
+@media (max-width: 640px) {
+.container {
+width: 100%;
+padding-left: 1rem;
+padding-right: 1rem;
+}
+h1 { font-size: 1.875rem; line-height: 2.25rem; }
+h2 { font-size: 1.5rem; line-height: 2rem; }
+h3 { font-size: 1.25rem; line-height: 1.75rem; }
+}
+@media (max-width: 640px) {
+.container {
+padding-left: 1rem;
+padding-right: 1rem;
+}
+h1 { font-size: 1.875rem; line-height: 2.25rem; }
+h2 { font-size: 1.5rem; line-height: 2rem; }
+h3 { font-size: 1.25rem; line-height: 1.75rem; }
+}
+@keyframes spin {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+.loading-spinner {
+animation: spin 1s linear infinite;
+opacity: 0;
+visibility: hidden;
+transition: all 0.2s ease-out;
+}
+.loading-spinner.show {
+opacity: 1;
+visibility: visible;
+}
+.tracking-card {
+box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+.search-input:focus {
+outline: none;
+box-shadow: 0 0 0 2px rgba(65, 105, 225, 0.2);
+}
+.track-button:hover {
+background-color: #3658c7;
+}
+.tracking-result {
+opacity: 0;
+visibility: hidden;
+transition: all 0.3s ease-out;
+}
+.tracking-result.show {
+opacity: 1;
+visibility: visible;
+}
+.shake {
+animation: shake 0.5s ease-in-out;
+}
+@keyframes shake {
+0%, 100% { transform: translateX(0); }
+10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+.hamburger-menu {
+display: none;
+}
+@media (max-width: 767px) {
+.nav-links {
+display: none;
+flex-direction: column;
+position: absolute;
+top: 70px;
+left: 0;
+right: 0;
+background-color: white;
+padding: 1.5rem;
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+z-index: 40;
+}
+.nav-links.show {
+display: flex;
+gap: 1.5rem;
+}
+.nav-links li {
+text-align: center;
+}
+.nav-links li a {
+display: block;
+padding: 0.75rem;
+font-size: 1.125rem;
+}
+.hamburger-menu {
+display: flex;
+width: 2.5rem;
+height: 2.5rem;
+align-items: center;
+justify-content: center;
+border-radius: 0.375rem;
+}
+.hamburger-menu:hover {
+background-color: #f3f4f6;
+}
+.posRel {
+    position: relative !important;
+}
+
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.padTop {
+    padding-top: 8rem !important;
+}
+.padBtm {
+    padding-bottom: 20px;
+}
+@media (max-width: 1024px) {
+    .flDir {
+        flex-direction: column !important;
+    }
+    .truckImg {
+        width: auto !important;
+        margin: 0 auto;
+    }
+    .padL {
+        padding-left: 0 !important;
+    }
+}
+@media (max-width: 767px) {
+    .truckImg {
+        width: 100% !important;
+}
+}
+@media (max-width: 500px) {
+    .gridNo {
+        display: flex !important;
+        flex-wrap: wrap;
+        gap: 20px !important;
+    }
+}
+@media (max-width: 400px) {
+            .logoW {
+                width: 80% !important;
+            }
+        }
+img, video {
+    max-width: none;
+}
+.headeIn {
+    max-width: 1280px;
+}
+
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    
+  select {
+    font-size: 0px; /* prevent zoom */
+    border: 1px solid #00ccff !important;
+    background-color: red !important;
+  }
+}
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1366px) 
+  and (orientation: portrait) {
+   select {
+      /* Optional: visual style adjustment */
+       background-color: red !important;
+    }
+}
+@media (min-width: 768px) {
+    .md\:w-1\/2 {
+        width: 100% !important;
+    }
+}
+
+</style>
+</head>
+<body>
+<!-- Header Navigation -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+<div class="mx-auto px-4 py-4 headeIn">
+<div class="flex justify-between items-center">
+<a href="#" class="flex items-center gap-2 cursor-auto">
+<div class="w-16 h-16 flex items-center justify-center relative">
+<img src="images/logo.png" alt="AI Package Tracker Logo" width="64px">
+</div>
+<img src="images/logoname.png" alt="AI Package Tracker" width="304px" class="logoW">
+</a>
+<nav>
+<ul class="nav-links hidden md:flex space-x-8">
+<li><a href="#hero" class="font-medium hover:text-primary transition-colors">Home</a></li>
+<li><a href="#features" class="font-medium hover:text-primary transition-colors">Why Track</a></li>
+<li><a href="#how-it-works" class="font-medium hover:text-primary transition-colors">How It Works</a></li>
+<li><a href="#why-us" class="font-medium hover:text-primary transition-colors">Carriers</a></li>
+<li><a href="#faqs" class="font-medium hover:text-primary transition-colors">FAQs</a></li>
+</ul>
+<button class="hamburger-menu md:hidden w-6 h-6 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</nav>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section id="hero" class="min-h-[85vh] flex items-center justify-center px-2 py-12 overflow-hidden">
+<div class="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-4 md:gap-8 px-4 flDir">
+<div class="w-full md:w-1/2 mb-8 md:mb-0">
+<div class="tracking-card bg-white rounded-2xl p-4 sm:p-6 md:p-8 max-w-xl mx-auto backdrop-blur-sm">
+<h1 class="text-3xl md:text-4xl font-bold text-center md:text-left mb-3">
+Track Your Packages<br>
+<span class="text-primary">Instantly</span>
+</h1>
+<p class="text-secondary mb-6 text-center md:text-left">
+    Package Tracker with aiBrowser - Enter your tracking number to get real-time parcel status of your shipment's location, status, and estimated delivery time.
+</p>
+<form id="tracking-form" class="mb-4">
+<div class="relative mb-4">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<i class="ri-search-line text-gray-400"></i>
+</div>
+<input
+type="text"
+id="tracking-input"
+class="search-input w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:border-primary transition-colors"
+placeholder="Enter tracking number"
+>
+</div>
+<button
+type="submit"
+class="track-button w-full bg-primary text-white py-3 rounded-button font-medium transition-colors !rounded-button whitespace-nowrap relative">
+<span class="inline-flex items-center">
+<span class="tracking-button-text">Track Package</span>
+<i class="ri-loader-4-line ml-2 loading-spinner"></i>
+</span>
+</button>
+<div id="error-message" class="hidden mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+<p class="text-sm text-red-600" id="error-text"></p>
+</div>
+</form>
+<p class="text-sm text-gray-500 text-center">
+Example: <span class="font-medium">TRK12345678US</span>
+</p>
+</div>
+</div>
+<div class="w-full relative pl-4 padL">
+<div id="tracking-result" class="tracking-result absolute inset-0 bg-white/95 backdrop-blur-sm rounded-2xl hidden posRel">
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold">Tracking Details</h2>
+<button id="close-tracking" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4 gridNo">
+<div>
+<p class="text-sm text-gray-500 mb-1">Tracking Number</p>
+<p class="font-medium" id="result-tracking-number">TRK12345678US</p>
+</div>
+<div>
+<p class="text-sm text-gray-500 mb-1">Status</p>
+<p class="font-medium text-green-600" id="result-status">In Transit</p>
+</div>
+<div>
+<p class="text-sm text-gray-500 mb-1">Last Update</p>
+<p class="font-medium" id="result-last-update">May 13, 2025 - 10:23 AM</p>
+</div>
+</div>
+<div class="border-t border-gray-200 pt-4 flex-1 overflow-y-auto" style="scrollbar-width: thin;">
+<h3 class="font-medium mb-3">Shipment Progress</h3>
+<div class="space-y-4 pr-2 padBtm" id="shipment-progress">
+<div class="flex">
+<div class="mr-4 flex flex-col items-center">
+<div class="w-4 h-4 bg-green-500 rounded-full"></div>
+<div class="w-0.5 h-full bg-gray-200 mt-1"></div>
+</div>
+<div>
+<p class="font-medium">Package in transit</p>
+<p class="text-sm text-gray-500">May 13, 2025 - 10:23 AM</p>
+<p class="text-sm text-gray-600">London Distribution Center</p>
+</div>
+</div>
+<div class="flex">
+<div class="mr-4 flex flex-col items-center">
+<div class="w-4 h-4 bg-green-500 rounded-full"></div>
+<div class="w-0.5 h-full bg-gray-200 mt-1"></div>
+</div>
+<div>
+<p class="font-medium">Package processed</p>
+<p class="text-sm text-gray-500">May 12, 2025 - 3:45 PM</p>
+<p class="text-sm text-gray-600">Manchester Sorting Facility</p>
+</div>
+</div>
+<div class="flex">
+<div class="mr-4 flex flex-col items-center">
+<div class="w-4 h-4 bg-green-500 rounded-full"></div>
+</div>
+<div>
+<p class="font-medium">Package received</p>
+<p class="text-sm text-gray-500">May 11, 2025 - 9:12 AM</p>
+<p class="text-sm text-gray-600">Birmingham Collection Point</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 pt-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm">
+<button id="track-new" class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-blue-700 transition-colors !rounded-button whitespace-nowrap">
+Track New Package
+</button>
+</div>
+</div>
+</div>
+<img src="./images/truck.jpg" alt="Delivery truck with packages" class="w-full h-auto object-top rounded-2xl truckImg">
+</div>
+</div>
+</section>
+<!-- Tracking Result Section (Hidden by default) -->
+<div id="tracking-result" class="tracking-result absolute inset-0 bg-white/95 backdrop-blur-sm rounded-2xl hidden flex flex-col">
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold">Tracking Details</h2>
+<button id="close-tracking" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold">Tracking Details</h2>
+<button id="close-tracking" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4 gridNo">
+<div>
+<p class="text-sm text-gray-500 mb-1">Tracking Number</p>
+<p class="font-medium" id="result-tracking-number">TRK12345678US</p>
+</div>
+<div>
+<p class="text-sm text-gray-500 mb-1">Status</p>
+<p class="font-medium text-green-600" id="result-status">In Transit</p>
+</div>
+<div>
+<p class="text-sm text-gray-500 mb-1">Last Update</p>
+<p class="font-medium" id="result-last-update">May 13, 2025 - 10:23 AM</p>
+</div>
+<div>
+<p class="text-sm text-gray-500 mb-1">Carrier</p>
+<p class="font-medium" id="result-carrier">Express Logistics</p>
+</div>
+<div>
+<p class="text-sm text-gray-500 mb-1">Weight</p>
+<p class="font-medium" id="result-weight">2.4 kg</p>
+</div>
+</div>
+<div class="border-t border-gray-200 pt-4 flex-1 overflow-y-auto" style="scrollbar-width: thin;">
+<h3 class="font-medium mb-3">Shipment Progress</h3>
+<div class="space-y-4 pr-2" id="shipment-progress">
+<div class="flex">
+<div class="mr-4 flex flex-col items-center">
+<div class="w-4 h-4 bg-green-500 rounded-full"></div>
+<div class="w-0.5 h-full bg-gray-200 mt-1"></div>
+</div>
+<div>
+<p class="font-medium">Package in transit</p>
+<p class="text-sm text-gray-500">May 13, 2025 - 10:23 AM</p>
+<p class="text-sm text-gray-600">London Distribution Center</p>
+</div>
+</div>
+<div class="flex">
+<div class="mr-4 flex flex-col items-center">
+<div class="w-4 h-4 bg-green-500 rounded-full"></div>
+<div class="w-0.5 h-full bg-gray-200 mt-1"></div>
+</div>
+<div>
+<p class="font-medium">Package processed</p>
+<p class="text-sm text-gray-500">May 12, 2025 - 3:45 PM</p>
+<p class="text-sm text-gray-600">Manchester Sorting Facility</p>
+</div>
+</div>
+<div class="flex">
+<div class="mr-4 flex flex-col items-center">
+<div class="w-4 h-4 bg-green-500 rounded-full"></div>
+</div>
+<div>
+<p class="font-medium">Package received</p>
+<p class="text-sm text-gray-500">May 11, 2025 - 9:12 AM</p>
+<p class="text-sm text-gray-600">Birmingham Collection Point</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 pt-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm">
+<button id="track-new" class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-blue-700 transition-colors !rounded-button whitespace-nowrap">
+Track New Package
+</button>
+</div>
+</div>
+</div>
+<div id="error-message" class="hidden mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+<p class="text-sm text-red-600" id="error-text"></p>
+</div>
+<!-- What You Get Section -->
+<section id="features" class="py-12 md:py-16 bg-white padTop">
+<div class="container mx-auto px-4">
+<h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-16">Why Package Tracking Matters</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+<div class="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl">
+<div class="w-16 h-16 flex items-center justify-center shrink-0 mb-4">
+<i class="ri-line-chart-line ri-2x text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-3">Shipping Insights</h3>
+<p class="text-gray-600">Tracking history gives data to improve shipping</p>
+</div>
+</div>
+<div class="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl">
+<div class="w-16 h-16 flex items-center justify-center shrink-0 mb-4">
+<i class="ri-calendar-check-line ri-2x text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-3">Delivery Planning</h3>
+<p class="text-gray-600">Accurate delivery times help plan your day</p>
+</div>
+</div>
+<div class="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl">
+<div class="w-16 h-16 flex items-center justify-center shrink-0 mb-4">
+<i class="ri-shield-keyhole-line ri-2x text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-3">Loss Prevention</h3>
+<p class="text-gray-600">Early alerts let you act fast to avoid loss</p>
+</div>
+</div>
+<div class="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl">
+<div class="w-16 h-16 flex items-center justify-center shrink-0 mb-4">
+<i class="ri-notification-3-line ri-2x text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-3">Customer Trust</h3>
+<p class="text-gray-600">Tracking updates keep your mind at ease</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Track in 3 Easy Steps Section -->
+<section id="how-it-works" class="py-12 md:py-20 bg-gray-50 padTop">
+<div class="container mx-auto px-4">
+<h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-16">How Package Tracking Works</h2>
+<div class="flex flex-col md:grid md:grid-cols-3 gap-12 md:gap-16 max-w-5xl mx-auto">
+<div class="text-center flex flex-col items-center">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mb-8">
+<span class="text-xl font-bold">1</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3">It Starts with a Scan</h3>
+<p class="text-gray-600 text-sm max-w-[280px] mx-auto leading-relaxed">The package gets scanned and tracking begins with a unique ID.</p>
+</div>
+<div class="text-center flex flex-col items-center">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mb-8">
+<span class="text-xl font-bold">2</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3 whitespace-nowrap">Scans Mark Every Stop</h3>
+<p class="text-gray-600 text-sm max-w-[240px] mx-auto leading-relaxed min-h-[40px]">Each stop updates the tracking system with the package's location.</p>
+</div>
+<div class="text-center flex flex-col items-center">
+<div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mb-8">
+<span class="text-xl font-bold">3</span>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3 whitespace-nowrap">You Get Real-Time Updates</h3>
+<p class="text-gray-600 text-sm max-w-[240px] mx-auto leading-relaxed min-h-[40px]">You can check progress anytime, from shipped to delivered status.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Our Package Tracker Section -->
+<section id="why-us" class="py-12 md:py-20 bg-white padTop">
+<div class="container mx-auto px-4">
+<h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-16">Top 4 Package Carriers in the US</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+<div class="flex items-start gap-6 p-6 bg-gray-50 rounded-xl">
+<div class="w-12 h-12 flex items-center justify-center shrink-0">
+<i class="ri-mail-send-fill ri-2x text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-primary mb-1">USPS (United States Postal Service®)</h3>
+<p class="text-gray-600">Delivers to every address across the U.S.</p>
+</div>
+</div>
+<div class="flex items-start gap-6 p-6 bg-gray-50 rounded-xl">
+<div class="w-12 h-12 flex items-center justify-center shrink-0">
+<i class="ri-truck-fill ri-2x text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-primary mb-1">UPS (United Parcel Service®)</h3>
+<p class="text-gray-600">Reliable for urgent and business shipments.</p>
+</div>
+</div>
+<div class="flex items-start gap-6 p-6 bg-gray-50 rounded-xl">
+<div class="w-12 h-12 flex items-center justify-center shrink-0">
+<i class="ri-box-3-fill ri-2x text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-primary mb-1">FedEx</h3>
+<p class="text-gray-600">Fast, precise shipping with global reach.</p>
+</div>
+</div>
+<div class="flex items-start gap-6 p-6 bg-gray-50 rounded-xl">
+<div class="w-12 h-12 flex items-center justify-center shrink-0">
+<i class="ri-truck-line ri-2x text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold text-primary mb-1">Amazon Logistics</h3>
+<p class="text-gray-600">Prime deliveries with fast, last-mile service.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- App Download Section -->
+<section class="py-12 md:py-20 bg-white">
+    <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Package Tracker with aiBrowser - Get the App Today</h1>
+    <img src="https://static.readdy.ai/image/be13743f0e9895a18914e5f783e93ffd/51b6b828dd5a3afc59023e05e47a54e2.png" alt="Package Tracker Browser Interface" class="w-full max-w-xl mx-auto mb-2">
+    <button class="bg-primary text-white px-8 py-4 rounded-button font-semibold text-lg hover:bg-blue-700 transition-colors !rounded-button whitespace-nowrap mb-4 cursor-pointer download-ai" download-copy="Download Now" download-position="btf">
+    Download Now
+    </button>
+    <p class="text-sm text-gray-600 leading-relaxed">
+    By clicking the button above, you agree to download aiBrowser from aibrowserapps.com, which includes Package Tracker and other productivity tools, and you accept our <a href="/legal/terms-of-service/" target="_blank" rel="noopener noreferrer" class="hover:text-primary">Terms of Service</a> and <a href="/legal/privacy-policy/" target="_blank" rel="noopener noreferrer" class="hover:text-primary">Privacy Policy</a>.
+    </p>
+    </div>
+    </div>
+    <div id="faqs"></div>
+</section>
+<!-- FAQs Section -->
+
+<section class="py-12 md:py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Frequently Asked Questions</h2>
+<div class="max-w-3xl mx-auto space-y-4">
+<div class="bg-white rounded-lg shadow-sm">
+        <button class="w-full px-6 py-4 text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+        <span class="text-lg font-semibold">Is this a Package Tracker App?</span>
+        <i class="ri-add-line ri-lg transition-transform" style="transform: rotate(45deg);"></i>
+        </button>
+        <div class="px-6 pb-4">
+        <p class="text-gray-600">This is a Package Tracker widget which is one of the many features built into aiBrowser. When you download it, you get the full browser along with other productivity tools designed to make your browsing smarter, faster, and more efficient. </p>
+        </div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full px-6 py-4 text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+<span class="text-lg font-semibold">How does package tracking actually work?</span>
+<i class="ri-add-line ri-lg transition-transform"></i>
+</button>
+<div class="hidden px-6 pb-4">
+<p class="text-gray-600">A unique ID is assigned to your shipment. Each scan updates the package's status online, so you can follow its progress in real time.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full px-6 py-4 text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+<span class="text-lg font-semibold">Can I track packages from different carriers in one place?</span>
+<i class="ri-add-line ri-lg transition-transform"></i>
+</button>
+<div class="hidden px-6 pb-4">
+<p class="text-gray-600">Yes, many trackers let you check shipments from multiple carriers like USPS, UPS, and FedEx all together.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full px-6 py-4 text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+<span class="text-lg font-semibold">How secure is my tracking information?</span>
+<i class="ri-add-line ri-lg transition-transform"></i>
+</button>
+<div class="hidden px-6 pb-4">
+<p class="text-gray-600">Tracking shows shipment status only. Trusted services use encryption to protect your info and keep it private.</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm">
+<button class="w-full px-6 py-4 text-left flex justify-between items-center" onclick="toggleFAQ(this)">
+<span class="text-lg font-semibold">What if my package tracking stops updating?</span>
+<i class="ri-add-line ri-lg transition-transform"></i>
+</button>
+<div class="hidden px-6 pb-4">
+<p class="text-gray-600">It may be between scan points. If it stays unchanged for days, contact the carrier for help.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-8 md:py-12">
+<div class="container mx-auto px-4 max-w-4xl">
+<div class="flex flex-col items-center text-center">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+<div class="flex flex-col items-center">
+<h3 class="text-lg font-semibold mb-4">Package Tracker</h3>
+<p class="text-gray-400">Never lose track of a delivery again — get real-time parcel status of your shipments with package tracker.</p>
+</div>
+<div class="flex flex-col items-center">
+<ul class="space-y-2">
+<li><a href="/legal/terms-of-service" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+<li><a href="/legal/privacy-policy" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+<li><a href="/legal/do-not-share-my-personal-information" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">Do Not Share My Personal Information</a></li>
+<li><a href="/legal/uninstall-instructions" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">Uninstall Instructions</a></li>
+</ul>
+</div>
+<div class="flex flex-col items-center">
+<p class="text-gray-400"><a href="mailto:contact@aibrowser.com">contact@aibrowser.com</a></p>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-800 w-full">
+<p class="text-gray-400 text-xs text-center">All third-party names, logos, and images are trademarks or properties of their respective owners. Their use does not imply any affiliation or endorsement.</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="./js/index.js"></script>
+</body>
+</html>

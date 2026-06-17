@@ -1,0 +1,766 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convert PDFs</title>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WTRKXR53');</script>
+<!-- End Google Tag Manager -->
+<link rel="icon" type="image/png" href="../../images/logo.png">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="../../css/styles.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+</style>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#2563EB',
+secondary: '#333333'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+* {
+box-sizing: border-box;
+}
+body {
+margin: 0;
+padding: 0;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+line-height: 1.6;
+color: #333;
+scroll-behavior: smooth;
+}
+.floating-card {
+transition: all 0.3s ease;
+box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.floating-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+.glow-button {
+transition: all 0.3s ease;
+box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+.glow-button:hover {
+box-shadow: 0 6px 25px rgba(37, 99, 235, 0.5);
+transform: translateY(-2px);
+}
+.pulse-button {
+animation: pulse 2s infinite;
+}
+@keyframes pulse {
+0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+.fade-in {
+opacity: 0;
+transform: translateY(30px);
+transition: all 0.6s ease;
+}
+.fade-in.visible {
+opacity: 1;
+transform: translateY(0);
+}
+.nav-link {
+position: relative;
+transition: color 0.3s ease;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+bottom: -4px;
+left: 0;
+width: 0;
+height: 2px;
+background-color: #E22D39;
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.format-item {
+transition: all 0.3s ease;
+cursor: pointer;
+}
+.format-item:hover {
+background-color: #fff;
+transform: translateX(5px);
+box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.faq-item {
+transition: all 0.3s ease;
+}
+.faq-content {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.5s ease;
+}
+.faq-content.active {
+max-height: 500px;
+}
+.rotate-icon {
+transition: transform 0.3s ease;
+}
+.rotate-icon.active {
+transform: rotate(180deg);
+}
+.imgwrp{
+    scale: 1.4;
+}
+@media screen and (max-width: 1600px) {
+    .imgwrp{
+       scale: 1.2;
+    }
+}
+@media screen and (max-width: 1420px) {
+    .imgwrp{
+       scale: 1;
+       transform: translateX(0px) !important;
+    }
+}
+</style>
+</head>
+<body class="bg-white">
+  <div class="page-shell" data-figma-node="1:3">
+    <header class="site-header" role="banner">
+      <div class="site-header__inner">
+        <span class="site-header__logo" aria-label="aiBrowser — home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="163" height="29" viewBox="0 0 163 29" fill="none">
+            <g filter="url(#filter0_n_1_249)">
+              <path d="M104.824 10.9256V13.2517H98.0997V10.9256H104.824ZM99.6262 8.25061H102.723V18.6599C102.723 18.9458 102.766 19.1687 102.854 19.3287C102.941 19.4837 103.062 19.5928 103.217 19.6558C103.377 19.7188 103.561 19.7503 103.77 19.7503C103.915 19.7503 104.06 19.7382 104.206 19.7139C104.351 19.6848 104.463 19.663 104.54 19.6485L105.027 21.9528C104.872 22.0013 104.654 22.057 104.373 22.12C104.092 22.1878 103.75 22.229 103.348 22.2436C102.602 22.2726 101.947 22.1733 101.385 21.9455C100.828 21.7178 100.394 21.364 100.084 20.8842C99.774 20.4045 99.6214 19.7987 99.6262 19.067V8.25061Z" fill="#E73618"/>
+              <path d="M89.9492 22.0909V10.9256H92.9513V12.8737H93.0676C93.2712 12.1807 93.6128 11.6574 94.0926 11.3036C94.5723 10.945 95.1248 10.7657 95.7499 10.7657C95.905 10.7657 96.0722 10.7754 96.2515 10.7948C96.4308 10.8142 96.5883 10.8408 96.724 10.8747V13.6224C96.5786 13.5788 96.3775 13.5401 96.1207 13.5061C95.8638 13.4722 95.6288 13.4553 95.4156 13.4553C94.96 13.4553 94.553 13.5546 94.1944 13.7533C93.8406 13.9471 93.5595 14.2185 93.3511 14.5674C93.1476 14.9163 93.0458 15.3186 93.0458 15.7741V22.0909H89.9492Z" fill="#E73618"/>
+              <path d="M82.8038 22.309C81.6553 22.309 80.6667 22.0764 79.838 21.6111C79.0142 21.1411 78.3794 20.4772 77.9335 19.6194C77.4877 18.7568 77.2648 17.7367 77.2648 16.5591C77.2648 15.4106 77.4877 14.4027 77.9335 13.5352C78.3794 12.6678 79.0069 11.9918 79.8162 11.5071C80.6303 11.0225 81.585 10.7802 82.6802 10.7802C83.4168 10.7802 84.1025 10.899 84.7374 11.1364C85.377 11.369 85.9343 11.7204 86.4093 12.1904C86.889 12.6605 87.2622 13.2517 87.5287 13.9641C87.7952 14.6716 87.9285 15.5003 87.9285 16.4501V17.3006H78.5005V15.3816H85.0136C85.0136 14.9357 84.9167 14.5408 84.7228 14.1967C84.529 13.8526 84.26 13.5837 83.916 13.3898C83.5767 13.1911 83.1818 13.0918 82.7311 13.0918C82.261 13.0918 81.8443 13.2008 81.4808 13.4189C81.1222 13.6321 80.8412 13.9205 80.6376 14.2839C80.4341 14.6425 80.3299 15.0423 80.3251 15.4833V17.3079C80.3251 17.8603 80.4268 18.3376 80.6303 18.7399C80.8387 19.1421 81.1319 19.4522 81.5099 19.6703C81.8879 19.8884 82.3362 19.9974 82.8547 19.9974C83.1988 19.9974 83.5137 19.949 83.7997 19.852C84.0856 19.7551 84.3303 19.6097 84.5338 19.4159C84.7374 19.222 84.8924 18.9846 84.9991 18.7035L87.8631 18.8925C87.7177 19.5807 87.4197 20.1816 86.969 20.6952C86.5231 21.2041 85.9465 21.6015 85.2389 21.8874C84.5363 22.1684 83.7245 22.309 82.8038 22.309Z" fill="#E73618"/>
+              <path d="M76.4906 10.9256L72.5871 22.0909H69.0979L65.1945 10.9256H68.4655L70.7844 18.9143H70.9007L73.2122 10.9256H76.4906Z" fill="#E73618"/>
+              <path d="M56.8442 15.636V22.0909H53.7476V10.9256H56.6988V12.8955H56.8296C57.0768 12.2462 57.4911 11.7325 58.0727 11.3545C58.6542 10.9717 59.3593 10.7802 60.1879 10.7802C60.9633 10.7802 61.6393 10.9499 62.216 11.2891C62.7927 11.6283 63.241 12.1129 63.5608 12.7429C63.8806 13.368 64.0406 14.1143 64.0406 14.9818V22.0909H60.9439V15.5342C60.9488 14.8509 60.7743 14.3179 60.4206 13.935C60.0668 13.5473 59.5798 13.3535 58.9595 13.3535C58.5427 13.3535 58.1744 13.4431 57.8546 13.6224C57.5396 13.8018 57.2924 14.0634 57.1131 14.4075C56.9387 14.7467 56.849 15.1562 56.8442 15.636Z" fill="#E73618"/>
+              <path d="M46.2386 22.309C45.1094 22.309 44.133 22.0691 43.3091 21.5893C42.4902 21.1047 41.8578 20.4311 41.4119 19.5685C40.9661 18.7011 40.7432 17.6955 40.7432 16.5519C40.7432 15.3985 40.9661 14.3905 41.4119 13.5279C41.8578 12.6605 42.4902 11.9869 43.3091 11.5071C44.133 11.0225 45.1094 10.7802 46.2386 10.7802C47.3677 10.7802 48.3418 11.0225 49.1607 11.5071C49.9846 11.9869 50.6194 12.6605 51.0652 13.5279C51.5111 14.3905 51.734 15.3985 51.734 16.5519C51.734 17.6955 51.5111 18.7011 51.0652 19.5685C50.6194 20.4311 49.9846 21.1047 49.1607 21.5893C48.3418 22.0691 47.3677 22.309 46.2386 22.309ZM46.2531 19.9102C46.7668 19.9102 47.1957 19.7648 47.5397 19.474C47.8838 19.1784 48.1431 18.7762 48.3175 18.2674C48.4968 17.7585 48.5865 17.1794 48.5865 16.5301C48.5865 15.8807 48.4968 15.3016 48.3175 14.7928C48.1431 14.2839 47.8838 13.8817 47.5397 13.5861C47.1957 13.2905 46.7668 13.1427 46.2531 13.1427C45.7346 13.1427 45.2984 13.2905 44.9447 13.5861C44.5958 13.8817 44.3317 14.2839 44.1524 14.7928C43.9779 15.3016 43.8907 15.8807 43.8907 16.5301C43.8907 17.1794 43.9779 17.7585 44.1524 18.2674C44.3317 18.7762 44.5958 19.1784 44.9447 19.474C45.2984 19.7648 45.7346 19.9102 46.2531 19.9102Z" fill="#E73618"/>
+              <path d="M38.9948 12.4158H35.8109C35.7528 12.0039 35.6341 11.638 35.4548 11.3182C35.2754 10.9935 35.0453 10.7172 34.7642 10.4895C34.4831 10.2617 34.1584 10.0873 33.7901 9.96611C33.4267 9.84496 33.0317 9.78438 32.6053 9.78438C31.8348 9.78438 31.1636 9.9758 30.5917 10.3586C30.0199 10.7366 29.5765 11.2891 29.2615 12.016C28.9465 12.738 28.789 13.6152 28.789 14.6474C28.789 15.7087 28.9465 16.6003 29.2615 17.3224C29.5813 18.0445 30.0272 18.5896 30.599 18.9579C31.1708 19.3262 31.8323 19.5104 32.5835 19.5104C33.0051 19.5104 33.3952 19.4547 33.7538 19.3432C34.1172 19.2317 34.4395 19.0694 34.7206 18.8562C35.0016 18.6381 35.2343 18.374 35.4184 18.0638C35.6074 17.7537 35.7382 17.3999 35.8109 17.0026L38.9948 17.0171C38.9124 17.7004 38.7064 18.3595 38.3769 18.9943C38.0522 19.6243 37.6137 20.1888 37.0612 20.688C36.5136 21.1823 35.8594 21.5748 35.0986 21.8656C34.3426 22.1515 33.4873 22.2944 32.5326 22.2944C31.2048 22.2944 30.0175 21.994 28.9707 21.3931C27.9288 20.7922 27.105 19.9223 26.4993 18.7835C25.8984 17.6447 25.5979 16.266 25.5979 14.6474C25.5979 13.024 25.9032 11.6428 26.5138 10.504C27.1244 9.3652 27.9531 8.49776 28.9998 7.90169C30.0466 7.30078 31.2242 7.00033 32.5326 7.00033C33.3952 7.00033 34.1948 7.12148 34.9314 7.36378C35.6728 7.60608 36.3295 7.95984 36.9013 8.42506C37.4731 8.88544 37.9383 9.45 38.297 10.1188C38.6604 10.7875 38.893 11.5532 38.9948 12.4158Z" fill="#E73618"/>
+              <path d="M160.091 14.1095L157.256 14.2839C157.208 14.0416 157.103 13.8236 156.943 13.6297C156.783 13.431 156.573 13.2735 156.311 13.1572C156.054 13.0361 155.746 12.9755 155.388 12.9755C154.908 12.9755 154.503 13.0773 154.174 13.2808C153.844 13.4795 153.68 13.746 153.68 14.0804C153.68 14.3469 153.786 14.5723 153.999 14.7564C154.213 14.9406 154.579 15.0884 155.097 15.1998L157.118 15.6069C158.203 15.8298 159.013 16.1884 159.546 16.6827C160.079 17.177 160.345 17.8264 160.345 18.6308C160.345 19.3626 160.13 20.0047 159.698 20.5571C159.272 21.1096 158.686 21.5409 157.939 21.851C157.198 22.1563 156.343 22.309 155.373 22.309C153.895 22.309 152.718 22.0013 151.841 21.3858C150.968 20.7655 150.457 19.9223 150.307 18.8562L153.353 18.6963C153.445 19.1469 153.667 19.491 154.021 19.7285C154.375 19.9611 154.828 20.0774 155.381 20.0774C155.923 20.0774 156.359 19.9732 156.689 19.7648C157.023 19.5516 157.193 19.2778 157.198 18.9434C157.193 18.6623 157.074 18.4322 156.842 18.2529C156.609 18.0687 156.25 17.9282 155.766 17.8312L153.832 17.446C152.742 17.2279 151.93 16.8499 151.397 16.312C150.869 15.7741 150.605 15.0884 150.605 14.2549C150.605 13.5377 150.799 12.9198 151.186 12.4013C151.579 11.8827 152.129 11.4829 152.836 11.2019C153.549 10.9208 154.382 10.7803 155.337 10.7803C156.747 10.7803 157.857 11.0783 158.666 11.6743C159.48 12.2704 159.955 13.0821 160.091 14.1095Z" fill="#E73618"/>
+              <path d="M138.885 22.0909V7.20388H148.742V9.79893H142.033V13.3462H148.088V15.9413H142.033V22.0909H138.885Z" fill="#E73618"/>
+              <path d="M129.27 22.0909H123.993V7.20388H129.314C130.811 7.20388 132.1 7.50191 133.181 8.09797C134.262 8.68919 135.093 9.53967 135.674 10.6494C136.261 11.7592 136.554 13.087 136.554 14.6329C136.554 16.1836 136.261 17.5163 135.674 18.6308C135.093 19.7454 134.257 20.6008 133.166 21.1968C132.081 21.7929 130.782 22.0909 129.27 22.0909ZM127.14 19.3941H129.139C130.07 19.3941 130.852 19.2293 131.487 18.8998C132.127 18.5654 132.607 18.0493 132.926 17.3515C133.251 16.6488 133.414 15.7426 133.414 14.6329C133.414 13.5328 133.251 12.6339 132.926 11.936C132.607 11.2382 132.129 10.7245 131.494 10.395C130.86 10.0655 130.077 9.9007 129.147 9.9007H127.14V19.3941Z" fill="#E73618"/>
+              <path d="M110.739 22.0909V7.20385H116.613C117.742 7.20385 118.704 7.4195 119.499 7.8508C120.293 8.27725 120.899 8.87089 121.316 9.63172C121.737 10.3877 121.948 11.26 121.948 12.2486C121.948 13.2372 121.735 14.1095 121.309 14.8654C120.882 15.6214 120.264 16.2102 119.455 16.6318C118.651 17.0534 117.676 17.2642 116.533 17.2642H112.789V14.7419H116.024C116.63 14.7419 117.129 14.6377 117.521 14.4293C117.919 14.2161 118.214 13.9229 118.408 13.5497C118.607 13.1718 118.706 12.738 118.706 12.2486C118.706 11.7543 118.607 11.323 118.408 10.9547C118.214 10.5815 117.919 10.2932 117.521 10.0897C117.124 9.88129 116.62 9.7771 116.009 9.7771H113.887V22.0909H110.739Z" fill="#E73618"/>
+            </g>
+            <rect x="1.28198" y="3.36365" width="19.4529" height="22.4457" rx="4.48913" fill="#E73618"/>
+            <g filter="url(#filter1_d_1_249)">
+              <path d="M4.94153 7.41761C4.94153 6.79779 5.44399 6.29533 6.06381 6.29533L12.4583 6.29533C12.7417 6.29533 13.0146 6.40258 13.2223 6.59553L16.5543 9.69217C16.7828 9.90451 16.9126 10.2023 16.9126 10.5143V21.6332C16.9126 22.253 16.4101 22.7555 15.7903 22.7555H6.06381C5.44399 22.7555 4.94153 22.253 4.94153 21.6332V7.41761Z" fill="url(#paint0_linear_1_249)"/>
+              <path d="M6.0636 6.38908H12.4581C12.718 6.38908 12.968 6.48759 13.1583 6.66447L16.4904 9.76115C16.6997 9.95574 16.8194 10.2283 16.8195 10.5141V21.6332C16.8195 22.2014 16.3583 22.6615 15.7902 22.6615H6.0636C5.49553 22.6614 5.03528 22.2013 5.03528 21.6332V7.4174C5.03539 6.8494 5.4956 6.38919 6.0636 6.38908Z" stroke="white" stroke-opacity="0.5" stroke-width="0.187047"/>
+            </g>
+            <path d="M15.9003 4.57215C15.9787 4.61369 16.017 4.70468 15.9921 4.78993L13.6356 12.8573L17.3446 12.6395C17.4216 12.635 17.4941 12.6778 17.5262 12.7479C17.5583 12.8182 17.544 12.9017 17.4901 12.9569L5.80066 24.9266C5.73604 24.9926 5.63251 25.0011 5.5575 24.9472C5.48278 24.8933 5.45819 24.793 5.49988 24.7108L9.65808 16.5741L6.2323 16.66C6.15951 16.6617 6.09261 16.6208 6.06042 16.5556C6.02827 16.4899 6.03665 16.411 6.08289 16.3544L15.6678 4.61903C15.7241 4.55013 15.8216 4.53072 15.9003 4.57215Z" fill="url(#paint1_linear_1_249)" stroke="#FF6600" stroke-width="0.374095" stroke-linejoin="round"/>
+            <path d="M10.7733 14.7011L10.6991 14.8495L10.8641 14.8358L14.7538 14.5145L14.3446 15.7411L6.03699 24.2792L10.1014 16.3876L10.1747 16.245L10.0145 16.2509L6.42761 16.3895L15.4032 5.44032L10.7733 14.7011Z" fill="url(#paint2_linear_1_249)" stroke="url(#paint3_linear_1_249)" stroke-width="0.187047"/>
+            <path d="M10.8677 14.7452L13.4635 13.1124L17.3153 12.8612L14.9288 14.4522L10.8677 14.7452Z" fill="url(#paint4_linear_1_249)"/>
+            <path d="M14.896 14.3602L11.2329 14.6249L13.4917 13.204L16.9702 12.9774L14.896 14.3602Z" stroke="url(#paint5_linear_1_249)" stroke-opacity="0.32" stroke-width="0.187047"/>
+            <path d="M6.66215 23.2554C6.76362 23.3279 6.86508 23.4004 6.96655 23.4729C7.0649 23.3298 7.16325 23.1868 7.26161 23.0438C9.03197 20.4693 10.8023 17.8947 12.5727 15.3202C12.6711 15.1772 12.7694 15.0341 12.8678 14.8911C12.7643 15.0305 12.6609 15.1699 12.5575 15.3093C10.6958 17.8186 8.83412 20.3279 6.97243 22.8372C6.86901 22.9766 6.76558 23.116 6.66215 23.2554Z" fill="url(#paint6_linear_1_249)" fill-opacity="0.72"/>
+            <path opacity="0.76" d="M5.82874 24.5029L12.9369 14.7753L7.54441 15.0666L6.34343 16.4392L9.98582 16.3832L5.82874 24.5029Z" fill="url(#paint7_linear_1_249)"/>
+            <path d="M7.74047 14.9086L10.6282 14.7989L15.0509 5.99189L7.74047 14.9086Z" fill="url(#paint8_linear_1_249)" stroke="url(#paint9_linear_1_249)" stroke-opacity="0.56" stroke-width="0.187047"/>
+            <g filter="url(#filter2_f_1_249)">
+              <circle cx="14.6449" cy="17.8208" r="2.59505" fill="url(#paint10_radial_1_249)"/>
+            </g>
+            <path d="M14.8323 16.7982C14.9201 17.2779 15.2965 17.6529 15.7766 17.7386L16.4924 17.8655L15.7395 18.0218C15.2728 18.1183 14.9117 18.4885 14.8264 18.9573L14.6516 19.9124L14.4934 18.9632C14.4128 18.4802 14.0399 18.0985 13.5588 18.0071L12.8118 17.8655L13.5618 17.7249C14.0468 17.6341 14.423 17.2483 14.5012 16.761L14.6526 15.8177L14.8323 16.7982Z" fill="url(#paint11_linear_1_249)" stroke="#FF6600" stroke-width="0.0160947"/>
+            <g opacity="0.47" filter="url(#filter3_f_1_249)">
+              <circle cx="8.38956" cy="10.5031" r="0.737458" fill="url(#paint12_radial_1_249)"/>
+            </g>
+            <path d="M8.44238 10.213C8.46745 10.349 8.57475 10.4552 8.71094 10.4796L8.91602 10.5157L8.7002 10.5606C8.56779 10.5882 8.46557 10.6931 8.44141 10.8263L8.3916 11.0997L8.34668 10.8282C8.32379 10.691 8.21775 10.5817 8.08105 10.5557L7.86621 10.5157L8.08203 10.4757C8.2197 10.4498 8.32637 10.3405 8.34863 10.2022L8.3916 9.93075L8.44238 10.213Z" fill="url(#paint13_linear_1_249)" stroke="#FF6600" stroke-width="0.00457376"/>
+            <g filter="url(#filter4_f_1_249)">
+              <ellipse cx="7.3506" cy="13.8229" rx="1.95338" ry="2.68949" fill="url(#paint14_radial_1_249)"/>
+            </g>
+            <path d="M7.53809 12.8003C7.62592 13.2801 8.00227 13.6551 8.48242 13.7408L9.19824 13.8677L8.49707 14.0132C8.0046 14.1151 7.6326 14.5207 7.57324 15.0201L7.35742 16.8257L7.16016 15.021C7.10412 14.5103 6.72061 14.0964 6.21582 14.0005L5.51758 13.8677L6.26758 13.7271C6.75258 13.6362 7.12886 13.2504 7.20703 12.7632L7.3584 11.8199L7.53809 12.8003Z" fill="url(#paint15_linear_1_249)" stroke="#FF6600" stroke-width="0.0160947"/>
+            <g filter="url(#filter5_f_1_249)">
+              <ellipse cx="7.35057" cy="13.9204" rx="0.969466" ry="1.3348" fill="url(#paint16_radial_1_249)"/>
+              <path d="M7.35083 12.6657C7.58631 12.6658 7.80653 12.7977 7.97095 13.0241C8.13531 13.2505 8.2395 13.5672 8.2395 13.9206C8.23947 14.274 8.13534 14.5907 7.97095 14.8171C7.80653 15.0434 7.58628 15.1744 7.35083 15.1745C7.11526 15.1745 6.89422 15.0435 6.72974 14.8171C6.5654 14.5907 6.46121 14.2739 6.46118 13.9206C6.46118 13.5673 6.56547 13.2504 6.72974 13.0241C6.89422 12.7976 7.11526 12.6657 7.35083 12.6657Z" stroke="white" stroke-width="0.160947"/>
+            </g>
+            <g opacity="0.68" filter="url(#filter6_f_1_249)">
+              <circle cx="12.5409" cy="20.3457" r="1.47291" fill="url(#paint17_radial_1_249)"/>
+            </g>
+            <path d="M12.647 19.7651C12.6968 20.0374 12.9106 20.2506 13.1831 20.2993L13.5894 20.3706L13.1626 20.4594C12.8978 20.5142 12.6925 20.7247 12.644 20.9907L12.5444 21.5346L12.4546 20.9946C12.4089 20.7204 12.1974 20.5035 11.9243 20.4516L11.4995 20.3706L11.9263 20.2915C12.2015 20.2399 12.4151 20.0211 12.4595 19.7446L12.5444 19.2075L12.647 19.7651Z" fill="url(#paint18_linear_1_249)" stroke="#FF6600" stroke-width="0.00913506"/>
+            <path opacity="0.67" d="M7.3542 12.7718L7.51282 13.6399C7.52685 13.7167 7.58709 13.7767 7.66393 13.7904L8.38296 13.9189L7.66202 14.0682C7.58322 14.0845 7.52369 14.1494 7.51421 14.2293L7.3542 15.5776L7.20561 14.2209C7.19666 14.1392 7.13539 14.0729 7.05462 14.0575L6.32544 13.9189L7.06723 13.7797C7.14483 13.7652 7.20494 13.7035 7.21743 13.6255L7.3542 12.7718Z" fill="#FFFFE6"/>
+            <defs>
+              <filter id="filter0_n_1_249" x="25.5979" y="7.00033" width="134.747" height="15.3087" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feTurbulence type="fractalNoise" baseFrequency="1.3750001192092896 1.3750001192092896" stitchTiles="stitch" numOctaves="3" result="noise" seed="2999"/>
+                <feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise"/>
+                <feComponentTransfer in="alphaNoise" result="coloredNoise1">
+                  <feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 "/>
+                </feComponentTransfer>
+                <feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped"/>
+                <feFlood flood-color="rgba(0, 0, 0, 0.15)" result="color1Flood"/>
+                <feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1"/>
+                <feMerge result="effect1_noise_1_249">
+                  <feMergeNode in="shape"/>
+                  <feMergeNode in="color1"/>
+                </feMerge>
+              </filter>
+              <filter id="filter1_d_1_249" x="4.19334" y="6.29533" width="13.4674" height="17.9565" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dy="0.748189"/>
+                <feGaussianBlur stdDeviation="0.374095"/>
+                <feComposite in2="hardAlpha" operator="out"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_249"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_249" result="shape"/>
+              </filter>
+              <filter id="filter2_f_1_249" x="11.0841" y="14.26" width="7.12143" height="7.12147" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="0.482841" result="effect1_foregroundBlur_1_249"/>
+              </filter>
+              <filter id="filter3_f_1_249" x="7.37767" y="9.49123" width="2.02383" height="2.02377" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="0.137213" result="effect1_foregroundBlur_1_249"/>
+              </filter>
+              <filter id="filter4_f_1_249" x="4.43154" y="10.1678" width="5.8381" height="7.31034" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="0.482841" result="effect1_foregroundBlur_1_249"/>
+              </filter>
+              <filter id="filter5_f_1_249" x="5.41542" y="11.6199" width="3.87033" height="4.60096" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="0.482841" result="effect1_foregroundBlur_1_249"/>
+              </filter>
+              <filter id="filter6_f_1_249" x="10.5199" y="18.3247" width="4.04201" height="4.04202" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                <feGaussianBlur stdDeviation="0.274052" result="effect1_foregroundBlur_1_249"/>
+              </filter>
+              <linearGradient id="paint0_linear_1_249" x1="10.927" y1="6.29533" x2="10.927" y2="22.7555" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFFBF2"/>
+                <stop offset="1" stop-color="#FDE2B7"/>
+              </linearGradient>
+              <linearGradient id="paint1_linear_1_249" x1="11.5114" y1="4.73719" x2="11.5114" y2="24.7956" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFBB00"/>
+                <stop offset="1" stop-color="#FFCC00"/>
+              </linearGradient>
+              <linearGradient id="paint2_linear_1_249" x1="14.5607" y1="5.68159" x2="8.15682" y2="21.3567" gradientUnits="userSpaceOnUse">
+                <stop offset="0.0293558" stop-color="#FFFA83"/>
+                <stop offset="0.53498" stop-color="#FF9500"/>
+                <stop offset="1" stop-color="#FFCC00"/>
+              </linearGradient>
+              <linearGradient id="paint3_linear_1_249" x1="15.7878" y1="5.15773" x2="12.9954" y2="16.2681" gradientUnits="userSpaceOnUse">
+                <stop stop-color="white" stop-opacity="0.2"/>
+                <stop offset="0.663107" stop-color="#FFFA83"/>
+                <stop offset="1" stop-color="white" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="paint4_linear_1_249" x1="16.8129" y1="13.1124" x2="11.4538" y2="14.4522" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFFA83"/>
+                <stop offset="1" stop-color="#FF9100"/>
+              </linearGradient>
+              <linearGradient id="paint5_linear_1_249" x1="10.8677" y1="13.8032" x2="17.3153" y2="13.8032" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFC301"/>
+                <stop offset="1" stop-color="white"/>
+              </linearGradient>
+              <linearGradient id="paint6_linear_1_249" x1="11.8897" y1="15.6145" x2="6.19889" y2="24.7642" gradientUnits="userSpaceOnUse">
+                <stop stop-color="white"/>
+                <stop offset="1" stop-color="#FFC301"/>
+              </linearGradient>
+              <linearGradient id="paint7_linear_1_249" x1="6.515" y1="17.5829" x2="11.1474" y2="18.212" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF9B00"/>
+                <stop offset="1" stop-color="#FF8301"/>
+              </linearGradient>
+              <linearGradient id="paint8_linear_1_249" x1="11.3185" y1="5.99189" x2="11.3185" y2="15.0778" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFFA83"/>
+                <stop offset="1" stop-color="#FFC201"/>
+              </linearGradient>
+              <linearGradient id="paint9_linear_1_249" x1="8.2522" y1="15.0182" x2="15.0875" y2="6.17256" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFC301"/>
+                <stop offset="1" stop-color="white"/>
+              </linearGradient>
+              <radialGradient id="paint10_radial_1_249" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(14.6449 17.8208) rotate(90) scale(2.59505)">
+                <stop stop-color="#FF6600"/>
+                <stop offset="1" stop-color="#FF6600" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="paint11_linear_1_249" x1="14.652" y1="15.7689" x2="14.652" y2="19.9621" gradientUnits="userSpaceOnUse">
+                <stop stop-color="white"/>
+                <stop offset="1" stop-color="#FFF862"/>
+              </linearGradient>
+              <radialGradient id="paint12_radial_1_249" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8.38956 10.5031) rotate(90) scale(0.737458)">
+                <stop stop-color="#FF6600"/>
+                <stop offset="1" stop-color="#FF6600" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="paint13_linear_1_249" x1="8.39161" y1="9.92001" x2="8.39161" y2="11.1116" gradientUnits="userSpaceOnUse">
+                <stop stop-color="white"/>
+                <stop offset="1" stop-color="#FFF862"/>
+              </linearGradient>
+              <radialGradient id="paint14_radial_1_249" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(7.41554 13.73) rotate(91.337) scale(2.78315 2.02141)">
+                <stop stop-color="#FF9500"/>
+                <stop offset="1" stop-color="#FF6600" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="paint15_linear_1_249" x1="7.35782" y1="11.771" x2="7.35782" y2="15.9643" gradientUnits="userSpaceOnUse">
+                <stop stop-color="white"/>
+                <stop offset="1" stop-color="#FFF862"/>
+              </linearGradient>
+              <radialGradient id="paint16_radial_1_249" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(7.3828 13.8743) rotate(91.337) scale(1.38128 1.00323)">
+                <stop stop-color="#FF9500"/>
+                <stop offset="1" stop-color="#FF6600" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="paint17_radial_1_249" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12.5409 20.3457) rotate(90) scale(1.47291)">
+                <stop stop-color="#FF6600"/>
+                <stop offset="1" stop-color="#FF6600" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="paint18_linear_1_249" x1="12.545" y1="19.1811" x2="12.545" y2="21.5611" gradientUnits="userSpaceOnUse">
+                <stop stop-color="white"/>
+                <stop offset="1" stop-color="#FFF862"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <p class="site-header__legal" id="header-consent">
+          <span>By clicking the button below, you agree to download aiBrowser from aibrowserapps.com, which includes Convert PDFs and other productivity tools, and you accept our </span>
+          <a href="https://convertpdfs.ai/legal/terms-of-service" target="_blank" class="site-header__link">Terms of Service</a>
+          <span> and </span>
+          <a href="https://convertpdfs.ai/legal/privacy-policy" target="_blank" class="site-header__link">Privacy Policy</a>.
+        </p>
+      </div>
+    </header>
+
+    <main id="main-content" class="main" role="main">
+      <section class="main__stage">
+        <div class="modal-layer">
+            <article
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-heading"
+            aria-describedby="modal-desc"
+            >
+            <div class="modal__surface">
+                <header class="modal__header">
+                <div class="modal__icon-wrap" aria-hidden="true">
+                    <img src="images/badge.svg"  role="presentation">
+                </div>
+                <h1 id="modal-heading" class="modal__title">Convert PDFs with Ease</h1>
+                </header>
+
+                <div
+                class="modal__progress"
+                role="progressbar"
+                aria-valuenow="0"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-label="Download preparation progress"
+                >
+                <div class="modal__progress-track">
+                    <div class="modal__progress-fill"></div>
+                </div>
+                </div>
+
+                <div class="modal__cta-wrap">
+                <button type="button" id="continue" class="modal__cta download-ai" download-copy="Continue" download-position="atf" aria-label="Continue with download">
+                    CONTINUE
+                </button>
+                </div>
+
+                <p id="modal-desc" class="modal__description">
+                  Quickly convert multiple file formats to and from PDF with ease using Convert PDFs with aiBrowser.
+                </p>
+
+                <hr class="modal__rule" aria-hidden="true">
+
+                <nav class="stepper" aria-label="Steps to install aiBrowser">
+                <ol class="stepper__list">
+                    <li class="stepper__item">
+                    <div class="stepper__num" aria-hidden="true">1</div>
+                    <p class="stepper__label">
+                        <span class="stepper__label stepper__label--semibold">Click </span>
+                        <a href="#continue" class="stepper__link download-ai" download-copy="Continue" download-position="atfSteps">‘Continue’</a>
+                    </p>
+                    </li>
+                    
+                    <li class="stepper__item">
+                    <div class="stepper__num" aria-hidden="true">2</div>
+                    <p class="stepper__label stepper__label--semibold">Install the Browser</p>
+                    </li>
+                    
+                    <li class="stepper__item">
+                    <div class="stepper__num" aria-hidden="true">3</div>
+                    <p class="stepper__label stepper__label--semibold">Convert to PDF </p>
+                    </li>
+                </ol>
+                </nav>
+            </div>
+            </article>
+        </div>
+      </section>
+    </main>
+  </div>
+    <!-- <div class="ai_atf">
+        <div class="ai_container">
+            <header class="ai_header">
+            <div class="ai_logo-container">
+                <div class="ai_logo-icon">
+                    <img src="../../images/logo.png" alt="" width="32" height="32">
+                    <img src="../../images/logoname.png" alt="" height="24" width="211">
+                </div>
+            </div>
+            <div class="ai-logo">
+                <img src="../../images/ailogo.svg" alt="">
+            </div>
+            </header>
+        
+            <main class="ai_main-content">
+                <h1 class="ai_main-title">Click "Accept & Download" to Convert to PDF</h1>
+                <p class="ai_powered-by">Powered by AI Browser</p>
+                
+                <p class="ai_description">
+                    Convert to and from PDF with ease. Additionally, get directions, track packages, and chat with an AI assistant—all in one browser.
+                </p>
+        
+                <button class="ai_download-button download-ai" download-copy="Accept & Download" download-position="atf">Accept & Download</button>
+                <div class="ai_termwrp">
+                <p class="ai_terms">
+                    By clicking the button above, I consent to install this application and abide by its <a href="../../legal/terms-of-service/" class="logger" target="_blank" data-en="UserClick" data-elac="TermsOfService" data-eltg="AtfTerms">Terms of Service</a> and <a href="../../legal/privacy-policy/" class="logger" target="_blank" data-en="UserClick" data-elac="PrivacyClick" data-eltg="AtfPrivacy">Privacy Policy</a>.
+                </p>
+                </div>
+                
+            </main>
+        
+        </div>
+    </div> -->
+<section class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-12 sm:mb-16 fade-in">
+<h1 class="text-3xl sm:text-4xl font-bold text-secondary mb-4">Convert Files, The Smarter Way</h1>
+</div>
+<div class="space-y-24">
+<div class="grid md:grid-cols-2 gap-16 items-center fade-in">
+<div class="space-y-6">
+<h2 class="text-3xl font-semibold text-secondary">Multiple Format Support</h2>
+<p class="text-xl text-gray-600">Easily convert files between popular formats like PDF, Word, Excel, PowerPoint, and JPG—so your content is always accessible in the format you need.</p>
+</div>
+<div class="floating-card bg-white p-6 rounded-2xl">
+<img src="../../images/img5.png" alt="Multiple Format Support" class="w-full h-60 object-cover rounded-lg">
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-16 items-center fade-in">
+<div class="floating-card bg-white p-6 rounded-2xl order-2 md:order-1">
+<img src="../../images/img4.png" alt="Save Documents Locally" class="w-full h-60 object-cover rounded-lg">
+</div>
+<div class="space-y-6 order-1 md:order-2">
+<h2 class="text-3xl font-semibold text-secondary">Save Documents Locally</h2>
+<p class="text-xl text-gray-600">All converted files are saved directly to your computer, giving you complete control over your data with no need for cloud storage or third-party access</p>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-16 items-center fade-in">
+<div class="space-y-6">
+<h2 class="text-3xl font-semibold text-secondary">Download Instantly</h2>
+<p class="text-xl text-gray-600">Get your converted files the moment they’re ready—no waiting, no email signups, and no extra steps. As soon as the conversion is complete, your file is instantly available for download and ready to use.</p>
+</div>
+<div class="floating-card bg-white p-6 rounded-2xl">
+<img src="../../images/img1.png" alt="Download Instantly" class="w-full h-60 object-cover rounded-lg">
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-16 items-center fade-in">
+<div class="floating-card bg-white p-6 rounded-2xl order-2 md:order-1">
+<img src="../../images/img2.png" alt="Merge Multiple PDFs" class="w-full h-60 object-cover rounded-lg">
+</div>
+<div class="space-y-6 order-1 md:order-2">
+<h2 class="text-3xl font-semibold text-secondary">Merge Multiple PDFs</h2>
+<p class="text-xl text-gray-600">Quickly combine multiple PDF files into one organized document. Perfect for consolidating reports, notes, or multi-page content into a single file.
+</p>
+</div>
+</div>
+<div class="flex justify-center mt-16 fade-in">
+<button class="glow-button bg-primary text-white px-8 py-3 !rounded-button text-lg font-semibold whitespace-nowrap hover:bg-blue-700 transition-colors download-ai" download-copy="Download Now" download-position="btf">Download Now</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex justify-center">
+<div class="fade-in">
+<h2 class="text-3xl sm:text-4xl font-bold text-secondary mb-4 sm:mb-6 text-center">Convert Without Limits</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
+<div class="format-item p-3 sm:p-4 rounded-xl border border-gray-100 hover:border-primary/20 bg-white hover:shadow-lg transition-all cursor-pointer">
+<div class="flex flex-col items-center text-center space-y-1 sm:space-y-2">
+<div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+<i class="ri-file-word-line text-primary text-2xl"></i>
+</div>
+<span class="font-medium text-secondary">DOC to PDF</span>
+</div>
+</div>
+<div class="format-item p-3 sm:p-4 rounded-xl border border-gray-100 hover:border-primary/20 bg-white hover:shadow-lg transition-all cursor-pointer">
+<div class="flex flex-col items-center text-center space-y-1 sm:space-y-2">
+<div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+<i class="ri-image-line text-primary text-2xl"></i>
+</div>
+<span class="font-medium text-secondary">JPG to PDF</span>
+</div>
+</div>
+<div class="format-item p-3 sm:p-4 rounded-xl border border-gray-100 hover:border-primary/20 bg-white hover:shadow-lg transition-all cursor-pointer">
+<div class="flex flex-col items-center text-center space-y-1 sm:space-y-2">
+<div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+<i class="ri-image-line text-primary text-2xl"></i>
+</div>
+<span class="font-medium text-secondary">PNG to PDF</span>
+</div>
+</div>
+<div class="format-item p-3 sm:p-4 rounded-xl border border-gray-100 hover:border-primary/20 bg-white hover:shadow-lg transition-all cursor-pointer">
+<div class="flex flex-col items-center text-center space-y-1 sm:space-y-2">
+<div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+<i class="ri-file-ppt-line text-primary text-2xl"></i>
+</div>
+<span class="font-medium text-secondary">PPT to PDF</span>
+</div>
+</div>
+<div class="format-item p-3 sm:p-4 rounded-xl border border-gray-100 hover:border-primary/20 bg-white hover:shadow-lg transition-all cursor-pointer">
+<div class="flex flex-col items-center text-center space-y-1 sm:space-y-2">
+<div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+<i class="ri-file-excel-line text-primary text-2xl"></i>
+</div>
+<span class="font-medium text-secondary">XLS to PDF</span>
+</div>
+</div>
+<div class="format-item p-3 sm:p-4 rounded-xl border border-gray-100 hover:border-primary/20 bg-white hover:shadow-lg transition-all cursor-pointer">
+    <div class="flex flex-col items-center text-center space-y-1 sm:space-y-2">
+    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+    <i class="ri-file-word-line text-primary text-2xl"></i>
+    </div>
+    <span class="font-medium text-secondary">PDF to DOC</span>
+    </div>
+    </div>
+    <div class="format-item p-3 sm:p-4 rounded-xl border border-gray-100 hover:border-primary/20 bg-white hover:shadow-lg transition-all cursor-pointer">
+    <div class="flex flex-col items-center text-center space-y-1 sm:space-y-2">
+    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+    <i class="ri-image-line text-primary text-2xl"></i>
+    </div>
+    <span class="font-medium text-secondary">PDF to JPG</span>
+    </div>
+    </div>
+    <div class="format-item p-3 sm:p-4 rounded-xl border border-gray-100 hover:border-primary/20 bg-white hover:shadow-lg transition-all cursor-pointer">
+    <div class="flex flex-col items-center text-center space-y-1 sm:space-y-2">
+    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+    <i class="ri-image-line text-primary text-2xl"></i>
+    </div>
+    <span class="font-medium text-secondary">PDF to PNG</span>
+    </div>
+    </div>
+    <div class="format-item p-3 sm:p-4 rounded-xl border border-gray-100 hover:border-primary/20 bg-white hover:shadow-lg transition-all cursor-pointer">
+    <div class="flex flex-col items-center text-center space-y-1 sm:space-y-2">
+    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+    <i class="ri-file-ppt-line text-primary text-2xl"></i>
+    </div>
+    <span class="font-medium text-secondary">PDF to PPT</span>
+    </div>
+    </div>
+    <div class="format-item p-3 sm:p-4 rounded-xl border border-gray-100 hover:border-primary/20 bg-white hover:shadow-lg transition-all cursor-pointer">
+    <div class="flex flex-col items-center text-center space-y-1 sm:space-y-2">
+    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+    <i class="ri-file-excel-line text-primary text-2xl"></i>
+    </div>
+    <span class="font-medium text-secondary">PDF to XLS</span>
+    </div>
+    </div>
+</div>
+
+<div class="flex justify-center mt-12">
+<button class="glow-button bg-primary text-white px-8 py-3 !rounded-button text-lg font-semibold whitespace-nowrap hover:bg-blue-700 transition-colors download-ai" download-copy="Download Now" download-position="btf2">Download Now</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16 fade-in">
+<h1 class="text-4xl font-bold text-secondary mb-6">Everything You Need for Faster Conversions</h1>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 fade-in">
+<div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
+<div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+<i class="ri-rocket-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-secondary mb-4">Effortless to Use</h3>
+<p class="text-gray-600">Upload, convert, and download with ease. The process is simple and streamlined, giving you maximum ease and convenience.</p>
+</div>
+<div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
+<div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+<i class="ri-line-chart-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-secondary mb-4">Enhanced Productivity</h3>
+<p class="text-gray-600">Boost your workflow by converting and managing multiple files quickly without the need for extra tools or complicated steps.</p>
+</div>
+<div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
+<div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+<i class="ri-shield-check-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-secondary mb-4">No Sign-up Required</h3>
+<p class="text-gray-600">Start using the converter instantly. No accounts, no subscriptions, and absolutely no hidden costs involved.</p>
+</div>
+</div>
+<div class="flex justify-center mt-12 fade-in">
+<button class="glow-button bg-primary text-white px-8 py-3 !rounded-button text-lg font-semibold whitespace-nowrap hover:bg-blue-700 transition-colors download-ai" download-copy="Download Now" download-position="btf3">Download Now</button>
+</div>
+</div>
+</section>
+<section class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="max-w-3xl mx-auto">
+<div class="fade-in">
+<h2 class="text-4xl font-bold text-secondary mb-8 text-center">Frequently Asked Questions</h2>
+<div class="space-y-4" id="faq-accordion">
+<div class="faq-item bg-white rounded-lg border border-gray-200 overflow-hidden">
+<button class="faq-toggle w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200" aria-expanded="false">
+<span class="font-semibold text-secondary text-xl">What file formats are supported?</span>
+<i class="ri-arrow-down-s-line rotate-icon text-gray-400 transition-transform duration-300"></i>
+</button>
+<div class="faq-content px-6 transition-all duration-300 ease-in-out opacity-0" style="max-height: 0">
+<p class="text-gray-600 pb-6 whitespace-normal">You can convert to and from a variety of popular formats including Word, Excel, PowerPoint, JPG, PNG, HTML, Text, and PDF.</p>
+</div>
+</div>
+<div class="faq-item bg-white rounded-lg border border-gray-200 overflow-hidden">
+<button class="faq-toggle w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200" aria-expanded="false">
+<span class="font-semibold text-secondary text-xl">Do I need to sign up to use the converter?</span>
+<i class="ri-arrow-down-s-line rotate-icon text-gray-400 transition-transform duration-300"></i>
+</button>
+<div class="faq-content px-6 transition-all duration-300 ease-in-out opacity-0" style="max-height: 0">
+<p class="text-gray-600 pb-6">No sign‑up required! Just download the app, and you'll have full access to the PDF converter.</p>
+</div>
+</div>
+<div class="faq-item bg-white rounded-lg border border-gray-200 overflow-hidden">
+<button class="faq-toggle w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200" aria-expanded="false">
+<span class="font-semibold text-secondary text-xl">Is this a PDF Converter App?</span>
+<i class="ri-arrow-down-s-line rotate-icon text-gray-400 transition-transform duration-300"></i>
+</button>
+<div class="faq-content px-6 transition-all duration-300 ease-in-out opacity-0" style="max-height: 0">
+<p class="text-gray-600 pb-6">No, Convert PDFs is included as a feature within the aiBrowser. When you download, you'll get the full browser with this and other productivity tools.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-white overflow-hidden">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<div class="fade-in">
+<h2 class="text-4xl lg:text-5xl font-bold text-secondary mb-6">Ready to convert your PDFs?</h2>
+<p class="text-xl text-gray-600 mb-12">Boost your productivity with faster, smarter conversion.</p>
+<div class="flex justify-center items-center mb-12">
+<button class="bg-primary text-white px-10 py-4 !rounded-button text-xl font-semibold whitespace-nowrap hover:bg-blue-700 transition-colors download-ai" download-copy="Download Now" download-position="btf4">
+Download Now
+</button>
+</div>
+<div class="p-8" style="margin-top: -2rem;">
+<img src="../../images/img6.png" alt="PDF Converter Interface" class="w-full object-contain" style="max-width: none; width: 120%; margin-left: -10%; margin-right: -10%;">
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-gray-100 py-8 -mt-20">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col items-center">
+<div class="flex justify-center gap-x-8 gap-y-3 py-4 flex-wrap">
+<a href="https://convertpdfs.ai/legal/privacy-policy" target="_blank" class="text-gray-600 hover:text-primary transition-colors">Privacy Policy</a>
+<a href="https://convertpdfs.ai/legal/terms-of-service" target="_blank" class="text-gray-600 hover:text-primary transition-colors">Terms of Service</a>
+<a href="mailto:contact@aibrowser.com" class="text-gray-600 hover:text-primary transition-colors">Contact Us</a>
+<a href="https://convertpdfs.ai/legal/uninstall-instructions" target="_blank" class="text-gray-600 hover:text-primary transition-colors">Uninstall</a>
+<a href="https://convertpdfs.ai/legal/do-not-share-my-personal-information" target="_blank" class="text-gray-600 hover:text-primary transition-colors">Do not Share My Personal Information</a>
+</div>
+<div class="space-y-2">
+<p class="text-gray-500 text-sm text-center">All third-party names, logos, and images are trademarks or properties of their respective owners. Their use does not imply any affiliation or endorsement.</p>
+<p class="text-gray-500 text-sm text-center">Excel, is a registered trademark of Microsoft Corporation. Its use does not imply any affiliation or endorsement.</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="../../js/product.js" ></script>
+<script id="scroll-animations">
+document.addEventListener('DOMContentLoaded', function() {
+const observerOptions = {
+threshold: 0.1,
+rootMargin: '0px 0px -50px 0px'
+};
+const observer = new IntersectionObserver(function(entries) {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, observerOptions);
+document.querySelectorAll('.fade-in').forEach(el => {
+observer.observe(el);
+});
+});
+</script>
+<script id="faq-functionality">
+document.addEventListener('DOMContentLoaded', function() {
+const accordion = document.getElementById('faq-accordion');
+const faqToggles = accordion.querySelectorAll('.faq-toggle');
+faqToggles.forEach(toggle => {
+toggle.addEventListener('click', function() {
+const content = this.nextElementSibling;
+const icon = this.querySelector('.rotate-icon');
+const isExpanded = this.getAttribute('aria-expanded') === 'true';
+faqToggles.forEach(otherToggle => {
+if (otherToggle !== toggle) {
+const otherContent = otherToggle.nextElementSibling;
+const otherIcon = otherToggle.querySelector('.rotate-icon');
+otherToggle.setAttribute('aria-expanded', 'false');
+otherContent.style.maxHeight = '0';
+otherContent.style.opacity = '0';
+otherIcon.classList.remove('rotate-180');
+}
+});
+this.setAttribute('aria-expanded', !isExpanded);
+if (!isExpanded) {
+content.style.maxHeight = content.scrollHeight + "px";
+content.style.opacity = '1';
+icon.classList.add('rotate-180');
+} else {
+content.style.maxHeight = '0';
+content.style.opacity = '0';
+icon.classList.remove('rotate-180');
+}
+});
+});
+});
+</script>
+<script id="format-hover-effects">
+document.addEventListener('DOMContentLoaded', function() {
+const formatItems = document.querySelectorAll('.format-item');
+formatItems.forEach(item => {
+item.addEventListener('mouseenter', function() {
+this.style.transform = 'translateX(5px)';
+});
+item.addEventListener('mouseleave', function() {
+this.style.transform = 'translateX(0)';
+});
+});
+});
+</script>
+</body>
+</html>

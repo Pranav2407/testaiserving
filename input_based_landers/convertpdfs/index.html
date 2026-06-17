@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convert PDFs</title>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WTRKXR53');</script>
+<!-- End Google Tag Manager -->
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="stylesheet" href="./tailwind.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<meta name="robots" content="noindex, nofollow">
+<!-- JSZip library for handling multiple files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+.opacity-50{
+opacity: 0.5;
+}
+#error-state, #upload-state {
+transition: opacity 0.3s ease-in-out;
+opacity: 1;
+}
+#error-state.fade-out, #upload-state#error-state, #upload-state {
+transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.fade-out {
+opacity: 0;
+transform: translateY(10px);
+}
+html {
+scroll-behavior: smooth;
+scroll-padding-top: 72px;
+}
+.gradient-bg {
+background: linear-gradient(135deg, rgba(255,0,0,0.05) 0%, rgba(255,255,255,1) 100%);
+min-height: calc(100vh - 72px);
+}
+.file-drop-area {
+position: relative;
+border: 2px dashed #e5e7eb;
+transition: all 0.3s ease;
+}
+.file-drop-area:hover {
+border-color: #FF0000;
+background-color: rgba(255, 0, 0, 0.02);
+transform: translateY(-2px);
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.file-drop-area.drag-over {
+border-color: #FF0000;
+background-color: rgba(255, 0, 0, 0.05);
+transform: scale(1.02);
+}
+.file-drop-area input[type="file"] {
+position: absolute;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+opacity: 0;
+cursor: pointer;
+}
+.navbar {
+transition: box-shadow 0.3s ease;
+}
+.navbar.scrolled {
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.mobile-menu {
+transform: translateX(100%);
+transition: transform 0.3s ease-in-out;
+}
+.mobile-menu.open {
+transform: translateX(0);
+}
+button, a {
+transition: all 0.3s ease;
+}
+button:hover {
+transform: translateY(-1px);
+}
+button:active {
+transform: scale(0.98);
+}
+.spinner {
+border: 3px solid rgba(255, 255, 255, 0.3);
+border-radius: 50%;
+border-top: 3px solid #FF0000;
+width: 24px;
+height: 24px;
+animation: spin 1s linear infinite;
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.fileNames {
+    word-wrap: break-word;
+    width: inherit;
+    padding: 0.5rem;
+}
+.minHeights {
+    min-height: 8rem;
+}
+ .headeIn {
+            max-width: 1536px;
+        }
+#result-filename{
+    word-wrap: break-word;
+    width: inherit;
+}
+.max-w-xl {
+    max-width: 36rem;
+}
+.text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+@media (min-width: 768px) {
+    .text-base {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+}
+@media (max-width: 640px) {
+    .max-w-xl {
+    max-width: 100%;
+}
+}
+</style>
+</head>
+<body id="top">
+<!-- Navigation Bar -->
+<nav class="navbar fixed top-0 left-0 w-full bg-white z-50 py-6">
+<div class="mx-auto px-4 flex justify-between items-center headeIn">
+<div class="flex items-center gap-3" style="cursor: default;">
+<div class="w-14 h-14 flex items-center justify-center">
+<img src="./images/logo.png" alt="logo" class="w-full h-full object-contain">
+</div>
+<img src="./images/logoname.png" alt="Convert PDFs" class="h-6 object-contain">
+</div>
+<!-- Desktop Navigation -->
+<div class="hidden lg:flex items-center space-x-8">
+<a href="#top" class="text-gray-800 hover:text-primary font-medium">Home</a>
+<a href="#file-support" class="text-gray-800 hover:text-primary font-medium">File Support</a>
+<a href="#top-features" class="text-gray-800 hover:text-primary font-medium">Safe Conversion</a>
+<a href="#why-us" class="text-gray-800 hover:text-primary font-medium">Use Cases</a>
+<a href="#faq" class="text-gray-800 hover:text-primary font-medium">FAQs</a>
+</div>
+<!-- Mobile Menu Button -->
+<button id="mobile-menu-button" class="lg:hidden w-10 h-10 flex items-center justify-center text-gray-800">
+<i class="ri-menu-line ri-2x"></i>
+</button>
+</div>
+<!-- Mobile Navigation -->
+<div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 lg:hidden">
+<div class="p-4 flex justify-end">
+<button id="close-menu-button" class="w-10 h-10 flex items-center justify-center text-gray-800">
+<i class="ri-close-line ri-2x"></i>
+</button>
+</div>
+<div class="flex flex-col space-y-4 p-4">
+<a href="#top" class="text-gray-800 hover:text-primary font-medium py-2">Home</a>
+<a href="#file-support" class="text-gray-800 hover:text-primary font-medium py-2">File Support</a>
+<a href="#top-features" class="text-gray-800 hover:text-primary font-medium py-2">Safe Conversion</a>
+<a href="#why-us" class="text-gray-800 hover:text-primary font-medium py-2">Use Cases</a>
+<a href="#faq" class="text-gray-800 hover:text-primary font-medium py-2">FAQs</a>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="gradient-bg pt-32 pb-16">
+<div class="container mx-auto px-4">
+<!-- Hero Section -->
+<div class="max-w-4xl mx-auto text-center mb-12">
+<h1 class="text-4xl md:text-5xl font-bold mb-4">
+    Convert your Files <span class="text-primary">Effortlessly </span>
+</h1>
+<h2 class="text-base md:text-lg  text-gray-600 mb-10">
+    Convert PDFs with aiBrowser - Transform your documents easily with our easy-to-use converter
+</h2>
+<!-- File Conversion Window -->
+<div id="conversion-window" class="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto min-h-[28rem] flex flex-col items-center justify-center relative">
+<!-- Upload State (Default) -->
+<div id="upload-state" class="w-full flex flex-col items-center justify-center py-4">
+<div class="w-12 h-12 flex items-center justify-center mb-2 text-primary">
+<i class="ri-upload-cloud-line ri-3x"></i>
+</div>
+<h3 class="text-lg font-semibold mb-1">Upload your file</h3>
+<p class="text-gray-500 mb-4">Drag and drop your file here or click to browse</p>
+<div class="file-drop-area w-4/5 rounded flex flex-col items-center justify-center p-4 mb-3 relative minHeights">
+<button id="remove-file" class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 hidden z-50 cursor-pointer bg-white rounded-full shadow-sm hover:shadow-md transition-all duration-200" >
+<i class="ri-close-line ri-lg"></i>
+</button>
+<p id="file-info" class="text-sm text-gray-500 mb-2 fileNames">Max file size: 200 MB</p>
+<button class="bg-primary text-white px-6 py-3 !rounded-button font-medium whitespace-nowrap">
+Choose File
+</button>
+<input type="file" id="file-input" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png,.html,.txt" tabindex="0">
+</div>
+<div id="format-selector" class="hidden w-4/5 mt-4">
+<p class="text-sm text-gray-500 mb-2">Convert To:</p>
+<div class="relative">
+<button id="format-dropdown" class="w-full bg-white border border-gray-300 px-4 py-2 !rounded-button text-left flex items-center justify-between">
+<span id="selected-format">Select Format</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+<div id="format-options" class="hidden absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+<div class="py-1">
+<button class="format-option w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-2" data-format="PDF">
+<i class="ri-file-pdf-line text-primary"></i>PDF
+</button>
+<button class="format-option w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-2" data-format="DOCX">
+<i class="ri-file-word-line text-primary"></i>Word
+</button>
+<button class="format-option w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-2" data-format="XLSX">
+<i class="ri-file-excel-line text-primary"></i>Excel
+</button>
+<button class="format-option w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-2" data-format="PPTX">
+<i class="ri-file-ppt-line text-primary"></i>PowerPoint
+</button>
+<button class="format-option w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-2" data-format="JPG">
+<i class="ri-image-line text-primary"></i>JPG
+</button>
+<button class="format-option w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-2" data-format="PNG">
+<i class="ri-image-line text-primary"></i>PNG
+</button>
+<button class="format-option w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-2" data-format="HTML">
+<i class="ri-html5-line text-primary"></i>HTML
+</button>
+<button class="format-option w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-2" data-format="TXT">
+<i class="ri-file-text-line text-primary"></i>Text
+</button>
+</div>
+</div>
+</div>
+</div>
+<button id="convert-now" class="hidden bg-primary text-white px-8 py-3 !rounded-button font-medium whitespace-nowrap mt-4">
+Convert Now
+</button>
+</div>
+<!-- Loading State (Hidden by default) -->
+<div id="loading-state" class="w-full h-full flex flex-col items-center justify-center hidden">
+<div class="spinner mb-4"></div>
+<h3 class="text-xl font-semibold mb-2">Converting your file...</h3>
+<p class="text-gray-500">This may take a moment</p>
+<button id="cancel-button" class="bg-primary text-white px-8 py-3 !rounded-button font-medium whitespace-nowrap mt-4">
+    Cancel
+    </button>
+</div>
+<!-- Result State (Hidden by default) -->
+<div id="result-state" class="w-full h-full flex flex-col items-center justify-center hidden">
+<div class="w-16 h-16 flex items-center justify-center mb-4 text-green-500">
+<i class="ri-check-line ri-3x"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2">Conversion Successful!</h3>
+<p class="text-gray-500 mb-6" id="result-filename">Your file is ready to download</p>
+<button id="download-button" class="bg-primary text-white px-6 py-3 !rounded-button font-medium whitespace-nowrap mb-4">
+Download File
+</button>
+<button id="try-another-button" class="text-primary border-2 border-primary px-6 py-3 !rounded-button font-medium whitespace-nowrap hover:bg-primary hover:text-white">
+Try Another
+</button>
+</div>
+<!-- Error State (Hidden by default) -->
+<div id="error-state" class="w-full h-full flex flex-col items-center justify-center hidden">
+<div class="w-16 h-16 flex items-center justify-center mb-4 text-red-500">
+<i class="ri-error-warning-line ri-3x"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2">Oops! Something went wrong</h3>
+<p class="text-gray-500 mb-6" id="error-message">Unsupported file format. Please upload PDF, Word, Excel, PowerPoint, JPG, PNG or SVG files only.</p>
+<button id="retry-button" class="bg-primary text-white px-6 py-3 !rounded-button font-medium whitespace-nowrap hover:bg-primary/90 transition-all duration-300" >
+Try Again
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Convert What You Want Section -->
+<section id="file-support" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-4">Convert What You Want — Without Limits</h2>
+<p class="text-gray-600 text-center mb-12">Easily convert to and from PDF with full support for documents, images, spreadsheets, and more — all built in your browser</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-8">
+<div class="bg-white p-6 rounded-lg border hover:shadow-lg transition-all duration-300 flex flex-col items-center cursor-pointer">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-4">
+<i class="ri-file-pdf-line ri-2x"></i>
+</div>
+<span class="text-gray-800">PDF</span>
+</div>
+<div class="bg-white p-6 rounded-lg border hover:shadow-lg transition-all duration-300 flex flex-col items-center cursor-pointer">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-4">
+<i class="ri-file-word-line ri-2x"></i>
+</div>
+<span class="text-gray-800">Word</span>
+</div>
+<div class="bg-white p-6 rounded-lg border hover:shadow-lg transition-all duration-300 flex flex-col items-center cursor-pointer">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-4">
+<i class="ri-file-excel-line ri-2x"></i>
+</div>
+<span class="text-gray-800">Excel</span>
+</div>
+<div class="bg-white p-6 rounded-lg border hover:shadow-lg transition-all duration-300 flex flex-col items-center cursor-pointer">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-4">
+<i class="ri-file-ppt-line ri-2x"></i>
+</div>
+<span class="text-gray-800">PowerPoint</span>
+</div>
+<div class="bg-white p-6 rounded-lg border hover:shadow-lg transition-all duration-300 flex flex-col items-center cursor-pointer">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-4">
+<i class="ri-image-line ri-2x"></i>
+</div>
+<span class="text-gray-800">JPG</span>
+</div>
+<div class="bg-white p-6 rounded-lg border hover:shadow-lg transition-all duration-300 flex flex-col items-center cursor-pointer">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-4">
+<i class="ri-image-line ri-2x"></i>
+</div>
+<span class="text-gray-800">PNG</span>
+</div>
+<div class="bg-white p-6 rounded-lg border hover:shadow-lg transition-all duration-300 flex flex-col items-center cursor-pointer">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-4">
+<i class="ri-html5-line ri-2x"></i>
+</div>
+<span class="text-gray-800">HTML</span>
+</div>
+<div class="bg-white p-6 rounded-lg border hover:shadow-lg transition-all duration-300 flex flex-col items-center cursor-pointer">
+<div class="w-12 h-12 flex items-center justify-center text-primary mb-4">
+<i class="ri-file-text-line ri-2x"></i>
+</div>
+<span class="text-gray-800">Text</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Do More Than Just Convert Section -->
+<section id="top-features" class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-4">How to Safely Convert Your Files</h2>
+<p class="text-gray-600 text-center mb-12">Protect your documents with these essential security practices</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+<div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col text-center items-center h-full">
+<div class="w-14 h-14 flex items-center justify-center text-primary mb-6 bg-primary/5 rounded-lg">
+<i class="ri-lock-password-line ri-2x"></i>
+</div>
+<h3 class="text-lg font-semibold mb-3">File Encryption Protects Data</h3>
+<p class="text-gray-600 text-sm leading-relaxed">Good converters use HTTPS and encryption to keep your files safe during transfer.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col text-center items-center h-full">
+<div class="w-14 h-14 flex items-center justify-center text-primary mb-6 bg-primary/5 rounded-lg">
+<i class="ri-delete-bin-2-line ri-2x"></i>
+</div>
+<h3 class="text-lg font-semibold mb-3">Auto-Deletion Ensures Privacy</h3>
+<p class="text-gray-600 text-sm leading-relaxed">Many tools delete files quickly—check their privacy policy for exact timing.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col text-center items-center h-full">
+<div class="w-14 h-14 flex items-center justify-center text-primary mb-6 bg-primary/5 rounded-lg">
+<i class="ri-shield-keyhole-line ri-2x"></i>
+</div>
+<h3 class="text-lg font-semibold mb-3">Avoid Uploading Sensitive Files</h3>
+<p class="text-gray-600 text-sm leading-relaxed">For private documents, offline converters or trusted local software are safer choices.</p>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col text-center items-center h-full">
+<div class="w-14 h-14 flex items-center justify-center text-primary mb-6 bg-primary/5 rounded-lg">
+<i class="ri-star-line ri-2x"></i>
+</div>
+<h3 class="text-lg font-semibold mb-3">Choose Trusted Conversion Tools</h3>
+<p class="text-gray-600 text-sm leading-relaxed">Use converters with strong reputations, user reviews, and clear privacy policies.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Create PDFs in Minutes Section -->
+<section id="how-to" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-4">How to Convert a File</h2>
+<p class="text-gray-600 text-center mb-12">Follow these simple steps to convert your files</p>
+<div class="relative max-w-4xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto bg-red-100 rounded-full flex items-center justify-center mb-4">
+<span class="text-primary font-bold">1</span>
+</div>
+<h3 class="font-semibold mb-2">Choose Your File</h3>
+<p class="text-gray-600 text-sm">Select the file to convert from your device</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 mx-auto bg-red-100 rounded-full flex items-center justify-center mb-4">
+<span class="text-primary font-bold">2</span>
+</div>
+<h3 class="font-semibold mb-2">Choose the Formats</h3>
+<p class="text-gray-600 text-sm">Pick the input and output file types</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 mx-auto bg-red-100 rounded-full flex items-center justify-center mb-4">
+<span class="text-primary font-bold">3</span>
+</div>
+<h3 class="font-semibold mb-2">Convert the File</h3>
+<p class="text-gray-600 text-sm">Start the file conversion process</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 mx-auto bg-red-100 rounded-full flex items-center justify-center mb-4">
+<span class="text-primary font-bold">4</span>
+</div>
+<h3 class="font-semibold mb-2">Download the Result</h3>
+<p class="text-gray-600 text-sm">Save the converted file to your device</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Your All-in-One PDF Tool Section -->
+<section id="why-us" class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-4">Why Use a PDF Converter?</h2>
+<p class="text-gray-600 text-center mb-12">Transform your documents with ease and efficiency</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+<div class="flex flex-col space-y-8">
+<div class="flex items-start space-x-4">
+<div class="w-12 h-12 flex-shrink-0 flex items-center justify-center text-primary">
+<i class="ri-file-transfer-line ri-2x"></i>
+</div>
+<div>
+<h3 class="font-semibold mb-2">Quick Format Changes</h3>
+<p class="text-gray-600">Easily switch PDFs to editable formats like Word or Excel.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="w-12 h-12 flex-shrink-0 flex items-center justify-center text-primary">
+<i class="ri-rocket-line ri-2x"></i>
+</div>
+<div>
+<h3 class="font-semibold mb-2">Boost Productivity</h3>
+<p class="text-gray-600">Save time with fast and simple conversions.</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col space-y-8">
+<div class="flex items-start space-x-4">
+<div class="w-12 h-12 flex-shrink-0 flex items-center justify-center text-primary">
+<i class="ri-edit-2-line ri-2x"></i>
+</div>
+<div>
+<h3 class="font-semibold mb-2">Edit and Update</h3>
+<p class="text-gray-600">Turn PDFs into files you can easily edit and customize.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<div class="w-12 h-12 flex-shrink-0 flex items-center justify-center text-primary">
+<i class="ri-global-line ri-2x"></i>
+</div>
+<div>
+<h3 class="font-semibold mb-2">Access Anywhere</h3>
+<p class="text-gray-600">Convert files from any device, wherever you are.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Download Section -->
+<section id="download-app" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+    <h1 class="text-3xl font-bold text-center mb-8">Convert PDFs with aiBrowser - Get the App Today</h1>
+    <img src="images/landerbtf.png" alt="aiBrowser PDF Converter App" class="max-w-xl h-auto mx-auto block mb-8">
+    <button class="bg-primary text-white px-8 py-4 !rounded-button font-semibold text-lg whitespace-nowrap hover:bg-primary/90 transition-all duration-300 mb-6 cursor-pointer download-ai"  download-copy="Download Now" download-position="btf">
+    Download Now
+    </button>
+    <p class="text-sm text-gray-600 max-w-4xl mx-auto leading-relaxed">
+    By clicking the button above, you agree to download aiBrowser from aibrowserapps.com, which includes Convert PDFs and other productivity tools, and you accept our <a href="legal/terms-of-service" target="_blank" class="hover:text-primary">Terms of Service</a> and <a href="legal/privacy-policy" target="_blank" class="hover:text-primary">Privacy Policy</a>.
+    </p>
+    </div>
+    </div>
+</section>
+<!-- FAQ Section -->
+<section id="faq" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-4">Frequently Asked Questions</h2>
+<p class="text-gray-600 text-center mb-12">Find answers to commonly asked questions.</p>
+<div class="max-w-2xl mx-auto space-y-4">
+<div class="border rounded-lg overflow-hidden">
+<button class="faq-toggle w-full py-4 px-6 flex justify-between items-center text-left bg-white hover:bg-gray-50 transition-colors duration-200">
+    <span class="font-semibold">Is this a PDF Converter app?</span>
+    <div class="w-6 h-6 flex items-center justify-center">
+    <i class="ri-subtract-line text-primary"></i>
+    </div>
+</button>
+<div class="faq-content px-6 pb-4 bg-gray-50">
+<p class="text-gray-600">This is a PDF Converter widget which is one of the many features built into aiBrowser. When you download it, you get the full browser along with other productivity tools designed to make your browsing smarter, faster, and more efficient.</p>
+</div>
+</div>
+<div class="border rounded-lg overflow-hidden">
+<button class="faq-toggle w-full py-4 px-6 flex justify-between items-center text-left bg-white hover:bg-gray-50 transition-colors duration-200">
+<span class="font-semibold">Why are PDFs so popular?</span>
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-add-line text-primary"></i>
+</div>
+</button>
+<div class="faq-content hidden px-6 pb-4 bg-gray-50">
+<p class="text-gray-600">PDFs keep documents consistent in appearance, are easy to share, and support text, images, links, and forms, making them ideal for official and professional use.</p>
+</div>
+</div>
+<div class="border rounded-lg overflow-hidden">
+<button class="faq-toggle w-full py-4 px-6 flex justify-between items-center text-left bg-white hover:bg-gray-50 transition-colors duration-200">
+<span class="font-semibold">Can I edit a PDF file?</span>
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-add-line text-primary transition-transform duration-200"></i>
+</div>
+</button>
+<div class="faq-content hidden px-6 pb-4 bg-gray-50">
+<p class="text-gray-600">Yes, but editing requires special software or PDF converters since PDFs are designed to be more like final documents rather than editable drafts.</p>
+</div>
+</div>
+<div class="border rounded-lg overflow-hidden">
+<button class="faq-toggle w-full py-4 px-6 flex justify-between items-center text-left bg-white hover:bg-gray-50 transition-colors duration-200">
+<span class="font-semibold">How do I convert a PDF to another format?</span>
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-add-line text-primary transition-transform duration-200"></i>
+</div>
+</button>
+<div class="faq-content hidden px-6 pb-4 bg-gray-50">
+<p class="text-gray-600">You can use PDF converter tools or software to change PDFs into editable formats like Word, Excel, or images, allowing easier editing or data extraction.</p>
+</div>
+</div>
+<div class="border rounded-lg overflow-hidden">
+<button class="faq-toggle w-full py-4 px-6 flex justify-between items-center text-left bg-white hover:bg-gray-50 transition-colors duration-200">
+<span class="font-semibold">Is it safe to share PDFs?</span>
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-add-line text-primary transition-transform duration-200"></i>
+</div>
+</button>
+<div class="faq-content hidden px-6 pb-4 bg-gray-50">
+<p class="text-gray-600">Generally, yes. PDFs can be secured with passwords and encryption to protect sensitive information before sharing.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="md:col-start-1 flex flex-col items-center md:items-start text-center md:text-left">
+<h3 class="text-white font-semibold mb-4">Convert PDFs</h3>
+<p class="text-sm max-w-sm">All-in-one AI-powered tool to handle your document conversion needs with ease. Convert any format with three simple clicks.</p>
+</div>
+<div class="md:col-start-2 flex justify-center">
+<div class="text-center md:text-left">
+<ul class="space-y-2 text-sm">
+<li><a href="/legal/terms-of-service" target="_blank" rel="noopener noreferrer" class="hover:text-white">Terms of Service</a></li>
+<li><a href="/legal/privacy-policy" target="_blank" rel="noopener noreferrer" class="hover:text-white">Privacy Policy</a></li>
+<li><a href="/legal/do-not-share-my-personal-information" target="_blank" rel="noopener noreferrer" class="hover:text-white">Do Not Share My Personal Information</a></li>
+<li><a href="/legal/uninstall-instructions" target="_blank" rel="noopener noreferrer" class="hover:text-white">Uninstall Instructions</a></li>
+</ul>
+</div>
+</div>
+<div class="md:col-start-3 flex justify-center md:justify-end">
+<div class="text-center md:text-left">
+<p class="text-sm"><a href="mailto:contact@aibrowser.com">contact@aibrowser.com</a></p>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-6 pt-6 text-center">
+<p class="text-xs text-gray-500">Excel, is a registered trademark of Microsoft Corporation. Its use does not imply any affiliation or endorsement.</p>
+</div>
+</div>
+</footer>
+<script src="./js/index.js"></script>
+</body>
+</html>
