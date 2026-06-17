@@ -13,6 +13,19 @@ the cursor.com/agents PWA or Slack `@cursor`).
 
 ---
 
+## Cursor Cloud specific instructions
+
+**There is no application or dev server to run in this repo.** It produces static
+landers (`input_based_landers/**`) plus build/worker scripts; `npm start` is just a
+webpack build, not a long-running server with a URL. Do NOT try to "run the app and
+demonstrate the environment is working" — there is no success URL to verify, and doing
+so causes the setup agent to loop indefinitely on "Planning next moves".
+
+The environment only needs `python3`, `curl`, `git`, and `gh`, which `.cursor/environment.json`
+verifies in its `install` step. Treat the environment as ready once `install` succeeds.
+
+---
+
 ## Basecamp Lander Task (cloud workflow)
 
 Trigger it with a prompt like: **"Do the Basecamp task: `<basecamp-link>`"**.

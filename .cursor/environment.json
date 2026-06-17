@@ -1,4 +1,5 @@
 {
   "name": "aiserving cloud agent",
-  "install": "python3 --version && curl --version | head -1 && git --version && gh --version | head -1"
+  "install": "python3 --version && curl --version | head -1 && git --version && gh --version | head -1",
+  "start": "echo 'No app/server to run: this repo builds static landers. Environment ready.'"
 }
