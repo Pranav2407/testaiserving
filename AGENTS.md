@@ -132,3 +132,33 @@ token from `gh auth token` (do not hardcode or echo it). Report the resulting PR
 ### 7. Report back
 
 Summarize: parsed task fields, files changed, branch name, and the **PR URL**.
+
+---
+
+## Cursor Cloud specific instructions
+
+This repo (`tron`) is a **static landing-page (lander) build pipeline**, not a runtime
+app. There is **no backend/web server** to run (`routes/web.php` is an empty Laravel
+leftover). Webpack bundles browser JS that drives downloads/installs and analytics for a
+family of marketing landers (primary brand `aibrowser.com`, plus the
+`input_based_landers/*` products).
+
+- **Dependencies** are installed automatically on startup by the update script (`npm ci`).
+  Note: `.cursor/environment.json`'s `install` step only prints tool versions; it does
+  NOT install npm deps.
+- **Build/run commands** (see `package.json` scripts): `npm start` = one-shot webpack
+  *development* build (despite the name it does NOT start a long-running server),
+  `npm run build` = production build, `npm run btf-build` = regenerate the
+  `tron/component/lander-btf-element.js` web component from `tron/component/lander_btf.html`.
+- **No tests / no lint** are configured (`npm test` is a placeholder that exits 1).
+- **Built bundles are committed artifacts** (`tron/js/**`, `input_based_landers/**/js/**`).
+  Running any build regenerates and dirties them (webpack output can differ slightly). Do
+  NOT commit regenerated bundles unless changing bundle output is the actual intent —
+  `git checkout -- .` to discard them after a verification build.
+- **Previewing a lander** (there is no app server): serve a built output dir statically,
+  e.g. `python3 -m http.server 8080 --directory tron` then open `/index.html`. The lander
+  JS initializes analytics and wires `.download-ai` CTA buttons; clicking a CTA fires GA
+  events and requests the installer from `api.aibrowserapps.com` (external, may fail
+  offline — that's expected). Other products live under `input_based_landers/<product>/`.
+- A `.githooks/pre-commit` secret scanner exists; enable with
+  `git config core.hooksPath .githooks`.
